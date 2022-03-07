@@ -1,5 +1,6 @@
 
 public class Ebook {
+	
 	private String idEbook;
 	private String nomeEbook;
 	private String autor;
@@ -11,6 +12,7 @@ public class Ebook {
 	private int paginas;
 	private int anoPublicação;
 	private Editora infoEditora;
+	
 	public String getIdEbook() {
 		return idEbook;
 	}
