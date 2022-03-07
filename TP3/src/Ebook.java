@@ -1,7 +1,7 @@
 
 public class Ebook {
 	
-	private String idEbook;
+	private int idEbook;
 	private String nomeEbook;
 	private String autor;
 	private String categoria; 
@@ -10,13 +10,27 @@ public class Ebook {
 	private double preco;
 	private double tamanhoArquivo;
 	private int paginas;
-	private int anoPublicação;
+	private int anoPublicacao;
 	private Editora infoEditora;
 	
-	public String getIdEbook() {
+	public Ebook(int id, String nome, String a, String c, String s, String i, double p, double tam, int pag, int ano, Editora info) {
+		idEbook = id;
+		nomeEbook = nome;
+		autor = a;
+		categoria = c;
+		sinopse = s;
+		idioma = i;
+		preco = p;
+		tamanhoArquivo = tam;
+		paginas = pag;
+		anoPublicacao = ano;
+		infoEditora = info;
+	}
+	
+	public int getIdEbook() {
 		return idEbook;
 	}
-	public void setIdEbook(String idEbook) {
+	public void setIdEbook(int idEbook) {
 		this.idEbook = idEbook;
 	}
 	public String getNomeEbook() {
@@ -67,16 +81,20 @@ public class Ebook {
 	public void setPaginas(int paginas) {
 		this.paginas = paginas;
 	}
-	public int getAnoPublicação() {
-		return anoPublicação;
+	public int getanoPublicacao() {
+		return anoPublicacao;
 	}
-	public void setAnoPublicação(int anoPublicação) {
-		this.anoPublicação = anoPublicação;
+	public void setanoPublicacao(int anoPublicacao) {
+		this.anoPublicacao = anoPublicacao;
 	}
 	public Editora getInfoEditora() {
 		return infoEditora;
 	}
 	public void setInfoEditora(Editora infoEditora) {
 		this.infoEditora = infoEditora;
+	}
+	
+	public void visualizarEbook(Ebook ebook) {
+		 System.out.printf("Ebook: " + ebook.nomeEbook + "\n" + "Editora: " + ebook.infoEditora.nome + "\n");
 	}
 }

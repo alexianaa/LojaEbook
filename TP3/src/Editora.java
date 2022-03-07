@@ -3,9 +3,9 @@ import java.util.Date;
 public class Editora extends Entidade {
 	
 	private String cnpj;
-	private Date dataAfiliacao;
+	private String dataAfiliacao;
 	
-	public Editora(String n, String e, String i, Telefone num, String c, Date d) {
+	public Editora(String n, String e, String i, Telefone num, String c, String d) {
 		nome = n;
 		email = e;
 		id = i;
@@ -22,11 +22,11 @@ public class Editora extends Entidade {
 		this.cnpj = cnpj;
 	}
 	
-	public Date getDataAfiliacao() {
+	public String getDataAfiliacao() {
 		return dataAfiliacao;
 	}
 	
-	public void setDataAfiliação(Date dataAfiliacao) {
+	public void setDataAfiliação(String dataAfiliacao) {
 		this.dataAfiliacao = dataAfiliacao;
 	}
 	
