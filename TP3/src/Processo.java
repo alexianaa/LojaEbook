@@ -3,12 +3,17 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Processo {
+<<<<<<< HEAD
 	static Scanner ler = new Scanner(System.in);
 	static int opcao;
 	static String opcaoString;
 	
+=======
+
+>>>>>>> refs/remotes/origin/main
 	public static void main(String[] args) {
 		preencher();
+<<<<<<< HEAD
 		
 		System.out.println("--------Menu--------");
 		System.out.println("1. Comprar Ebook\n" + "2. Ver Carrinho\n" + "3. Buscar Editora\n" + "4. Cadastrar Ebook\n" + "5. Cadastrar Editora\n" + "6. Sair da loja");
@@ -104,45 +109,55 @@ public class Processo {
 	
 	public static void SairLoja() {
 		System.out.println("sair");
+=======
+
+>>>>>>> refs/remotes/origin/main
 	}
-	
+
 	public static void preencher() {
 		String pattern = "dd-MM-yyyy";
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-		
-		//cria as editoras
-		Telefone num = new Telefone(82,"988454163");
+
+		// cria as editoras
+		Telefone num = new Telefone(82, "988454163");
 		String date = simpleDateFormat.format(new Date());
 		Editora arqueiro = new Editora("arqueiro", "arqueiro@gmail.com", "1", num, "4382974829843", date);
 		Dados.getEditoras().add(arqueiro);
-		
-		Telefone num1 = new Telefone(61,"987569520");
+
+		Telefone num1 = new Telefone(61, "987569520");
 		String date1 = simpleDateFormat.format(new Date());
 		Editora Rocco = new Editora("Rocco", "Rocco@gmail.com", "2", num1, "5784374820233", date1);
 		Dados.getEditoras().add(Rocco);
-		
-		Telefone num2 = new Telefone(61,"987569520");
+
+		Telefone num2 = new Telefone(61, "987569520");
 		String date2 = simpleDateFormat.format(new Date());
 		Editora Sextante = new Editora("Sextante", "Sextante@gmail.com", "3", num2, "5788425974233", date2);
 		Dados.getEditoras().add(Sextante);
-		
+
 		// cria 5 ebooks para as 3 editoras
+<<<<<<< HEAD
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 5; j++) {
 				Ebook ebook = new Ebook(j, "ebook"+i+j, "autor"+i+j, "categoria"+i+j, "sinopse"+i+j, "idioma"+i+j, 50.0, 150.0+i+j, 350+i+j, 2012+i+j, Dados.getEditoras().get(i));
+=======
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 5; j++) {
+				Ebook ebook = new Ebook(j, "ebook" + j, "autor" + j, "categoria" + j, "sinopse" + j, "idioma" + j, 50.0,
+						150.0 + j, 350 + j, 2020 + j, Dados.getEditoras().get(i));
+>>>>>>> refs/remotes/origin/main
 				Dados.getEbooks().add(ebook);
 			}
 		}
-		
-		//cria 3 clientes
-		for(int a = 0; a <3; a++) {
-			Telefone num3 = new Telefone(61+a,"num"+a);
+
+		// cria 3 clientes
+		for (int a = 0; a < 3; a++) {
+			Telefone num3 = new Telefone(61 + a, "num" + a);
 			String date3 = simpleDateFormat.format(new Date());
-			Cliente cliente = new Cliente("nome"+a, "email"+a, "id"+a, num3, date3, "10578932564"+a, "genero"+a);
+			Cliente cliente = new Cliente("nome" + a, "email" + a, "id" + a, num3, date3, "10578932564" + a,
+					"genero" + a);
 			Dados.getClientes().add(cliente);
 		}
-		
-		
+
 	}
 
 }
