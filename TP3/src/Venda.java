@@ -77,4 +77,5 @@ public class Venda {
 	public void setCarrinho(Carrinho carrinho) {
 		this.carrinho = carrinho;
 	}
+
 }

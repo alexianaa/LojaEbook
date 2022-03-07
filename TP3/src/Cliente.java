@@ -1,31 +1,33 @@
-import java.util.Date;
 
 public class Cliente extends Entidade {
 
-	private Date dataNascimento;
-	private int cpf;
+	private String dataNascimento;
+	private String cpf;
 	private String genero;
 
-	public Cliente(String n, String e, String i, Telefone num) {
+	public Cliente(String n, String e, String i, Telefone num, String d, String c, String g) {
 		nome = n;
 		email = e;
 		id = i;
 		numCel = num;
+		dataNascimento = d;
+		cpf = c;
+		genero = g;
 	}
 
-	public Date getDataNascimento() {
+	public String getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(int cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
@@ -35,6 +37,10 @@ public class Cliente extends Entidade {
 
 	public void setGenero(String genero) {
 		this.genero = genero;
+	}
+
+	public void visualizarCliente(Cliente cliente) {
+		System.out.println("cliente: " + cliente.nome + "\n");
 	}
 
 }

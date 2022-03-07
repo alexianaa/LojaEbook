@@ -1,11 +1,10 @@
-import java.util.Date;
 
 public class Editora extends Entidade {
 
 	private String cnpj;
-	private Date dataAfiliacao;
+	private String dataAfiliacao;
 
-	public Editora(String n, String e, String i, Telefone num, String c, Date d) {
+	public Editora(String n, String e, String i, Telefone num, String c, String d) {
 		nome = n;
 		email = e;
 		id = i;
@@ -22,11 +21,11 @@ public class Editora extends Entidade {
 		this.cnpj = cnpj;
 	}
 
-	public Date getDataAfiliacao() {
+	public String getDataAfiliacao() {
 		return dataAfiliacao;
 	}
 
-	public void setDataAfiliacao(Date dataAfiliacao) {
+	public void setDataAfiliacao(String dataAfiliacao) {
 		this.dataAfiliacao = dataAfiliacao;
 	}
 
@@ -35,6 +34,6 @@ public class Editora extends Entidade {
 				"Email:        " + ebookEditora.email + "\n" +
 				"Telefone:     " + Telefone.VisualizarTelefone(numCel) + "\n" +
 				"CNPJ:         " + ebookEditora.cnpj + "\n" +
-				"Afilia��o em: " + ebookEditora.dataAfiliacao + "\n");
+				"Afiliacao em: " + ebookEditora.dataAfiliacao + "\n");
 	}
 }
