@@ -14,7 +14,7 @@ public class Processo {
 		System.out.println("--------------------------");
 		opcao = ler.nextInt();
 
-		if (opcao == 1) {
+		if (opcao == 1) { // login
 			System.out.println("- Digite o nome de usuario -");
 			opcaoString = ler.next();
 			for (Cliente edit : Dados.getClientes()) {
@@ -22,7 +22,7 @@ public class Processo {
 					menuInicial(edit, 0);
 				}
 			}
-		} else if (opcao == 2) {
+		} else if (opcao == 2) { // cadastro
 			System.out.println("- Realizar cadastro -");
 			Cliente cliente = Cliente.cadastrarCliente();
 			menuInicial(cliente, 0);
@@ -42,14 +42,36 @@ public class Processo {
 		if (opcao == 1) {
 			ComprarEbook(cliente);
 		} else if (opcao == 2) {
-			VerCarrinho(cliente.getCarrinho());
+			if (cliente.getCarrinho().getQuantidadeEbooks() == 0) {
+				System.out.println("Nao ha ebooks no carrinho");
+			} else { // menu do carrinho
+				System.out.println("---- Carrinho -----");
+				System.out.println("1. Mostrar ebooks\n" + "2. Excluir Ebook\n" + "3. Finalizar compra\n" + "3. Cancelar compra");
+				System.out.println("-------------------");
+				opcao = ler.nextInt();
+				if(opcao == 1) { // mostra os ebooks no carrinho
+					Carrinho.mostrarEbooks(cliente);
+				}else if(opcao == 2) { // exclui o ebook selecionado
+					Carrinho.excluirEbook(cliente);
+				}else if(opcao == 3) { // ir para venda
+					System.out.println("- Finalizar compra -");
+					System.out.println("Redirecionando para venda...");
+				}else {
+					System.out.println("Opcao invalida");
+				}
+				
+			}
 		} else if (opcao == 3) {
-			BuscarEditora();
+			System.out.println("- Buscar Editora -");
+			Editora.BuscarEditora();
 		} else if (opcao == 4) {
-			CadastrarEbook();
+			System.out.println("- Cadastrar Ebook -");
+			Ebook.cadastrarEbook();
 		} else if (opcao == 5) {
-			CadastrarEditora();
+			System.out.println("- Cadastrar Editora -");
+			Editora.cadastrarEditora();
 		} else if (opcao == 6) {
+			System.out.println("- Sair -");
 			return;
 		} else {
 			System.out.println("Opcao invalida");
@@ -69,33 +91,11 @@ public class Processo {
 		if (opcao == 1) {
 			System.out.println("- Listar Ebooks -");
 			for (Ebook edit : Dados.getEbooks()) {
-				edit.visualizarEbook(edit);
+				System.out.println(edit.getNomeEbook());
 			}
 			ComprarEbook(cliente);
 		} else if (opcao == 2) {
-			System.out.println("- Buscar Ebooks -");
-			System.out.println("Digite o nome do ebook: ");
-			boolean achou = false;
-			opcaoString = ler.next();
-			for (Ebook edit : Dados.getEbooks()) {
-				if (opcaoString.equals(edit.getNomeEbook())) { // encontrou o ebook
-					System.out.println(
-							"Ebook encontrado, voce deseja: \n" + "1. Adicionar ao carrinho\n" + "2. Cancelar busca");
-					achou = true;
-					opcao = ler.nextInt();
-					if (opcao == 1) {
-						cliente.adicionarCarrinho(edit, cliente.getCarrinho());
-						// System.out.println(cliente.getCarrinho().getEbooks());
-					} else if (opcao == 2) {
-						System.out.println("Busca cancelada");
-					} else {
-						System.out.println("Opcao Invalida");
-					}
-				}
-			}
-			if (achou == false) {
-				System.out.println("Opcao nao existe\n");
-			}
+			Ebook.BuscarEbook(cliente);
 			ComprarEbook(cliente);
 		} else if (opcao == 3) {
 			System.out.println("- Finalizar compra -");
@@ -103,39 +103,11 @@ public class Processo {
 		} else if (opcao == 4) {
 
 		} else {
-			System.out.println("Op��o Inv�lida");
+			System.out.println("Opcao Invalida");
 			ComprarEbook(cliente);
 		}
 	}
-
-	public static void VerCarrinho(Carrinho carrinhoCliente) {
-		if (carrinhoCliente.getQuantidadeEbooks() == 0) {
-			System.out.println("Nao ha ebooks no carrinho");
-		} else {
-			for (Ebook edit : carrinhoCliente.getEbooks()) {
-				if (edit != null) {
-					edit.visualizarEbook(edit);
-				}
-			}
-		}
-	}
-
-	public static void BuscarEditora() {
-		System.out.println("editora");
-	}
-
-	public static void CadastrarEbook() {
-		System.out.println("ebook");
-	}
-
-	public static void CadastrarEditora() {
-		System.out.println("editora");
-	}
-
-	public static void SairLoja() {
-		System.out.println("sair");
-	}
-
+	
 	public static void preencher() {
 		String pattern = "dd/MM/yyyy";
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
@@ -143,17 +115,17 @@ public class Processo {
 		// cria as editoras
 		Telefone num = new Telefone(82, "988454163");
 		String date = simpleDateFormat.format(new Date());
-		Editora arqueiro = new Editora("arqueiro", "arqueiro@gmail.com", "1", num, "4382974829843", date);
+		Editora arqueiro = new Editora("arqueiro", "arqueiro@gmail.com", 0, num, "4382974829843", date);
 		Dados.getEditoras().add(arqueiro);
 
 		Telefone num1 = new Telefone(61, "987569520");
 		String date1 = simpleDateFormat.format(new Date());
-		Editora Rocco = new Editora("Rocco", "Rocco@gmail.com", "2", num1, "5784374820233", date1);
+		Editora Rocco = new Editora("Rocco", "Rocco@gmail.com", 1, num1, "5784374820233", date1);
 		Dados.getEditoras().add(Rocco);
 
 		Telefone num2 = new Telefone(61, "987569520");
 		String date2 = simpleDateFormat.format(new Date());
-		Editora Sextante = new Editora("Sextante", "Sextante@gmail.com", "3", num2, "5788425974233", date2);
+		Editora Sextante = new Editora("Sextante", "Sextante@gmail.com", 2, num2, "5788425974233", date2);
 		Dados.getEditoras().add(Sextante);
 
 		// cria 5 ebooks para as 3 editoras
@@ -170,7 +142,7 @@ public class Processo {
 			Telefone num3 = new Telefone(61 + a, "num" + a);
 			String date3 = simpleDateFormat.format(new Date());
 			Carrinho carrinho = new Carrinho(0.0, 0, null);
-			Cliente cliente = new Cliente("nome" + a, "email" + a, "id" + a, num3, date3, "10578932564" + a,
+			Cliente cliente = new Cliente("nome" + a, "email" + a, a, num3, date3, "10578932564" + a,
 					"genero" + a, carrinho);
 			Dados.getClientes().add(cliente);
 		}

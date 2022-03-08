@@ -3,8 +3,8 @@ public abstract class Entidade {
 
 	protected String nome;
 	protected String email;
-	protected String id;
-	protected static Telefone numCel;
+	protected int id;
+	protected Telefone numCel;
 
 	public String getNome() {
 		return nome;
@@ -22,11 +22,11 @@ public abstract class Entidade {
 		this.email = email;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

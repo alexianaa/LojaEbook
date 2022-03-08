@@ -7,7 +7,7 @@ public class Cliente extends Entidade {
 	private String genero;
 	private Carrinho carrinho;
 
-	public Cliente(String n, String e, String i, Telefone num, String d, String c, String g, Carrinho car) {
+	public Cliente(String n, String e, int i, Telefone num, String d, String c, String g, Carrinho car) {
 		this.nome = n;
 		this.email = e;
 		this.id = i;
@@ -16,6 +16,17 @@ public class Cliente extends Entidade {
 		this.cpf = c;
 		this.genero = g;
 		this.carrinho = car;
+	}
+	
+	@Override
+	public String toString() {
+		return "Nome: " + this.nome + 
+				"\nEmail: " + this.email +
+				"\nTelefone: " + this.numCel + 
+				"\nData de nascimento: " + this.dataNascimento +
+				"\nCPF: " + this.cpf + 
+				"\nGenero: " + this.genero +
+				"\nCarrinho: " + this.carrinho;
 	}
 
 	public Carrinho getCarrinho() {
@@ -79,9 +90,9 @@ public class Cliente extends Entidade {
 		Carrinho carrinho = new Carrinho(0.0, 0, null);
 
 		// gerar id
-		String idNovo = "0";
+		int idNovo = 0;
 		for (Cliente edit : Dados.getClientes()) {
-			if (edit.id.equals(idNovo)) {
+			if (edit.id == idNovo) {
 				idNovo += 1;
 				continue;
 			}
@@ -94,10 +105,6 @@ public class Cliente extends Entidade {
 
 	public static void excluirCliente() {
 
-	}
-
-	public void visualizarCliente(Cliente cliente) {
-		System.out.println("cliente: " + cliente.nome + "\n" + "data :" + cliente.dataNascimento);
 	}
 
 	public void adicionarCarrinho(Ebook ebook, Carrinho carrinho) {

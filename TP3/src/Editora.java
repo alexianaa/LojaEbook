@@ -5,13 +5,20 @@ public class Editora extends Entidade {
 	private String cnpj;
 	private String dataAfiliacao;
 
-	public Editora(String n, String e, String i, Telefone num, String c, String d) {
-		nome = n;
-		email = e;
-		id = i;
-		numCel = num;
-		cnpj = c;
-		dataAfiliacao = d;
+	public Editora(String n, String e, int i, Telefone num, String c, String d) {
+		this.nome = n;
+		this.email = e;
+		this.id = i;
+		this.numCel = num;
+		this.cnpj = c;
+		this.dataAfiliacao = d;
+	}
+	
+	@Override
+	public String toString() {
+		return "Editora: " + this.nome + "\nEmail: " + this.email +
+				"\nId: " + this.id + "\nTelefone: " + this.numCel +
+				"\nCNPJ: " + this.cnpj + "\nData de afiliacao: " + this.dataAfiliacao;
 	}
 
 	public static Editora cadastrarEditora() {
@@ -39,9 +46,9 @@ public class Editora extends Entidade {
 		Telefone num = new Telefone(ddd, numero);
 
 		// gerar id
-		String idNovoEditora = "0";
+		int idNovoEditora = 0;
 		for (Editora edit : Dados.getEditoras()) {
-			if (edit.id.equals(idNovoEditora)) {
+			if (edit.id == idNovoEditora) {
 				idNovoEditora += 1;
 				continue;
 			}
@@ -67,12 +74,44 @@ public class Editora extends Entidade {
 	public void setDataAfiliacao(String dataAfiliacao) {
 		this.dataAfiliacao = dataAfiliacao;
 	}
-
-	public void VisualizarEditora(Editora ebookEditora) {
-		System.out.println("Editora:      " + ebookEditora.nome + "\n" +
-				"Email:        " + ebookEditora.email + "\n" +
-				"Telefone:     " + Telefone.VisualizarTelefone(numCel) + "\n" +
-				"CNPJ:         " + ebookEditora.cnpj + "\n" +
-				"Afiliacao em: " + ebookEditora.dataAfiliacao + "\n");
+	
+	public static void BuscarEditora() {
+		Scanner ler = new Scanner(System.in);
+		System.out.println("Você deseja buscar pelo nome ou pelo id?");
+		System.out.println("1. Nome\n" + "2. Id\n");
+		
+		boolean achou = false;
+		int opcao = ler.nextInt();
+		
+		String nomeBusca;
+		
+		if(opcao == 1) { // busca pelo nome
+			System.out.println("Digite o nome da Editora:");
+			nomeBusca = ler.next();
+			for(Editora edit : Dados.getEditoras()) {
+				if(nomeBusca.equals(edit.nome)) {
+					achou = true;
+					System.out.println(edit);
+					break;
+				}
+			}
+		}else if(opcao == 2) { // busca pelo id
+			System.out.println("Digite o id da editora:");
+			opcao = ler.nextInt();
+			for(Editora edit : Dados.getEditoras()) {
+				if(opcao == edit.getId()) {
+					achou = true;
+					System.out.println(edit);
+					break;
+				}
+			}
+		}else {
+			System.out.println("Opcao invalida");
+		}
+		
+		if(achou == false) {
+			System.out.println("Editora não encontrada\n");
+		}
+	
 	}
 }

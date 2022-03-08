@@ -8,6 +8,11 @@ public class Telefone {
 		this.celular = j;
 	}
 	
+	@Override
+	public String toString() {
+		return "("  + this.ddd + ")" + this.celular;
+	}
+	
 	public int getDdd() {
 		return ddd;
 	}
