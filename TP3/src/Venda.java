@@ -12,6 +12,7 @@ public class Venda {
 		String f = ler.nextLine();
 		switch (f) {
 			case "credito":
+
 				this.formaPagamento = f;
 				System.out.println("\n" + f + "\n" + "R$" + p);
 				System.out.println("deseja confirmar a compra? 1. Sim 2.Nao");

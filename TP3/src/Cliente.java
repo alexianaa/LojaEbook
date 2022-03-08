@@ -50,61 +50,60 @@ public class Cliente extends Entidade {
 		this.genero = genero;
 	}
 
-	public static Cliente cadastrarCliente(){
+	public static Cliente cadastrarCliente() {
 		Scanner ler = new Scanner(System.in);
 		String nome, email, numero, cpf, data, genero;
-		
+
 		System.out.println("Digite o seu nome: ");
 		nome = ler.next();
-		
+
 		System.out.println("Digite o seu email: ");
 		email = ler.next();
-		
+
 		System.out.println("Digite o seu ddd: ");
 		int ddd = ler.nextInt();
-		
+
 		System.out.println("Digite o seu numero: ");
 		numero = ler.next();
-		
+
 		System.out.println("Digite o seu cpf: ");
 		cpf = ler.next();
-		
+
 		System.out.println("Digite o seu aniversario no formato dd/mm/yyyy: ");
 		data = ler.next();
-		
-		System.out.println("Digite o seu gênero: ");
+
+		System.out.println("Digite o seu genero: ");
 		genero = ler.next();
-		
-		Telefone num = new Telefone(ddd , numero);
-		Carrinho carrinho = new Carrinho(0.0,0, null);
-		
+
+		Telefone num = new Telefone(ddd, numero);
+		Carrinho carrinho = new Carrinho(0.0, 0, null);
+
 		// gerar id
-		String idnovo = "0";
-		for(Cliente edit : Dados.getClientes()) {
-			if(edit.id.equals(idnovo)) {
-				idnovo += 1;
+		String idNovo = "0";
+		for (Cliente edit : Dados.getClientes()) {
+			if (edit.id.equals(idNovo)) {
+				idNovo += 1;
 				continue;
 			}
 		}
-		
-		Cliente cliente = new Cliente(nome, email, idnovo, num, data, cpf, genero, carrinho);
+
+		Cliente cliente = new Cliente(nome, email, idNovo, num, data, cpf, genero, carrinho);
 		Dados.getClientes().add(cliente);
 		return cliente;
 	}
-	
-	public static void excluirCliente(){
-		
+
+	public static void excluirCliente() {
+
 	}
-	
-	
+
 	public void visualizarCliente(Cliente cliente) {
-		System.out.println("cliente: " + cliente.nome + "\n" + "data :" + cliente.dataNascimento );
+		System.out.println("cliente: " + cliente.nome + "\n" + "data :" + cliente.dataNascimento);
 	}
-	
+
 	public void adicionarCarrinho(Ebook ebook, Carrinho carrinho) {
-		carrinho.setPreco(ebook.getPreco()+carrinho.getPreco());
+		carrinho.setPreco(ebook.getPreco() + carrinho.getPreco());
 		carrinho.adicionarEbook(ebook);
-		carrinho.setQuantidadeEbooks(carrinho.getQuantidadeEbooks()+1);
+		carrinho.setQuantidadeEbooks(carrinho.getQuantidadeEbooks() + 1);
 	}
 
 }

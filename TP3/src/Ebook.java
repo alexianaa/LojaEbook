@@ -1,19 +1,21 @@
+import java.util.Scanner;
 
 public class Ebook {
 
-	private int idEbook;
 	private String nomeEbook;
 	private String autor;
 	private String categoria;
 	private String sinopse;
 	private String idioma;
+	private String idEbook;
 	private double preco;
 	private double tamanhoArquivo;
 	private int paginas;
 	private int anoPublicacao;
 	private Editora infoEditora;
 
-	public Ebook(int id, String nome, String a, String c, String s, String i, double p, double tam, int pag, int ano, Editora info) {
+	public Ebook(String id, String nome, String a, String c, String s, String i, double p, double tam, int pag, int ano,
+			Editora info) {
 		this.idEbook = id;
 		this.nomeEbook = nome;
 		this.autor = a;
@@ -27,11 +29,62 @@ public class Ebook {
 		this.infoEditora = info;
 	}
 
-	public int getIdEbook() {
+	public static Ebook cadastrarEbook() {
+		Scanner ler = new Scanner(System.in);
+		String nomeEbook, autor, categoria, sinopse, idioma;
+		double tamanhoArquivo, preco;
+		int anoPublicacao, paginas;
+
+		System.out.println("Digite o nome do Ebook: ");
+		nomeEbook = ler.next();
+
+		System.out.println("Digite o autor do Ebook: ");
+		autor = ler.next();
+
+		System.out.println("Digite a categoria do Ebook: ");
+		categoria = ler.next();
+
+		System.out.println("Digite a sinopse do Ebook: ");
+		sinopse = ler.next();
+
+		System.out.println("Digite o idioma em que o Ebook esta disponivel(unico): ");
+		idioma = ler.next();
+
+		System.out.println("Digite qual a Editora: ");
+		Editora infoEditora = new Editora("0", "0", "0", null, "0", "0");
+
+		System.out.println("Digite o tamanho do Arquivo: ");
+		tamanhoArquivo = ler.nextDouble();
+
+		System.out.println("Digite o preco do Ebook: ");
+		preco = ler.nextDouble();
+
+		System.out.println("Digite o tamanho do Arquivo: ");
+		anoPublicacao = ler.nextInt();
+
+		System.out.println("Digite o numero de paginas: ");
+		paginas = ler.nextInt();
+
+		// gerar id
+		String idEbookNovo = "0";
+		for (Ebook edit : Dados.getEbooks()) {
+			if (edit.idEbook.equals(idEbookNovo)) {
+				idEbookNovo += 1;
+				continue;
+			}
+		}
+
+		Ebook Ebook = new Ebook(idEbookNovo, nomeEbook, autor, categoria, sinopse, idioma, preco, tamanhoArquivo,
+				paginas, anoPublicacao, infoEditora);
+		Dados.getEbooks().add(Ebook);
+		return Ebook;
+	}
+
+	public String getIdEbook() {
 		return idEbook;
 	}
 
-	public void setIdEbook(int idEbook) {
+	public void setIdEbook(String idEbook) {
 		this.idEbook = idEbook;
 	}
 

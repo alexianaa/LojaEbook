@@ -5,7 +5,7 @@ public class Dados {
 	private static final ArrayList<Editora> editoras = new ArrayList<>();
 	private static final ArrayList<Ebook> ebooks = new ArrayList<>();
 	private static final ArrayList<Cliente> clientes = new ArrayList<>();
-	
+
 	public Dados() {
 	}
 
@@ -20,5 +20,5 @@ public class Dados {
 	public static ArrayList<Cliente> getClientes() {
 		return clientes;
 	}
-	
+
 }

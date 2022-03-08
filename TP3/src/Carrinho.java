@@ -9,7 +9,7 @@ public class Carrinho {
 		this.quantidadeEbooks = quant;
 		this.ebooks[0] = ebook;
 	}
-	
+
 	public double getPreco() {
 		return preco;
 	}
@@ -33,24 +33,24 @@ public class Carrinho {
 	public void setEbooks(Ebook[] ebooks) {
 		this.ebooks = ebooks;
 	}
-	
+
 	public static void excluirEbook(Ebook ebook) {
-	
+
 	}
-	
+
 	public static void visualizarItems(Carrinho carrinho) {
-		for(int i = 0; i == carrinho.ebooks.length; i++) {
+		for (int i = 0; i == carrinho.ebooks.length; i++) {
 			System.out.println(carrinho.ebooks.toString());
 		}
-	}	
+	}
 
 	public void adicionarEbook(Ebook ebook) {
-		for(int i = 0; i < 50; i++) {
-			if(ebooks[i] == null) {				
+		for (int i = 0; i < 50; i++) {
+			if (ebooks[i] == null) {
 				ebooks[i] = ebook;
 				break;
 			}
 		}
 	}
-	
+
 }
