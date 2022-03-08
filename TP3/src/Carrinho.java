@@ -2,9 +2,14 @@
 public class Carrinho {
 	private double preco;
 	private int quantidadeEbooks;
-	private Cliente usuario;
 	private Ebook[] ebooks = new Ebook[50];
 
+	public Carrinho(double p, int quant, Ebook ebook) {
+		this.preco = p;
+		this.quantidadeEbooks = quant;
+		this.ebooks[0] = ebook;
+	}
+	
 	public double getPreco() {
 		return preco;
 	}
@@ -21,14 +26,6 @@ public class Carrinho {
 		this.quantidadeEbooks = quantidadeEbooks;
 	}
 
-	public Cliente getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Cliente usuario) {
-		this.usuario = usuario;
-	}
-
 	public Ebook[] getEbooks() {
 		return ebooks;
 	}
@@ -36,4 +33,24 @@ public class Carrinho {
 	public void setEbooks(Ebook[] ebooks) {
 		this.ebooks = ebooks;
 	}
+	
+	public static void excluirEbook(Ebook ebook) {
+	
+	}
+	
+	public static void visualizarItems(Carrinho carrinho) {
+		for(int i = 0; i == carrinho.ebooks.length; i++) {
+			System.out.println(carrinho.ebooks.toString());
+		}
+	}	
+
+	public void adicionarEbook(Ebook ebook) {
+		for(int i = 0; i < 50; i++) {
+			if(ebooks[i] == null) {				
+				ebooks[i] = ebook;
+				break;
+			}
+		}
+	}
+	
 }

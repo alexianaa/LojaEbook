@@ -13,19 +13,18 @@ public class Ebook {
 	private int anoPublicacao;
 	private Editora infoEditora;
 
-	public Ebook(int id, String nome, String a, String c, String s, String i, double p, double tam, int pag, int ano,
-			Editora info) {
-		idEbook = id;
-		nomeEbook = nome;
-		autor = a;
-		categoria = c;
-		sinopse = s;
-		idioma = i;
-		preco = p;
-		tamanhoArquivo = tam;
-		paginas = pag;
-		anoPublicacao = ano;
-		infoEditora = info;
+	public Ebook(int id, String nome, String a, String c, String s, String i, double p, double tam, int pag, int ano, Editora info) {
+		this.idEbook = id;
+		this.nomeEbook = nome;
+		this.autor = a;
+		this.categoria = c;
+		this.sinopse = s;
+		this.idioma = i;
+		this.preco = p;
+		this.tamanhoArquivo = tam;
+		this.paginas = pag;
+		this.anoPublicacao = ano;
+		this.infoEditora = info;
 	}
 
 	public int getIdEbook() {
@@ -117,6 +116,6 @@ public class Ebook {
 	}
 
 	public void visualizarEbook(Ebook ebook) {
-		System.out.printf("Ebook: " + ebook.nomeEbook + "\n" + "Editora: " + ebook.infoEditora.nome + "\n");
+		System.out.println("Ebook: " + ebook.nomeEbook + "\n" + "Editora: " + ebook.infoEditora.nome + "\n");
 	}
 }

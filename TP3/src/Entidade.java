@@ -37,4 +37,5 @@ public abstract class Entidade {
 	public void setNumCel(Telefone numCel) {
 		this.numCel = numCel;
 	}
+	
 }

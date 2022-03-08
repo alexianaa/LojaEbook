@@ -4,8 +4,8 @@ public class Telefone {
 	private String celular;
 	
 	public Telefone(int i, String j) {
-		ddd = i;
-		celular = j;
+		this.ddd = i;
+		this.celular = j;
 	}
 	
 	public int getDdd() {

@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Venda {
 	private String formaPagamento;
 	private double preco;
-	private Carrinho carrinho;
 
 	public Venda() {
 		super();
@@ -14,7 +13,7 @@ public class Venda {
 		switch (f) {
 			case "credito":
 				this.formaPagamento = f;
-				System.out.println(carrinho + "\n" + f + "\n" + "R$" + p);
+				System.out.println("\n" + f + "\n" + "R$" + p);
 				System.out.println("deseja confirmar a compra? 1. Sim 2.Nao");
 				int k = ler.nextInt();
 				switch (k) {
@@ -32,7 +31,7 @@ public class Venda {
 				break;
 			case "debito":
 				this.formaPagamento = f;
-				System.out.println(carrinho + "\n" + f + "\n" + "R$" + p);
+				System.out.println("\n" + f + "\n" + "R$" + p);
 				System.out.println("deseja confirmar a compra? 1. Sim 2.Nao");
 				int k2 = ler.nextInt();
 				switch (k2) {
@@ -68,14 +67,6 @@ public class Venda {
 
 	public void setPreco(double preco) {
 		this.preco = preco;
-	}
-
-	public Carrinho getCarrinho() {
-		return carrinho;
-	}
-
-	public void setCarrinho(Carrinho carrinho) {
-		this.carrinho = carrinho;
 	}
 
 }
