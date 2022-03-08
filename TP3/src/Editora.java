@@ -13,7 +13,7 @@ public class Editora extends Entidade {
 		this.cnpj = c;
 		this.dataAfiliacao = d;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Editora: " + this.nome + "\nEmail: " + this.email +
@@ -61,50 +61,50 @@ public class Editora extends Entidade {
 
 	public static void buscarEditora() {
 		Scanner ler = new Scanner(System.in);
-		System.out.println("Você deseja buscar pelo nome ou pelo id?");
+		System.out.println("Vocï¿½ deseja buscar pelo nome ou pelo id?");
 		System.out.println("1. Nome\n" + "2. Id\n");
-		
+
 		boolean achou = false;
 		int opcao = ler.nextInt();
-		
+
 		String nomeBusca;
-		
-		if(opcao == 1) { // busca pelo nome
+
+		if (opcao == 1) { // busca pelo nome
 			System.out.println("Digite o nome da Editora:");
 			nomeBusca = ler.next();
-			for(Editora edit : Dados.getEditoras()) {
-				if(nomeBusca.equals(edit.nome)) {
+			for (Editora edit : Dados.getEditoras()) {
+				if (nomeBusca.equals(edit.nome)) {
 					achou = true;
 					System.out.println(edit);
 					break;
 				}
 			}
-		}else if(opcao == 2) { // busca pelo id
+		} else if (opcao == 2) { // busca pelo id
 			System.out.println("Digite o id da editora:");
 			opcao = ler.nextInt();
-			for(Editora edit : Dados.getEditoras()) {
-				if(opcao == edit.getId()) {
+			for (Editora edit : Dados.getEditoras()) {
+				if (opcao == edit.getId()) {
 					achou = true;
 					System.out.println(edit);
 					break;
 				}
 			}
-		}else {
+		} else {
 			System.out.println("Opcao invalida");
 		}
-		
-		if(achou == false) {
-			System.out.println("Editora não encontrada\n");
+
+		if (achou == false) {
+			System.out.println("Editora nï¿½o encontrada\n");
 		}
-	
+
 	}
-	
+
 	public static void excluirEditora() {
 		Scanner ler = new Scanner(System.in);
 		System.out.println("Digite o nome da editora: ");
 		String opcaoString = ler.next();
-		for(Editora edit : Dados.getEditoras()) {
-			if(edit.nome.equals(opcaoString)) {
+		for (Editora edit : Dados.getEditoras()) {
+			if (edit.nome.equals(opcaoString)) {
 				Dados.getEditoras().remove(edit);
 				break;
 			}
@@ -126,5 +126,13 @@ public class Editora extends Entidade {
 	public void setDataAfiliacao(String dataAfiliacao) {
 		this.dataAfiliacao = dataAfiliacao;
 	}
-	
+
+	public String getNomeEditora() {
+		return nome;
+	}
+
+	public void setNomeEditora(String nome) {
+		this.nome = nome;
+	}
+
 }

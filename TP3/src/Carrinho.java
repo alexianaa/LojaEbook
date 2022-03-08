@@ -10,10 +10,10 @@ public class Carrinho {
 		this.quantidadeEbooks = quant;
 		this.ebooks[0] = ebook;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Total: " + this.preco + 
+		return "Total: " + this.preco +
 				"\nQuantidade de ebooks: " + this.quantidadeEbooks;
 	}
 
@@ -25,41 +25,41 @@ public class Carrinho {
 			}
 		}
 	}
-	
+
 	public static void excluirEbook(Cliente cliente) {
 		Scanner ler = new Scanner(System.in);
 		String opcaoString;
 		System.out.println("Digite o nome do ebook: ");
 		boolean achou = false;
 		opcaoString = ler.next();
-		for(Ebook edit : cliente.getCarrinho().getEbooks()) { // olha os ebooks do carrinho
-			if(edit != null && edit.getNomeEbook().equals(opcaoString)) { // se o espaco nao for vazio efor igual ao ebook selecionado
-				deletar(cliente.getCarrinho(),edit);
+		for (Ebook edit : cliente.getCarrinho().getEbooks()) { // olha os ebooks do carrinho
+			if (edit != null && edit.getNomeEbook().equals(opcaoString)) { // se o espaco nao for vazio efor igual ao
+																			// ebook selecionado
+				deletar(cliente.getCarrinho(), edit);
 				System.out.println("Ebook exluido do carrinho\n");
 				achou = true;
 			}
 		}
-		if(achou == false) {
+		if (achou == false) {
 			System.out.println("Ebook nao localizado");
 		}
 	}
-	
+
 	public static void deletar(Carrinho carrinho, Ebook ebook) {
-		for(int i = 0; i < 50; i++) {
-			if(carrinho.ebooks[i] == ebook) {
+		for (int i = 0; i < 50; i++) {
+			if (carrinho.ebooks[i] == ebook) {
 				carrinho.ebooks[i] = null;
 			}
 		}
 	}
 
 	public static void mostrarEbooks(Cliente cliente) {
-		for(Ebook edit : cliente.getCarrinho().getEbooks()) {
-			if(edit != null) {
+		for (Ebook edit : cliente.getCarrinho().getEbooks()) {
+			if (edit != null) {
 				System.out.println(edit + "\n");
 			}
 		}
 	}
-	
 
 	public double getPreco() {
 		return preco;
@@ -85,5 +85,4 @@ public class Carrinho {
 		this.ebooks = ebooks;
 	}
 
-	
 }

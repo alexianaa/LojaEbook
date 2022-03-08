@@ -34,7 +34,8 @@ public class Processo {
 
 	public static void menuInicial(Cliente cliente, int opcao) {
 		System.out.println("--------Menu--------");
-		System.out.println("1. Ebooks\n" + "2. Carrinho\n" + "3.Gerenciar Ebooks\n" + "4. Gerenciar Editoras\n" + "5. Sair da loja");
+		System.out.println("1. Ebooks\n" + "2. Carrinho\n" + "3. Gerenciar Clientes\n" + "4. Gerenciar Editoras\n"
+				+ "5. Sair da loja");
 		System.out.println("--------------------");
 		opcao = ler.nextInt();
 
@@ -45,20 +46,21 @@ public class Processo {
 				System.out.println("Nao ha ebooks no carrinho");
 			} else { // menu do carrinho
 				System.out.println("---- Carrinho -----");
-				System.out.println("1. Mostrar ebooks\n" + "2. Excluir Ebook\n" + "3. Finalizar compra\n" + "3. Cancelar compra");
+				System.out.println(
+						"1. Mostrar ebooks\n" + "2. Excluir Ebook\n" + "3. Finalizar compra\n" + "3. Cancelar compra");
 				System.out.println("-------------------");
 				opcao = ler.nextInt();
-				if(opcao == 1) { // mostra os ebooks no carrinho
+				if (opcao == 1) { // mostra os ebooks no carrinho
 					Carrinho.mostrarEbooks(cliente);
-				}else if(opcao == 2) { // exclui o ebook selecionado
+				} else if (opcao == 2) { // exclui o ebook selecionado
 					Carrinho.excluirEbook(cliente);
-				}else if(opcao == 3) { // ir para venda
+				} else if (opcao == 3) { // ir para venda
 					System.out.println("- Finalizar compra -");
-					System.out.println("Redirecionando para venda...");
-				}else {
+					System.out.println("Redirecionando para venda..."); // aqui
+				} else {
 					System.out.println("Opcao invalida");
 				}
-				
+
 			}
 		} else if (opcao == 3) {
 			System.out.println("- Gerenciar Clientes -");
@@ -69,48 +71,72 @@ public class Processo {
 		} else if (opcao == 5) {
 			System.out.println("- Sair -");
 			return;
-		}else {
+		} else {
 			System.out.println("Opcao invalida");
 		}
 
 		menuInicial(cliente, opcao);
 
 	}
-	
+
 	public static void gerenciarEditoras() {
 		System.out.println("- Gerenciar editoras -");
-		System.out.println("1. Buscar editoras");
-		System.out.println("2. Cadastrar editoras");
-		System.out.println("3. Excluir editoras");
+		System.out.println("1. listar editoras");
+		System.out.println("2. Buscar editoras");
+		System.out.println("3. Cadastrar editoras");
+		System.out.println("4. Excluir editoras");
+		System.out.println("5. Ver os perfis das editoras");
 		opcao = ler.nextInt();
-		
-		if(opcao == 1) {
+
+		if (opcao == 1) {
+			System.out.println("- Listar Editoras -");
+			for (Editora edit : Dados.getEditoras()) {
+				System.out.println(edit.getNomeEditora());
+			}
+		} else if (opcao == 2) {
 			System.out.println("- Buscar Editora -");
 			Editora.buscarEditora();
-		}else if(opcao == 2) {
+		} else if (opcao == 3) {
 			System.out.println("- Cadastrar Editora -");
 			Editora.cadastrarEditora();
-		}else if(opcao == 3) {
+		} else if (opcao == 4) {
 			System.out.println("- Excluir Editora -");
 			Editora.excluirEditora();
-		}else {
+		} else if (opcao == 5) {
+			System.out.println("- Listar os perfis das Editoras -");
+			for (Editora edit : Dados.getEditoras()) {
+				System.out.println("\n" + edit + "\n");
+			}
+		} else {
 			System.out.println("Opcao invalida");
 		}
 	}
-	
+
 	public static void gerenciarClientes() {
 		System.out.println("- Gerenciar clientes -");
-		System.out.println("1. Cadastrar cliente");
-		System.out.println("2. Excluir cliente");
+		System.out.println("1. ver clientes");
+		System.out.println("2. cadastrar cliente");
+		System.out.println("3. Excluir cliente ");
+		System.out.println("4. Ver perfis dos clientes");
 		opcao = ler.nextInt();
-		
-		if(opcao == 1) {
+
+		if (opcao == 1) {
+			System.out.println("- Listar Clientes -");
+			for (Cliente edit : Dados.getClientes()) {
+				System.out.println(edit.getNomeCliente());
+			}
+		} else if (opcao == 2) {
 			System.out.println("- Cadastrar cliente -");
 			Cliente.cadastrarCliente();
-		}else if(opcao == 2) {
+		} else if (opcao == 3) {
 			System.out.println("- Excluir cliente -");
 			Cliente.excluirCliente();
-		}else {
+		} else if (opcao == 4) {
+			System.out.println("- Listar Perfis de Clientes -");
+			for (Cliente edit : Dados.getClientes()) {
+				System.out.println("\n" + edit + "\n");
+			}
+		} else {
 			System.out.println("Opcao invalida\n");
 		}
 	}
@@ -118,7 +144,9 @@ public class Processo {
 	public static void comprarEbook(Cliente cliente) {
 		// menu de compra
 		System.out.println("------  Ebooks  ------");
-		System.out.println("1. Listar Ebooks\n" + "2. Buscar Ebooks\n" + "3. Finalizar compra\n" + "4. Voltar");
+		System.out.println("1. Listar Ebooks\n" + "2. Buscar Ebooks\n" + "3. Cadastrar Ebooks\n" + "4. Excluir Ebooks\n"
+				+ "5. Finalizar compra\n"
+				+ "6. Especificacoes dos Ebooks\n" + "7. Voltar");
 		System.out.println("----------------------\n");
 		opcao = ler.nextInt();
 
@@ -132,16 +160,31 @@ public class Processo {
 			Ebook.buscarEbook(cliente);
 			comprarEbook(cliente);
 		} else if (opcao == 3) {
+			System.out.println("- Cadastrar Ebook -");
+			Ebook.cadastrarEbook();
+			comprarEbook(cliente);
+		} else if (opcao == 4) {
+			System.out.println("- Excluir Ebook -");
+			Ebook.excluirEbook();
+			comprarEbook(cliente);
+		} else if (opcao == 5) {
 			System.out.println("- Finalizar compra -");
 			System.out.println("Redirecionando para venda...");
-		} else if (opcao == 4) {
+			comprarEbook(cliente);
+		} else if (opcao == 6) {
+			System.out.println("- Especificacoes dos Ebooks -");
+			for (Ebook edit : Dados.getEbooks()) {
+				System.out.println("\n" + edit + "\n");
+				comprarEbook(cliente);
+			}
+		} else if (opcao == 7) {
 
 		} else {
 			System.out.println("Opcao Invalida");
 			comprarEbook(cliente);
 		}
 	}
-	
+
 	public static void preencher() {
 		String pattern = "dd/MM/yyyy";
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);

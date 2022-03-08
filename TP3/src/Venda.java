@@ -6,6 +6,7 @@ public class Venda {
 
 	public Venda() {
 		super();
+
 		double p = 2.22;
 		Scanner ler = new Scanner(System.in);
 		System.out.println("digite a forma de pagamento (credito ou debito)");

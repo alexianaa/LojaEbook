@@ -29,19 +29,19 @@ public class Ebook {
 		this.anoPublicacao = ano;
 		this.infoEditora = info;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Ebook: " + this.nomeEbook + 
+		return "Ebook: " + this.nomeEbook +
 				"\nAutor: " + this.autor +
-				"\nCategoria: " + this.categoria + 
+				"\nCategoria: " + this.categoria +
 				"\nSinopse: " + this.sinopse +
-				"\nIdioma: " + this.idioma + 
+				"\nIdioma: " + this.idioma +
 				"\nPreco: " + this.preco +
-				"\nTamanho do arquivo: " + this.tamanhoArquivo + 
+				"\nTamanho do arquivo: " + this.tamanhoArquivo +
 				"\nPaginas: " + this.paginas +
-				"\nAno de publicacao: " + this.anoPublicacao + 
-				"\nEditora: " + this.infoEditora.nome; 
+				"\nAno de publicacao: " + this.anoPublicacao +
+				"\nEditora: " + this.infoEditora.nome;
 	}
 
 	public static Ebook cadastrarEbook() {
@@ -69,13 +69,13 @@ public class Ebook {
 		System.out.println("Digite qual a Editora: ");
 		nomeEditora = ler.nextLine();
 		boolean achou = false;
-		for(Editora edit : Dados.getEditoras()) {
-			if(nomeEditora.equals(edit.nome)) {
+		for (Editora edit : Dados.getEditoras()) {
+			if (nomeEditora.equals(edit.nome)) {
 				infoEditora = edit;
 				achou = true;
 			}
 		}
-		if(achou == false) {
+		if (achou == false) {
 			System.out.println("Aviso: esta editora nao foi cadastrada");
 		}
 
@@ -105,7 +105,19 @@ public class Ebook {
 		Dados.getEbooks().add(Ebook);
 		return Ebook;
 	}
-	
+
+	public static void excluirEbook() {
+		Scanner ler = new Scanner(System.in);
+		System.out.println("Digite o nome do Ebook: ");
+		String opcaoString = ler.next();
+		for (Ebook edit : Dados.getEbooks()) {
+			if (edit.nomeEbook.equals(opcaoString)) {
+				Dados.getEbooks().remove(edit);
+				break;
+			}
+		}
+	}
+
 	public static void buscarEbook(Cliente cliente) {
 		Scanner ler = new Scanner(System.in);
 		String opcaoString;
@@ -117,7 +129,8 @@ public class Ebook {
 		for (Ebook edit : Dados.getEbooks()) {
 			if (opcaoString.equals(edit.getNomeEbook())) { // encontrou o ebook
 				System.out.println(
-						"Ebook encontrado!\n\n" + edit + "\n\nVoce deseja: \n" + "1. Adicionar ao carrinho\n" + "2. Cancelar busca");
+						"Ebook encontrado!\n\n" + edit + "\n\nVoce deseja: \n" + "1. Adicionar ao carrinho\n"
+								+ "2. Cancelar busca");
 				achou = true;
 				opcao = ler.nextInt();
 				if (opcao == 1) {
@@ -134,7 +147,7 @@ public class Ebook {
 			System.out.println("Opcao nao existe\n");
 		}
 	}
-	
+
 	public int getIdEbook() {
 		return idEbook;
 	}

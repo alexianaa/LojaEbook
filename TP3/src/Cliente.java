@@ -17,14 +17,14 @@ public class Cliente extends Entidade {
 		this.genero = g;
 		this.carrinho = car;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Nome: " + this.nome + 
+		return "Nome: " + this.nome +
 				"\nEmail: " + this.email +
-				"\nTelefone: " + this.numCel + 
+				"\nTelefone: " + this.numCel +
 				"\nData de nascimento: " + this.dataNascimento +
-				"\nCPF: " + this.cpf + 
+				"\nCPF: " + this.cpf +
 				"\nGenero: " + this.genero +
 				"\nCarrinho: " + this.carrinho;
 	}
@@ -75,8 +75,8 @@ public class Cliente extends Entidade {
 		Scanner ler = new Scanner(System.in);
 		System.out.println("Digite o nome do cliente: ");
 		String opcaoString = ler.next();
-		for(Cliente edit : Dados.getClientes()) {
-			if(edit.nome.equals(opcaoString)) {
+		for (Cliente edit : Dados.getClientes()) {
+			if (edit.nome.equals(opcaoString)) {
 				Dados.getClientes().remove(edit);
 				break;
 			}
@@ -88,7 +88,7 @@ public class Cliente extends Entidade {
 		carrinho.adicionarEbook(ebook);
 		carrinho.setQuantidadeEbooks(carrinho.getQuantidadeEbooks() + 1);
 	}
-	
+
 	public Carrinho getCarrinho() {
 		return carrinho;
 	}
@@ -119,6 +119,14 @@ public class Cliente extends Entidade {
 
 	public void setGenero(String genero) {
 		this.genero = genero;
+	}
+
+	public String getNomeCliente() {
+		return nome;
+	}
+
+	public void setNomeCliente(String nome) {
+		this.nome = nome;
 	}
 
 }
