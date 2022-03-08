@@ -29,38 +29,6 @@ public class Cliente extends Entidade {
 				"\nCarrinho: " + this.carrinho;
 	}
 
-	public Carrinho getCarrinho() {
-		return carrinho;
-	}
-
-	public void setCarrinho(Carrinho carrinho) {
-		this.carrinho = carrinho;
-	}
-
-	public String getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(String dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getGenero() {
-		return genero;
-	}
-
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
-
 	public static Cliente cadastrarCliente() {
 		Scanner ler = new Scanner(System.in);
 		String nome, email, numero, cpf, data, genero;
@@ -104,13 +72,53 @@ public class Cliente extends Entidade {
 	}
 
 	public static void excluirCliente() {
-
+		Scanner ler = new Scanner(System.in);
+		System.out.println("Digite o nome do cliente: ");
+		String opcaoString = ler.next();
+		for(Cliente edit : Dados.getClientes()) {
+			if(edit.nome.equals(opcaoString)) {
+				Dados.getClientes().remove(edit);
+				break;
+			}
+		}
 	}
 
 	public void adicionarCarrinho(Ebook ebook, Carrinho carrinho) {
 		carrinho.setPreco(ebook.getPreco() + carrinho.getPreco());
 		carrinho.adicionarEbook(ebook);
 		carrinho.setQuantidadeEbooks(carrinho.getQuantidadeEbooks() + 1);
+	}
+	
+	public Carrinho getCarrinho() {
+		return carrinho;
+	}
+
+	public void setCarrinho(Carrinho carrinho) {
+		this.carrinho = carrinho;
+	}
+
+	public String getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(String dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
 	}
 
 }

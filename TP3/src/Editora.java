@@ -59,23 +59,7 @@ public class Editora extends Entidade {
 		return editora;
 	}
 
-	public String getCnpj() {
-		return cnpj;
-	}
-
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
-
-	public String getDataAfiliacao() {
-		return dataAfiliacao;
-	}
-
-	public void setDataAfiliacao(String dataAfiliacao) {
-		this.dataAfiliacao = dataAfiliacao;
-	}
-	
-	public static void BuscarEditora() {
+	public static void buscarEditora() {
 		Scanner ler = new Scanner(System.in);
 		System.out.println("Você deseja buscar pelo nome ou pelo id?");
 		System.out.println("1. Nome\n" + "2. Id\n");
@@ -114,4 +98,33 @@ public class Editora extends Entidade {
 		}
 	
 	}
+	
+	public static void excluirEditora() {
+		Scanner ler = new Scanner(System.in);
+		System.out.println("Digite o nome da editora: ");
+		String opcaoString = ler.next();
+		for(Editora edit : Dados.getEditoras()) {
+			if(edit.nome.equals(opcaoString)) {
+				Dados.getEditoras().remove(edit);
+				break;
+			}
+		}
+	}
+
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	public String getDataAfiliacao() {
+		return dataAfiliacao;
+	}
+
+	public void setDataAfiliacao(String dataAfiliacao) {
+		this.dataAfiliacao = dataAfiliacao;
+	}
+	
 }

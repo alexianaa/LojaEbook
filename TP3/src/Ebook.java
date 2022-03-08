@@ -106,7 +106,7 @@ public class Ebook {
 		return Ebook;
 	}
 	
-	public static void BuscarEbook(Cliente cliente) {
+	public static void buscarEbook(Cliente cliente) {
 		Scanner ler = new Scanner(System.in);
 		String opcaoString;
 		int opcao;
