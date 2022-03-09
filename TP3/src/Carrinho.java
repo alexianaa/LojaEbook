@@ -4,11 +4,13 @@ public class Carrinho {
 	private double preco;
 	private int quantidadeEbooks;
 	private Ebook[] ebooks = new Ebook[50];
+	private Venda venda;
 
-	public Carrinho(double p, int quant, Ebook ebook) {
+	public Carrinho(double p, int quant, Ebook ebook, Venda v) {
 		this.preco = p;
 		this.quantidadeEbooks = quant;
 		this.ebooks[0] = ebook;
+		this.venda = v;
 	}
 
 	@Override
@@ -85,4 +87,11 @@ public class Carrinho {
 		this.ebooks = ebooks;
 	}
 
+	public Venda getVenda() {
+		return venda;
+	}
+
+	public void setVenda(Venda venda) {
+		this.venda = venda;
+	}
 }

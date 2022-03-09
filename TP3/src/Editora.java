@@ -21,7 +21,7 @@ public class Editora extends Entidade {
 				"\nCNPJ: " + this.cnpj + "\nData de afiliacao: " + this.dataAfiliacao;
 	}
 
-	public static Editora cadastrarEditora() {
+	public static Editora cadastrar() {
 		Scanner ler = new Scanner(System.in);
 		String nome, email, cnpj, numero, dataAfiliacao;
 

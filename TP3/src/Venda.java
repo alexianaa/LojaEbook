@@ -2,20 +2,21 @@ import java.util.Scanner;
 
 public class Venda {
 	private String formaPagamento;
-	private double preco;
 
-	public Venda() {
-		super();
+	public Venda(String fp, double p) {
+		this.formaPagamento = fp;
+	}
 
-		double p = 2.22;
-		Scanner ler = new Scanner(System.in);
+	public static void processoVenda(Cliente cliente) {
 		System.out.println("digite a forma de pagamento (credito ou debito)");
+		Scanner ler = new Scanner(System.in);
 		String f = ler.nextLine();
+
 		switch (f) {
 			case "credito":
 
-				this.formaPagamento = f;
-				System.out.println("\n" + f + "\n" + "R$" + p);
+				cliente.getCarrinho().getVenda().setFormaPagamento(f);
+				System.out.println("\n" + f + "\n" + "R$" + cliente.getCarrinho().getPreco());
 				System.out.println("deseja confirmar a compra? 1. Sim 2.Nao");
 				int k = ler.nextInt();
 				switch (k) {
@@ -32,8 +33,8 @@ public class Venda {
 				}
 				break;
 			case "debito":
-				this.formaPagamento = f;
-				System.out.println("\n" + f + "\n" + "R$" + p);
+				cliente.getCarrinho().getVenda().setFormaPagamento(f);
+				System.out.println("\n" + f + "\n" + "R$" + cliente.getCarrinho().getPreco());
 				System.out.println("deseja confirmar a compra? 1. Sim 2.Nao");
 				int k2 = ler.nextInt();
 				switch (k2) {
@@ -61,14 +62,6 @@ public class Venda {
 
 	public void setFormaPagamento(String formaPagamento) {
 		this.formaPagamento = formaPagamento;
-	}
-
-	public double getPreco() {
-		return preco;
-	}
-
-	public void setPreco(double preco) {
-		this.preco = preco;
 	}
 
 }

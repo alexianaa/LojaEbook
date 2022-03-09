@@ -56,18 +56,17 @@ public class Processo {
 					Carrinho.excluirEbook(cliente);
 				} else if (opcao == 3) { // ir para venda
 					System.out.println("- Finalizar compra -");
-					System.out.println("Redirecionando para venda..."); // aqui
+					System.out.println("Redirecionando para venda...");
+					Venda.processoVenda(cliente);
 				} else {
 					System.out.println("Opcao invalida");
 				}
 
 			}
 		} else if (opcao == 3) {
-			System.out.println("- Gerenciar Clientes -");
-			gerenciarClientes();
+			gerenciar(cliente);
 		} else if (opcao == 4) {
-			System.out.println("- Gerenciar Editoras -");
-			gerenciarEditoras();
+			gerenciar();
 		} else if (opcao == 5) {
 			System.out.println("- Sair -");
 			return;
@@ -79,7 +78,7 @@ public class Processo {
 
 	}
 
-	public static void gerenciarEditoras() {
+	public static void gerenciar() {
 		System.out.println("- Gerenciar editoras -");
 		System.out.println("1. listar editoras");
 		System.out.println("2. Buscar editoras");
@@ -98,7 +97,7 @@ public class Processo {
 			Editora.buscarEditora();
 		} else if (opcao == 3) {
 			System.out.println("- Cadastrar Editora -");
-			Editora.cadastrarEditora();
+			Editora.cadastrar();
 		} else if (opcao == 4) {
 			System.out.println("- Excluir Editora -");
 			Editora.excluirEditora();
@@ -112,7 +111,7 @@ public class Processo {
 		}
 	}
 
-	public static void gerenciarClientes() {
+	public static void gerenciar(Cliente cliente) {
 		System.out.println("- Gerenciar clientes -");
 		System.out.println("1. ver clientes");
 		System.out.println("2. cadastrar cliente");
@@ -161,7 +160,7 @@ public class Processo {
 			comprarEbook(cliente);
 		} else if (opcao == 3) {
 			System.out.println("- Cadastrar Ebook -");
-			Ebook.cadastrarEbook();
+			Ebook.cadastrar();
 			comprarEbook(cliente);
 		} else if (opcao == 4) {
 			System.out.println("- Excluir Ebook -");
@@ -170,6 +169,7 @@ public class Processo {
 		} else if (opcao == 5) {
 			System.out.println("- Finalizar compra -");
 			System.out.println("Redirecionando para venda...");
+			Venda.processoVenda(cliente);
 			comprarEbook(cliente);
 		} else if (opcao == 6) {
 			System.out.println("- Especificacoes dos Ebooks -");
@@ -218,7 +218,8 @@ public class Processo {
 		for (int a = 0; a < 3; a++) {
 			Telefone num3 = new Telefone(61 + a, "num" + a);
 			String date3 = simpleDateFormat.format(new Date());
-			Carrinho carrinho = new Carrinho(0.0, 0, null);
+			Venda venda = new Venda("", 0);
+			Carrinho carrinho = new Carrinho(0.0, 0, null, venda);
 			Cliente cliente = new Cliente("nome" + a, "email" + a, a, num3, date3, "10578932564" + a,
 					"genero" + a, carrinho);
 			Dados.getClientes().add(cliente);

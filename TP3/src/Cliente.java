@@ -55,7 +55,8 @@ public class Cliente extends Entidade {
 		genero = ler.next();
 
 		Telefone num = new Telefone(ddd, numero);
-		Carrinho carrinho = new Carrinho(0.0, 0, null);
+		Venda venda = new Venda("", 0);
+		Carrinho carrinho = new Carrinho(0.0, 0, null, venda);
 
 		// gerar id
 		int idNovo = 0;

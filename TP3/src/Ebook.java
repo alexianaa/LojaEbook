@@ -1,4 +1,3 @@
-import java.text.BreakIterator;
 import java.util.Scanner;
 
 public class Ebook {
@@ -44,7 +43,7 @@ public class Ebook {
 				"\nEditora: " + this.infoEditora.nome;
 	}
 
-	public static Ebook cadastrarEbook() {
+	public static Ebook cadastrar() {
 		Scanner ler = new Scanner(System.in);
 		Editora infoEditora = null;
 		String nomeEbook, autor, categoria, sinopse, nomeEditora, idioma;
