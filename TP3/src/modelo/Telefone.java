@@ -1,3 +1,4 @@
+package modelo;
 
 public class Telefone {
 	private int ddd;
