@@ -14,11 +14,6 @@ public class Telefone {
 		return "("  + this.ddd + ")" + this.celular;
 	}
 	
-	public static String visualizarTelefone(Telefone num) {
-		String cel = "(" + num.ddd + ")" + num.celular;
-		return cel;
-	}
-	
 	public int getDdd() {
 		return ddd;
 	}

@@ -1,14 +1,14 @@
 package modelo;
-import java.util.Scanner;
 
 public class Carrinho {
-	private double preco;
+
+	private double valorTotal;
 	private int quantidadeEbooks;
 	private Ebook[] ebooks = new Ebook[50];
 	private Venda venda;
 
 	public Carrinho(double p, int quant, Ebook ebook, Venda v) {
-		this.preco = p;
+		this.valorTotal = p;
 		this.quantidadeEbooks = quant;
 		this.ebooks[0] = ebook;
 		this.venda = v;
@@ -16,60 +16,16 @@ public class Carrinho {
 
 	@Override
 	public String toString() {
-		return "Total: " + this.preco +
+		return "Total: " + this.valorTotal +
 				"\nQuantidade de ebooks: " + this.quantidadeEbooks;
 	}
 
-	public void adicionarEbook(Ebook ebook) {
-		for (int i = 0; i < 50; i++) {
-			if (ebooks[i] == null) {
-				ebooks[i] = ebook;
-				break;
-			}
-		}
+	public double getvalorTotal() {
+		return valorTotal;
 	}
 
-	public static void excluirEbook(Cliente cliente) {
-		Scanner ler = new Scanner(System.in);
-		String opcaoString;
-		System.out.println("Digite o nome do ebook: ");
-		boolean achou = false;
-		opcaoString = ler.next();
-		for (Ebook edit : cliente.getCarrinho().getEbooks()) { // olha os ebooks do carrinho
-			if (edit != null && edit.getNomeEbook().equals(opcaoString)) { // se o espaco nao for vazio efor igual ao
-																			// ebook selecionado
-				deletar(cliente.getCarrinho(), edit);
-				System.out.println("Ebook exluido do carrinho\n");
-				achou = true;
-			}
-		}
-		if (achou == false) {
-			System.out.println("Ebook nao localizado");
-		}
-	}
-
-	public static void deletar(Carrinho carrinho, Ebook ebook) {
-		for (int i = 0; i < 50; i++) {
-			if (carrinho.ebooks[i] == ebook) {
-				carrinho.ebooks[i] = null;
-			}
-		}
-	}
-
-	public static void mostrarEbooks(Cliente cliente) {
-		for (Ebook edit : cliente.getCarrinho().getEbooks()) {
-			if (edit != null) {
-				System.out.println(edit + "\n");
-			}
-		}
-	}
-
-	public double getPreco() {
-		return preco;
-	}
-
-	public void setPreco(double preco) {
-		this.preco = preco;
+	public void setvalorTotal(double valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 
 	public int getQuantidadeEbooks() {
