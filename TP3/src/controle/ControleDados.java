@@ -1,5 +1,17 @@
 package controle;
 
+import modelo.*;
+
 public class ControleDados {
-	// adicionar dados aleatorios para comecar a aplicacao
+	
+	private Dados d = new Dados();
+
+	public ControleDados(){
+		d.preencher();
+	}
+
+	public void setDados(Dados d) {
+		this.d = d;
+	}
+
 }

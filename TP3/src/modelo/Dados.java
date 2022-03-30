@@ -12,7 +12,7 @@ public class Dados {
 	public Dados() {
 	}
 
-	public static void preencher() {
+	public void preencher() {
 		String pattern = "dd/MM/yyyy";
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 
