@@ -4,7 +4,14 @@ import model .*;
 
 public class ControleCliente {
 
-	public static void cadastrarCliente() {
+	public Cliente cliente =  new Cliente();
+	public int qtdClientes = Dados.getClientes().size();
+	
+	public ControleCliente(Dados d) {
+		
+	}
+
+	public void cadastrarCliente() {
 		/*Scanner ler = new Scanner(System.in);
 		String nome, email, numero, cpf, data, genero;
 
@@ -47,7 +54,7 @@ public class ControleCliente {
 		return cliente;*/
 	}
 
-	public static void excluirCliente() {
+	public void excluirCliente() {
 		/*Scanner ler = new Scanner(System.in);
 		System.out.println("Digite o nome do cliente: ");
 		String opcaoString = ler.next();
@@ -66,4 +73,14 @@ public class ControleCliente {
 		carrinho.setQuantidadeEbooks(carrinho.getQuantidadeEbooks() + 1);
 		*/
 	}
+
+	public static boolean existeUsuario(String c){
+		for (Cliente edit : Dados.getClientes()) {
+			if (edit.getNome().equals(c)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 }
