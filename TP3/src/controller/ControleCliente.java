@@ -1,80 +1,59 @@
 package controller;
 
-import model .*;
+import model.Carrinho;
+import model.Cliente;
+import model.Dados;
+import model.Ebook;
+import model.Telefone;
+import model.Venda;
 
 public class ControleCliente {
 
-	public Cliente cliente =  new Cliente();
+	public Cliente cliente = new Cliente();
 	public int qtdClientes = Dados.getClientes().size();
-	
+
 	public ControleCliente(Dados d) {
-		
+
 	}
 
-	public void cadastrarCliente() {
-		/*Scanner ler = new Scanner(System.in);
-		String nome, email, numero, cpf, data, genero;
+	public void cadastrarCliente(String n, String e, String date, int d, String num, String c, Carrinho car) {
 
-		System.out.println("Digite o seu nome: ");
-		nome = ler.next();
-
-		System.out.println("Digite o seu email: ");
-		email = ler.next();
-
-		System.out.println("Digite o seu ddd: ");
-		int ddd = ler.nextInt();
-
-		System.out.println("Digite o seu numero: ");
-		numero = ler.next();
-
-		System.out.println("Digite o seu cpf: ");
-		cpf = ler.next();
-
-		System.out.println("Digite o seu aniversario no formato dd/mm/yyyy: ");
-		data = ler.next();
-
-		System.out.println("Digite o seu genero: ");
-		genero = ler.next();
-
-		Telefone num = new Telefone(ddd, numero);
+		Telefone numero = new Telefone(d, num);
 		Venda venda = new Venda("", 0);
 		Carrinho carrinho = new Carrinho(0.0, 0, null, venda);
 
 		// gerar id
 		int idNovo = 0;
 		for (Cliente edit : Dados.getClientes()) {
-			if (edit.id == idNovo) {
+			if (edit.getId() == idNovo) {
 				idNovo += 1;
 				continue;
 			}
 		}
 
-		Cliente cliente = new Cliente(nome, email, idNovo, num, data, cpf, genero, carrinho);
+		Cliente cliente = new Cliente(n, e, idNovo, numero, date, c, carrinho);
 		Dados.getClientes().add(cliente);
-		return cliente;*/
 	}
 
 	public void excluirCliente() {
-		/*Scanner ler = new Scanner(System.in);
-		System.out.println("Digite o nome do cliente: ");
-		String opcaoString = ler.next();
-		for (Cliente edit : Dados.getClientes()) {
-			if (edit.nome.equals(opcaoString)) {
-				Dados.getClientes().remove(edit);
-				break;
-			}
-		}*/
+		/*
+		 * Scanner ler = new Scanner(System.in);
+		 * System.out.println("Digite o nome do cliente: "); String opcaoString =
+		 * ler.next(); for (Cliente edit : Dados.getClientes()) { if
+		 * (edit.nome.equals(opcaoString)) { Dados.getClientes().remove(edit); break; }
+		 * }
+		 */
 	}
 
 	public void adicionarCarrinho(Ebook ebook, Carrinho carrinho) {
 		/*
-		carrinho.setPreco(ebook.getPreco() + carrinho.getPreco());
-		carrinho.adicionarEbook(ebook);
-		carrinho.setQuantidadeEbooks(carrinho.getQuantidadeEbooks() + 1);
-		*/
+		 * carrinho.setPreco(ebook.getPreco() + carrinho.getPreco());
+		 * carrinho.adicionarEbook(ebook);
+		 * carrinho.setQuantidadeEbooks(carrinho.getQuantidadeEbooks() + 1);
+		 */
 	}
 
-	public static boolean existeUsuario(String c){
+	public static boolean existeUsuario(String c) {
 		for (Cliente edit : Dados.getClientes()) {
 			if (edit.getNome().equals(c)) {
 				return true;
