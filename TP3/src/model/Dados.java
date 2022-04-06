@@ -8,6 +8,7 @@ public class Dados {
 	private static final ArrayList<Editora> editoras = new ArrayList<>();
 	private static final ArrayList<Ebook> ebooks = new ArrayList<>();
 	private static final ArrayList<Cliente> clientes = new ArrayList<>();
+	
 
 	public void preencher() {
 		String pattern = "dd/MM/yyyy";
