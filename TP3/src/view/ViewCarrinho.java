@@ -41,6 +41,8 @@ public class ViewCarrinho extends JFrame implements ActionListener {
         botaoExcluir.setBackground(Color.darkGray); // define cor do botao
         botaoVoltar.setBackground(Color.darkGray); // =
         botaoConcluir.setBackground(Color.darkGray); // define cor do botao
+        botaoVoltar.addActionListener(this);// adiciona um leitor de ação para o botão
+        botaoConcluir.addActionListener(this);// adiciona um leitor de ação para o botão
         // Jframe
         this.setLayout(null); // define o tipo de layout pra nenhum
         this.setSize(1280, 720); // define o tamanho do JFrame
@@ -56,7 +58,17 @@ public class ViewCarrinho extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent arg0) {
+    public void actionPerformed(ActionEvent e) {
+        Object src = e.getSource();
 
+        if (src == botaoConcluir) {
+            this.dispose();
+            new ViewVenda("preco total");
+        } else if (src == botaoExcluir) {
+
+        } else if (src == botaoVoltar) {
+            this.dispose();
+            new ViewMenuPrincipal();
+        }
     }
 }

@@ -10,6 +10,7 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 	JButton botaoBusca; // define como botao
 	JButton botaoAdicionaLivro; // =
 	JButton botaoVoltar; // =
+	JButton botaoVoltar2; // =
 	JButton botaoCarrinho;// define como botao
 	JLabel texto1;// define como texto
 	JTextField campoTexto;// define como campo de texto
@@ -60,6 +61,10 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 		botaoAdicionaLivro.setBackground(Color.darkGray); // =
 		botaoVoltar.setBackground(Color.darkGray); // =
 		botaoCarrinho.setBackground(Color.darkGray); // define cor do botao
+		botaoBusca.addActionListener(this);// adiciona um leitor de ação para o botão
+		botaoAdicionaLivro.addActionListener(this);// =
+		botaoVoltar.addActionListener(this);// =
+		botaoCarrinho.addActionListener(this);// adiciona um leitor de ação para o botão
 		// Jframe
 		this.setLayout(null); // define o tipo de layout pra nenhum
 		this.setSize(1280, 720); // define o tamanho do JFrame
@@ -87,32 +92,36 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 		// botoes
 		botaoBusca = new JButton(); // cria botao
 		botaoAdicionaLivro = new JButton(); // =
-		botaoVoltar = new JButton(); // =
+		botaoVoltar2 = new JButton(); // =
 		botaoCarrinho = new JButton(); // cria botao
 		botaoBusca.setBounds(780, 450, 400, 40); // coloca o botao em certa posicao no frame e define suas medidas
 		botaoAdicionaLivro.setBounds(100, 450, 400, 40); // =
-		botaoVoltar.setBounds(540, 580, 200, 40); // =
+		botaoVoltar2.setBounds(540, 580, 200, 40); // =
 		botaoCarrinho.setBounds(980, 580, 200, 40); // coloca o botao em certa posicao no frame e define suas medidas
 		botaoBusca.setText("excluir livro do sistema"); // define o texto do botao
 		botaoAdicionaLivro.setText("Adicionar livro ao carrinho"); // =
-		botaoVoltar.setText("Voltar"); // =
+		botaoVoltar2.setText("Voltar"); // =
 		botaoCarrinho.setText("Carrinho"); // define o texto do botao
 		botaoBusca.setFocusable(false); // tira a caixa de foco do botao
 		botaoAdicionaLivro.setFocusable(false); // =
-		botaoVoltar.setFocusable(false); // =
+		botaoVoltar2.setFocusable(false); // =
 		botaoCarrinho.setFocusable(false); // tira a caixa de foco do botao
 		botaoBusca.setFont(new Font("Comic Sans", Font.BOLD, 20)); // define a fonte do texto no botao
 		botaoAdicionaLivro.setFont(new Font("Comic Sans", Font.BOLD, 20)); // =
-		botaoVoltar.setFont(new Font("Comic Sans", Font.BOLD, 20)); // =
+		botaoVoltar2.setFont(new Font("Comic Sans", Font.BOLD, 20)); // =
 		botaoCarrinho.setFont(new Font("Comic Sans", Font.BOLD, 20)); // define a fonte do texto no botao
 		botaoBusca.setForeground(Color.cyan); // define cor do texto
 		botaoAdicionaLivro.setForeground(Color.cyan); // =
-		botaoVoltar.setForeground(Color.cyan); // =
+		botaoVoltar2.setForeground(Color.cyan); // =
 		botaoCarrinho.setForeground(Color.cyan); // define cor do texto
 		botaoBusca.setBackground(Color.darkGray); // define cor do botao
 		botaoAdicionaLivro.setBackground(Color.darkGray); // =
-		botaoVoltar.setBackground(Color.darkGray); // =
+		botaoVoltar2.setBackground(Color.darkGray); // =
 		botaoCarrinho.setBackground(Color.darkGray); // define cor do botao
+		botaoBusca.addActionListener(this);// adiciona um leitor de ação para o botão
+		botaoAdicionaLivro.addActionListener(this);// =
+		botaoVoltar2.addActionListener(this);// =
+		botaoCarrinho.addActionListener(this);// adiciona um leitor de ação para o botão
 		// Jframe
 		this.setLayout(null); // define o tipo de layout pra nenhum
 		this.setSize(1280, 720); // define o tamanho do JFrame
@@ -123,14 +132,28 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 		this.add(texto1);// adiciona texto
 		this.add(botaoBusca); // adiciona botoes
 		this.add(botaoAdicionaLivro); // =
-		this.add(botaoVoltar); // =
+		this.add(botaoVoltar2); // =
 		this.add(botaoCarrinho); // adiciona botoes
 		this.setVisible(true); // deixa o JFrame visivel
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		// if (e.getSource()==botaoBusca){
-		// campoTexto.getText();
-		// }
+		Object src = e.getSource();
+
+		if (src == botaoBusca) {
+			this.dispose();
+			new ViewMenuLivro(campoTexto.getText());
+		} else if (src == botaoAdicionaLivro) {
+
+		} else if (src == botaoVoltar) {
+			this.dispose();
+			new ViewMenuPrincipal();
+		} else if (src == botaoVoltar2) {
+			this.dispose();
+			new ViewMenuLivro();
+		} else if (src == botaoCarrinho) {
+			this.dispose();
+			new ViewCarrinho();
+		}
 	}
 }

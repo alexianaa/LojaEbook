@@ -9,6 +9,7 @@ public class ViewEditora extends JFrame implements ActionListener {
     JButton botaoBusca; // define como botao
     JButton botaoAdicionaEditora; // =
     JButton botaoVoltar; // =
+    JButton botaoVoltar2; // =
     JButton botaoExcluir;// define como botao
     JLabel texto1;// define como texto
     JTextField campoTexto;// define como campo de texto
@@ -52,6 +53,9 @@ public class ViewEditora extends JFrame implements ActionListener {
         botaoBusca.setBackground(Color.darkGray); // define cor do botao
         botaoAdicionaEditora.setBackground(Color.darkGray); // =
         botaoVoltar.setBackground(Color.darkGray); // define cor do botao
+        botaoBusca.addActionListener(this);// adiciona um leitor de ação para o botão
+        botaoAdicionaEditora.addActionListener(this);// =
+        botaoVoltar.addActionListener(this);// adiciona um leitor de ação para o botão
         // Jframe
         this.setLayout(null); // define o tipo de layout pra nenhum
         this.setSize(1280, 720); // define o tamanho do JFrame
@@ -77,20 +81,22 @@ public class ViewEditora extends JFrame implements ActionListener {
         texto1.setHorizontalAlignment(JLabel.CENTER);// deixa o texto no centro da "caixa"
         // botoes
 
-        botaoVoltar = new JButton(); // cria botao
+        botaoVoltar2 = new JButton(); // cria botao
         botaoExcluir = new JButton(); // cria botao
-        botaoVoltar.setBounds(540, 580, 200, 40); // coloca o botao em certa posicao no frame e define suas medidas
+        botaoVoltar2.setBounds(540, 580, 200, 40); // coloca o botao em certa posicao no frame e define suas medidas
         botaoExcluir.setBounds(440, 450, 400, 40); // coloca o botao em certa posicao no frame e define suas medidas
-        botaoVoltar.setText("Voltar"); // define o texto do botao
+        botaoVoltar2.setText("Voltar"); // define o texto do botao
         botaoExcluir.setText("Excluir Editora do sistema"); // define o texto do botao
-        botaoVoltar.setFocusable(false); // tira a caixa de foco do botao
+        botaoVoltar2.setFocusable(false); // tira a caixa de foco do botao
         botaoExcluir.setFocusable(false); // tira a caixa de foco do botao
-        botaoVoltar.setFont(new Font("Comic Sans", Font.BOLD, 20)); // define a fonte do texto no botao
+        botaoVoltar2.setFont(new Font("Comic Sans", Font.BOLD, 20)); // define a fonte do texto no botao
         botaoExcluir.setFont(new Font("Comic Sans", Font.BOLD, 20)); // define a fonte do texto no botao
-        botaoVoltar.setForeground(Color.cyan); // define cor do texto
+        botaoVoltar2.setForeground(Color.cyan); // define cor do texto
         botaoExcluir.setForeground(Color.cyan); // define cor do texto
-        botaoVoltar.setBackground(Color.darkGray); // define cor do botao
+        botaoVoltar2.setBackground(Color.darkGray); // define cor do botao
         botaoExcluir.setBackground(Color.darkGray); // define cor do botao
+        botaoVoltar2.addActionListener(this);// adiciona um leitor de ação para o botão
+        botaoExcluir.addActionListener(this);// adiciona um leitor de ação para o botão
         // Jframe
         this.setLayout(null); // define o tipo de layout pra nenhum
         this.setSize(1280, 720); // define o tamanho do JFrame
@@ -99,14 +105,27 @@ public class ViewEditora extends JFrame implements ActionListener {
         this.setTitle("Editora" + " " + texto); // da um titulo ao JFrame
         this.getContentPane().setBackground(Color.gray); // define a cor de fundo do JFrame
         this.add(texto1);// adiciona texto
-        this.add(botaoVoltar); // adiciona botoes
+        this.add(botaoVoltar2); // adiciona botoes
         this.add(botaoExcluir); // adiciona botoes
         this.setVisible(true); // deixa o JFrame visivel
     }
 
     public void actionPerformed(ActionEvent e) {
-        // if (e.getSource()==botaoBusca){
-        // campoTexto.getText();
-        // }
+        Object src = e.getSource();
+
+        if (src == botaoBusca) {
+            this.dispose();
+            new ViewEditora(campoTexto.getText());
+        } else if (src == botaoAdicionaEditora) {
+
+        } else if (src == botaoVoltar) {
+            this.dispose();
+            new ViewMenuPrincipal();
+        } else if (src == botaoVoltar2) {
+            this.dispose();
+            new ViewEditora();
+        } else if (src == botaoExcluir) {
+
+        }
     }
 }

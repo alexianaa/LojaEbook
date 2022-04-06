@@ -52,6 +52,8 @@ public class ViewVenda extends JFrame implements ActionListener {
         botaoConcluir.setForeground(Color.black); // define cor do texto
         botaoVoltar.setBackground(Color.darkGray); // define cor do botao
         botaoConcluir.setBackground(Color.GREEN); // define cor do botao
+        botaoVoltar.addActionListener(this);// adiciona um leitor de ação para o botão
+        botaoConcluir.addActionListener(this);// adiciona um leitor de ação para o botão
         // Botoes de selecao
         credito = new JRadioButton("credito");// cria um grupo de botoes
         debito = new JRadioButton("debito");// =
@@ -145,8 +147,15 @@ public class ViewVenda extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent arg0) {
-        // TODO Auto-generated method stub
+    public void actionPerformed(ActionEvent e) {
+        Object src = e.getSource();
 
+        if (src == botaoConcluir) {
+            this.dispose();
+            new ViewVenda();
+        } else if (src == botaoVoltar) {
+            this.dispose();
+            new ViewCarrinho();
+        }
     }
 }

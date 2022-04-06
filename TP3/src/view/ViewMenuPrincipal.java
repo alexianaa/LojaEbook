@@ -7,6 +7,12 @@ import javax.swing.*;
 
 public class ViewMenuPrincipal extends JFrame implements ActionListener {
 
+	JButton botaoBuscaLivro;// define como um botao
+	JButton botaoBuscaEditora;// =
+	JButton botaoGerenciaInformacoes;// =
+	JButton botaoSair;// =
+	JButton botaoCarrinho;// define como um botao
+
 	ViewMenuPrincipal() {
 		// texto
 		JLabel texto1 = new JLabel();// cria texto
@@ -16,11 +22,11 @@ public class ViewMenuPrincipal extends JFrame implements ActionListener {
 		texto1.setFont(new Font("Comic Sans", Font.BOLD, 50));// fonte do texto
 		texto1.setHorizontalAlignment(JLabel.CENTER);// deixa o texto no centro da "caixa"
 		// botoes
-		JButton botaoBuscaLivro = new JButton(); // cria botao
-		JButton botaoBuscaEditora = new JButton(); // =
-		JButton botaoGerenciaInformacoes = new JButton(); // =
-		JButton botaoSair = new JButton(); // =
-		JButton botaoCarrinho = new JButton(); // cria botao
+		botaoBuscaLivro = new JButton(); // cria botao
+		botaoBuscaEditora = new JButton(); // =
+		botaoGerenciaInformacoes = new JButton(); // =
+		botaoSair = new JButton(); // =
+		botaoCarrinho = new JButton(); // cria botao
 		botaoBuscaLivro.setBounds(440, 100, 400, 40); // coloca o botao em certa posicao no frame e define suas medidas
 		botaoBuscaEditora.setBounds(440, 185, 400, 40); // =
 		botaoGerenciaInformacoes.setBounds(440, 270, 400, 40); // =
@@ -51,6 +57,11 @@ public class ViewMenuPrincipal extends JFrame implements ActionListener {
 		botaoGerenciaInformacoes.setBackground(Color.darkGray); // =
 		botaoSair.setBackground(Color.darkGray); // =
 		botaoCarrinho.setBackground(Color.darkGray); // define cor do botao
+		botaoBuscaLivro.addActionListener(this);// adiciona um leitor de ação para o botão
+		botaoBuscaEditora.addActionListener(this);// =
+		botaoGerenciaInformacoes.addActionListener(this);// =
+		botaoSair.addActionListener(this);// =
+		botaoCarrinho.addActionListener(this);// adiciona um leitor de ação para o botão
 		// Jframe
 		this.setLayout(null); // define o tipo de layout pra nenhum
 		this.setSize(1280, 720); // define o tamanho do JFrame
@@ -69,6 +80,23 @@ public class ViewMenuPrincipal extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		Object src = e.getSource();
+
+		if (src == botaoBuscaLivro) {
+			this.dispose();
+			new ViewMenuLivro();
+		} else if (src == botaoBuscaEditora) {
+			this.dispose();
+			new ViewEditora();
+		} else if (src == botaoGerenciaInformacoes) {
+			this.dispose();
+
+		} else if (src == botaoSair) {
+			this.dispose();
+		} else if (src == botaoCarrinho) {
+			this.dispose();
+			new ViewCarrinho();
+		}
 
 	}
 }
