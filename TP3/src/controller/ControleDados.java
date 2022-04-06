@@ -2,13 +2,13 @@ package controller;
 
 import java.util.ArrayList;
 
-import model .*;
+import model.*;
 
 public class ControleDados {
-	
+
 	private Dados d = new Dados();
 
-	public ControleDados(){
+	public ControleDados() {
 		d.preencher();
 	}
 
@@ -16,19 +16,19 @@ public class ControleDados {
 		this.d = d;
 	}
 
-	public static ArrayList<Cliente> getClientes(){
+	public static ArrayList<Cliente> getClientes() {
 		return Dados.getClientes();
 	}
 
-	public static ArrayList<Ebook> getEbooks(){
+	public static ArrayList<Ebook> getEbooks() {
 		return Dados.getEbooks();
 	}
 
-	public static ArrayList<Editora> getEditoras(){
+	public static ArrayList<Editora> getEditoras() {
 		return Dados.getEditoras();
 	}
 
-	public String[] showNames(){
+	public String[] showNames() {
 		String[] names = new String[Dados.getClientes().size()];
 		for (Cliente edit : Dados.getClientes()) {
 			names[Dados.getClientes().indexOf(edit)] = edit.getNome();

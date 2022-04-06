@@ -6,7 +6,7 @@ public class Cliente extends Entidade {
 	private String cpf;
 	private Carrinho carrinho;
 
-	public Cliente(){
+	public Cliente() {
 		super();
 	}
 
@@ -29,7 +29,6 @@ public class Cliente extends Entidade {
 				"\nCPF: " + this.cpf +
 				"\nCarrinho: " + this.carrinho;
 	}
-
 
 	public Carrinho getCarrinho() {
 		return carrinho;
@@ -54,7 +53,7 @@ public class Cliente extends Entidade {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	
+
 	public String getNomeCliente() {
 		return nome;
 	}
