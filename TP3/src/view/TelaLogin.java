@@ -81,14 +81,14 @@ public class TelaLogin implements ActionListener {
 			 */
 			nome = directionValue.getText();
 			if (ControleCliente.existeUsuario(nome)) {
-				new ViewMenu(dados, 1);
+				new ViewMenuPrincipal();
 			} else {
 				JOptionPane.showMessageDialog(null, "Este usuario nao existe\n", "Erro",
 						JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 		if (src == cadastro) {
-			new ViewMenu(dados, 2);
+			new ViewCadastro(dados, 2);
 		}
 		if (src == usuarios) {
 			new ListView(1);

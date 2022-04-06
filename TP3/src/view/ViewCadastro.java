@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,7 +15,7 @@ import javax.swing.JTextField;
 import controller.ControleCliente;
 import controller.ControleDados;
 
-public class ViewMenu implements ActionListener {
+public class ViewCadastro implements ActionListener {
 
 	private static JFrame janela;
 	private static JLabel titulo;
@@ -29,66 +28,13 @@ public class ViewMenu implements ActionListener {
 	private static JButton botaoCarrinho = new JButton();
 	private static JButton concluir = new JButton("Concluir");
 
-	public ViewMenu(ControleDados d, int op) {
+	public ViewCadastro(ControleDados d, int op) {
 		dados = d;
 
 		switch (op) {
-		case 1: // menu principal
-			janela = new JFrame("Loja de Ebook");
-			titulo = new JLabel("MENU");
-			titulo.setFont(new Font("Arial", Font.BOLD, 32));
-			// definindo o tamanho dos componentes
-			titulo.setBounds(350, 10, 150, 30);
-			botaoBuscaLivro.setBounds(200, 100, 380, 40);
-			botaoBuscaEditora.setBounds(200, 180, 380, 40);
-			botaoGerenciaInformacoes.setBounds(200, 260, 380, 40);
-			botaoSair.setBounds(310, 400, 160, 40);
-			botaoCarrinho.setBounds(310, 450, 160, 40);
-			// definir textos dos botoes
-			botaoBuscaLivro.setText("Buscar Livros");
-			botaoBuscaEditora.setText("Buscar Editoras");
-			botaoGerenciaInformacoes.setText("Gerenciar informacoes");
-			botaoSair.setText("Sair");
-			botaoCarrinho.setText("Carrinho");
-			// ao posicionar o mouse o botao ganha foco
-			botaoBuscaLivro.setFocusable(false);
-			botaoBuscaEditora.setFocusable(false);
-			botaoGerenciaInformacoes.setFocusable(false);
-			botaoSair.setFocusable(false);
-			botaoCarrinho.setFocusable(false);
-			// modifica a fonte e tamanho dos textos
-			botaoBuscaLivro.setFont(new Font("Comic Sans", Font.BOLD, 20));
-			botaoBuscaEditora.setFont(new Font("Comic Sans", Font.BOLD, 20));
-			botaoGerenciaInformacoes.setFont(new Font("Comic Sans", Font.BOLD, 20));
-			botaoSair.setFont(new Font("Comic Sans", Font.BOLD, 20));
-			botaoCarrinho.setFont(new Font("Comic Sans", Font.BOLD, 20));
-			// define a cor de background
-			botaoBuscaLivro.setForeground(Color.cyan);
-			botaoBuscaEditora.setForeground(Color.cyan);
-			botaoGerenciaInformacoes.setForeground(Color.cyan);
-			botaoSair.setForeground(Color.cyan);
-			botaoCarrinho.setForeground(Color.cyan);
-			botaoBuscaLivro.setBackground(Color.darkGray);
-			botaoBuscaEditora.setBackground(Color.darkGray);
-			botaoGerenciaInformacoes.setBackground(Color.darkGray);
-			botaoSair.setBackground(Color.darkGray);
-			botaoCarrinho.setBackground(Color.darkGray);
-			// define as configuracoes da tela
-			janela.setLayout(null);
-			janela.setSize(800, 600);
-			janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			janela.setResizable(false);
-			janela.getContentPane().setBackground(Color.gray);
-			janela.add(botaoBuscaLivro);
-			janela.add(botaoBuscaEditora);
-			janela.add(botaoGerenciaInformacoes);
-			janela.add(botaoSair);
-			janela.add(botaoCarrinho);
-			janela.add(titulo);
-			janela.setVisible(true);
-			break;
+		case 1: // cadastro de editora
 
-		case 2: // cadastro
+		case 2: // cadastro de cliente
 			janela = new JFrame("Loja de Ebook");
 			titulo = new JLabel("Cadastro");
 			titulo.setFont(new Font("Arial", Font.BOLD, 20));
@@ -162,12 +108,7 @@ public class ViewMenu implements ActionListener {
 
 		}
 		if (src == concluir) {
-			// cria strings que vao receber os valores
-			/*
-			 * String nm, em, num, c, dd, txt; nm = nome.getText(); em = email.getText(); dd
-			 * = ddd.getText(); num = numero.getText(); c = cpf.getText(); txt =
-			 * txtDate.getText(); cliente.cadastrarCliente(nm, em, dd, 0, num, c, txt);
-			 */
+
 		}
 	}
 }
