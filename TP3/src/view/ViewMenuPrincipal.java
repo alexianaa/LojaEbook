@@ -93,6 +93,7 @@ public class ViewMenuPrincipal extends JFrame implements ActionListener {
 		this.add(botaoVisualizaInformacoes);
 		this.add(botaoSair);
 		this.add(botaoCarrinho);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setVisible(true);
 	}
 

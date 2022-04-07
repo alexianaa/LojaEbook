@@ -62,6 +62,7 @@ public class ViewInfos implements ActionListener {
 		janela.add(listarEbook);
 		janela.add(pessoalInfo);
 		janela.add(voltar);
+		janela.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		janela.setVisible(true);
 	}
 
