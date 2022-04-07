@@ -1,6 +1,7 @@
 package controller;
 
-import model .*;
+import model.Dados;
+import model.Editora;
 
 public class ControleEditora {
 
@@ -16,19 +17,30 @@ public class ControleEditora {
 	 * Cadastra uma editora no sistema
 	 */
 	public static void cadastrar() {
-		
+
 	}
 
-	
-
-	public static void excluirEditora() {
-		
+	/**
+	 * Exclui um ebook do sistema
+	 * 
+	 * @param nomeEditora nome da editora a ser deletada
+	 * @return
+	 */
+	public static boolean excluirEditora(String nomeEditora) {
+		for (Editora edit : Dados.getEditoras()) {
+			if (edit.getNome().equals(nomeEditora)) {
+				Dados.getEditoras().remove(edit);
+				return true;
+			}
+		}
+		return false;
 	}
 
-  /**
+	/**
 	 * Retorna as informacoes da editora selecionada
-   * @param nome nome da editora a ser buscado
-   * @return 
+	 * 
+	 * @param nome nome da editora a ser buscado
+	 * @return
 	 */
 	public static String[] infoEditora(String nome) {
 		String[] editora = new String[5];
@@ -47,9 +59,10 @@ public class ControleEditora {
 		return editora;
 	}
 
-  /**
+	/**
 	 * Retorna se a Editora existe
-   * @param n nome da editora
+	 * 
+	 * @param n nome da editora
 	 */
 	public static boolean existeEditora(String n) {
 		for (Editora edit : Dados.getEditoras()) {

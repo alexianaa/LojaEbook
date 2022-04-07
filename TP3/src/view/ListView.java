@@ -5,10 +5,6 @@ package view;
  * @version 1.8
 */
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
@@ -21,7 +17,7 @@ import controller.ControleDados;
 import controller.ControleEbook;
 import controller.ControleEditora;
 
-public class ListView implements ActionListener, ListSelectionListener {
+public class ListView implements ListSelectionListener {
 
 	private JList<String> listaNomesCadastrados;
 	private ControleCliente cliente = new ControleCliente();
@@ -31,9 +27,6 @@ public class ListView implements ActionListener, ListSelectionListener {
 	private String[] listaNomes = new String[50];
 	private static JFrame list;
 
-	private JButton refreshCliente;
-	private JButton refreshEditora;
-	private JButton refreshEbook;
 	private JScrollPane scrollPane;
 
 	/**
@@ -52,10 +45,6 @@ public class ListView implements ActionListener, ListSelectionListener {
 			list.setLayout(null);
 			list.setSize(500, 500);
 
-			refreshCliente = new JButton("Refresh");
-			refreshCliente.setBounds(130, 160, 100, 30);
-			list.add(refreshCliente);
-
 			listaNomes = cliente.showNames();
 			listaNomesCadastrados = new JList<String>(listaNomes);
 			scrollPane = new JScrollPane();
@@ -66,7 +55,6 @@ public class ListView implements ActionListener, ListSelectionListener {
 			listaNomesCadastrados.setVisibleRowCount(5);
 			listaNomesCadastrados.addListSelectionListener(this);
 
-			refreshCliente.addActionListener(this);
 			list.setSize(400, 250);
 			list.setVisible(true);
 			break;
@@ -74,10 +62,6 @@ public class ListView implements ActionListener, ListSelectionListener {
 			list = new JFrame("Listagem de editoras");
 			list.setLayout(null);
 			list.setSize(500, 500);
-
-			refreshEditora = new JButton("Refresh");
-			refreshEditora.setBounds(130, 160, 100, 30);
-			list.add(refreshEditora);
 
 			listaNomes = editora.showNames();
 			listaNomesCadastrados = new JList<String>(listaNomes);
@@ -88,8 +72,6 @@ public class ListView implements ActionListener, ListSelectionListener {
 			listaNomesCadastrados.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 			listaNomesCadastrados.setVisibleRowCount(5);
 			listaNomesCadastrados.addListSelectionListener(this);
-
-			refreshEditora.addActionListener(this);
 			list.setSize(400, 250);
 			list.setVisible(true);
 			break;
@@ -97,10 +79,6 @@ public class ListView implements ActionListener, ListSelectionListener {
 			list = new JFrame("Listagem de ebooks");
 			list.setLayout(null);
 			list.setSize(500, 500);
-
-			refreshEbook = new JButton("Refresh");
-			refreshEbook.setBounds(130, 160, 100, 30);
-			list.add(refreshEbook);
 
 			scrollPane = new JScrollPane();
 			listaNomes = ebook.showTitulos();
@@ -113,7 +91,6 @@ public class ListView implements ActionListener, ListSelectionListener {
 			listaNomesCadastrados.setVisibleRowCount(5);
 			listaNomesCadastrados.addListSelectionListener(this);
 
-			refreshEbook.addActionListener(this);
 			list.setSize(400, 250);
 			list.setVisible(true);
 			break;
@@ -126,31 +103,6 @@ public class ListView implements ActionListener, ListSelectionListener {
 	 * Funcao para ler os eventos da lista
 	 */
 	public void valueChanged(ListSelectionEvent e) {
-
-	}
-
-	@Override
-	/**
-	 * Recebe os eventos dos botoes
-	 * 
-	 * @param e - acao realizada/botao selecionado
-	 */
-	public void actionPerformed(ActionEvent e) {
-		Object src = e.getSource();
-
-		// atualiza lista de nomes dos clientes
-		if (src == refreshCliente) {
-			listaNomesCadastrados.setListData(new ControleCliente().showNames());
-			listaNomesCadastrados.updateUI();
-		} // atualiza lista de nomes das editoras
-		else if (src == refreshEditora) {
-			listaNomesCadastrados.setListData(new ControleEditora().showNames());
-			listaNomesCadastrados.updateUI();
-		} // atualiza lista de titulos dos ebook
-		else if (src == refreshEbook) {
-			listaNomesCadastrados.setListData(new ControleEbook().showTitulos());
-			listaNomesCadastrados.updateUI();
-		}
 
 	}
 

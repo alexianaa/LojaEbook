@@ -18,18 +18,18 @@ public class ControleEbook {
 
 	/**
 	 * Exclui um ebook do sistema
-	 */
-	public static void excluirEbook() {
-
-	}
-
-	/**
-	 * Retorna informacoes do ebook selecionado
 	 * 
-	 * @param nome - string com o nome do ebook
+	 * @param nomeEbook nome do ebook a ser deletado
+	 * @return
 	 */
-	public static void buscarEbook(String nome) {
-
+	public static boolean excluirEbook(String nomeEbook) {
+		for (Ebook edit : Dados.getEbooks()) {
+			if (edit.getTitulo().equals(nomeEbook)) {
+				Dados.getEbooks().remove(edit);
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -84,4 +84,5 @@ public class ControleEbook {
 		}
 		return titulos;
 	}
+
 }
