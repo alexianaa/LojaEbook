@@ -37,4 +37,17 @@ public class ControleVenda {
 		 */
 	}
 
+	public static String[] infoCarrinho(ControleCliente cliente) {
+		String[] carrinho = new String[10];
+		for (Cliente edit : Dados.getClientes()) {
+			Ebook[] preCarrinho = edit.getCarrinho().getEbooks();
+			if (preCarrinho != null) {
+				for (int i = 0; preCarrinho[i] != null; i++) {
+					carrinho[i] = preCarrinho[i].toString();
+				}
+			}
+		}
+		return carrinho;
+	}
+
 }

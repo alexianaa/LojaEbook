@@ -25,6 +25,7 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 	public ControleDados dados;
 	public String nomeCliente;
 
+
 	/**
 	 * Cria janela de busca por ebook
 	 */
@@ -106,8 +107,36 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 	 * 
 	 * @param tituloEbook - nome do ebook
 	 */
-	ViewMenuLivro(String tituloEbook) {
+	ViewMenuLivro(String tituloEbook, String[] s) {
+  
+    JLabel item0 = new JLabel("categoria: " + s[0]);
+		JLabel item1 = new JLabel("Autor: " + s[1]);
+		JLabel item2 = new JLabel("Idioma disponivel: " + s[2]);
+		JLabel item3 = new JLabel("numero de paginas: " + s[3]);
+		JLabel item4 = new JLabel("Preco: " + "R$" + s[4]);
+		JLabel item5 = new JLabel("Ano de publicacao: " + s[5]);
+		JLabel item6 = new JLabel("tamanho do arquivo: " + s[6]);
+  
+		item0.setFont(new Font("Comic Sans", Font.BOLD, 25));
+		item1.setFont(new Font("Comic Sans", Font.BOLD, 25));
+		item2.setFont(new Font("Comic Sans", Font.BOLD, 25));
+		item3.setFont(new Font("Comic Sans", Font.BOLD, 25));
+		item4.setFont(new Font("Comic Sans", Font.BOLD, 25));
+		item5.setFont(new Font("Comic Sans", Font.BOLD, 25));
+		item6.setFont(new Font("Comic Sans", Font.BOLD, 25));
 
+		JPanel itens = new JPanel();
+		itens.setLayout(new GridLayout(10, 1));
+		itens.setBackground(Color.gray);
+		itens.setBounds(150, 73, 980, 350);
+		itens.add(item0);
+		itens.add(item1);
+		itens.add(item2);
+		itens.add(item3);
+		itens.add(item4);
+		itens.add(item5);
+		itens.add(item6); 
+  
 		tituloEbook1 = new JLabel();
 		tituloEbook1.setText("Ebook" + " " + tituloEbook);
 		tituloEbook1.setBounds(0, 20, 1280, 50);
@@ -167,6 +196,7 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 		this.add(botaoVoltar2);
 		this.add(botaoCarrinho);
 		this.setVisible(true);
+
 	}
 
 	@Override
@@ -179,8 +209,15 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 		Object src = e.getSource();
 
 		if (src == botaoBusca) {
-			this.dispose();
-			new ViewMenuLivro(campoTituloEbook.getText());
+
+			if (ControleEbook.existeEbook(campoTexto.getText())) {
+				this.dispose();
+				String[] s = ControleEbook.infoEbook(campoTexto.getText());
+				new ViewMenuLivro(campoTexto.getText(), s);
+			} else {
+				JOptionPane.showMessageDialog(null, "Este ebook nao existe\n", "Erro",
+						JOptionPane.INFORMATION_MESSAGE);
+			}
 		} else if (src == botaoAdicionaLivro) {
 
 		} else if (src == botaoVoltar) {
@@ -191,7 +228,7 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 			new ViewMenuLivro();
 		} else if (src == botaoCarrinho) {
 			this.dispose();
-			new ViewCarrinho();
+			new ViewCarrinho(cliente, dados);
 		}
 	}
 }
