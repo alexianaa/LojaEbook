@@ -36,14 +36,14 @@ public class ControleCliente {
 		Dados.getClientes().add(cliente);
 	}
 
-	public void excluirCliente() {
-		/*
-		 * Scanner ler = new Scanner(System.in);
-		 * System.out.println("Digite o nome do cliente: "); String opcaoString =
-		 * ler.next(); for (Cliente edit : Dados.getClientes()) { if
-		 * (edit.nome.equals(opcaoString)) { Dados.getClientes().remove(edit); break; }
-		 * }
-		 */
+	public static boolean excluirCliente(String nomeCliente) {
+		for (Cliente edit : Dados.getClientes()) {
+			if (edit.getNome().equals(nomeCliente)) {
+				Dados.getClientes().remove(edit);
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public void adicionarCarrinho(Ebook ebook, Carrinho carrinho) {

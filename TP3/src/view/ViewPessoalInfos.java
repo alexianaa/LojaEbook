@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import controller.ControleCliente;
@@ -15,7 +16,7 @@ public class ViewPessoalInfos implements ActionListener {
 
 	private JFrame janela = new JFrame("Loja de Ebook");
 	private JLabel titulo = new JLabel("Informacoes pessoais");
-	private JButton salvar = new JButton("Salvar");
+	private JButton excluir = new JButton("Excluir");
 	private static String cliente;
 	JTextField nomeField;
 	JTextField emailField;
@@ -57,9 +58,9 @@ public class ViewPessoalInfos implements ActionListener {
 		numeroField.setBounds(260, 220, 160, 30);
 		cpfField.setBounds(260, 280, 160, 30);
 		txtDateField.setBounds(260, 340, 160, 30);
-		salvar.setBounds(190, 420, 200, 30);
+		excluir.setBounds(190, 420, 200, 30);
 
-		janela.add(salvar);
+		janela.add(excluir);
 		janela.add(nomeText);
 		janela.add(emailText);
 		janela.add(numeroText);
@@ -75,12 +76,24 @@ public class ViewPessoalInfos implements ActionListener {
 
 		// adicionar metodo de salvar informacoes
 		// adicionar metodo de excluir conta
-		salvar.addActionListener(this);
+		excluir.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
+
+		if (src == excluir) {
+			if (ControleCliente.excluirCliente(cliente)) {
+				JOptionPane.showMessageDialog(null, "Perfil excluido\n", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+				janela.dispose();
+				new TelaLogin();
+			} else {
+				JOptionPane.showMessageDialog(null, "Nao foi possivel excluir o perfil\n", "Erro",
+						JOptionPane.INFORMATION_MESSAGE);
+				janela.dispose();
+			}
+		}
 
 	}
 

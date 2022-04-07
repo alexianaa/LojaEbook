@@ -2,18 +2,27 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import controller.ControleDados;
 
 public class ViewMenuLivro extends JFrame implements ActionListener {
 
-	JButton botaoBusca; // define como botao
-	JButton botaoAdicionaLivro; // =
-	JButton botaoVoltar; // =
-	JButton botaoVoltar2; // =
-	JButton botaoCarrinho;// define como botao
-	JLabel texto1;// define como texto
-	JTextField campoTexto;// define como campo de texto
+	JButton botaoBusca;
+	JButton botaoAdicionaLivro;
+	JButton botaoVoltar;
+	JButton botaoVoltar2;
+	JButton botaoCarrinho;
+	JLabel texto1;
+	JTextField campoTexto;
+	public ControleDados dados;
+	public String nomeCliente;
 
 	ViewMenuLivro() {
 		// Campo de texto
@@ -137,6 +146,7 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 		this.setVisible(true); // deixa o JFrame visivel
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 
@@ -147,7 +157,7 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 
 		} else if (src == botaoVoltar) {
 			this.dispose();
-			new ViewMenuPrincipal();
+			new ViewMenuPrincipal(dados, nomeCliente);
 		} else if (src == botaoVoltar2) {
 			this.dispose();
 			new ViewMenuLivro();

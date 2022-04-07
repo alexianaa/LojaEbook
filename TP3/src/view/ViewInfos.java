@@ -70,6 +70,7 @@ public class ViewInfos implements ActionListener {
 			new ListView(dados, 3);
 
 		} else if (src == pessoalInfo) {
+			janela.dispose();
 			new ViewPessoalInfos(cliente);
 
 		} else if (src == voltar) {
