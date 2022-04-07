@@ -2,7 +2,10 @@ package controller;
 
 import java.util.ArrayList;
 
-import model.*;
+import model.Cliente;
+import model.Dados;
+import model.Ebook;
+import model.Editora;
 
 public class ControleDados {
 
@@ -26,14 +29,6 @@ public class ControleDados {
 
 	public static ArrayList<Editora> getEditoras() {
 		return Dados.getEditoras();
-	}
-
-	public String[] showNames() {
-		String[] names = new String[Dados.getClientes().size()];
-		for (Cliente edit : Dados.getClientes()) {
-			names[Dados.getClientes().indexOf(edit)] = edit.getNome();
-		}
-		return names;
 	}
 
 }

@@ -1,8 +1,13 @@
 package controller;
 
+import model.Dados;
+import model.Editora;
+
 // import model .*;
 
 public class ControleEditora {
+
+	public static Editora editora;
 
 	public static void cadastrar() {
 		/*
@@ -100,4 +105,11 @@ public class ControleEditora {
 		 */
 	}
 
+	public String[] showEditoraNames() {
+		String[] names = new String[Dados.getEditoras().size()];
+		for (Editora edit : Dados.getEditoras()) {
+			names[Dados.getEditoras().indexOf(edit)] = edit.getNome();
+		}
+		return names;
+	}
 }

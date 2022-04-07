@@ -9,16 +9,17 @@ import model.Venda;
 
 public class ControleCliente {
 
-	public Cliente cliente = new Cliente();
+	public static Cliente cliente;
 	public int qtdClientes = Dados.getClientes().size();
 
-	public ControleCliente(Dados d) {
-
+	public ControleCliente() {
+		cliente = new Cliente();
 	}
 
-	public void cadastrarCliente(String n, String e, String date, int d, String num, String c, Carrinho car) {
+	public void cadastrarCliente(String n, String e, String date, String d, String num, String c) {
 
-		Telefone numero = new Telefone(d, num);
+		int ddd = Integer.parseInt(d);
+		Telefone numero = new Telefone(ddd, num);
 		Venda venda = new Venda("", 0);
 		Carrinho carrinho = new Carrinho(0.0, 0, null, venda);
 
@@ -35,14 +36,14 @@ public class ControleCliente {
 		Dados.getClientes().add(cliente);
 	}
 
-	public void excluirCliente() {
-		/*
-		 * Scanner ler = new Scanner(System.in);
-		 * System.out.println("Digite o nome do cliente: "); String opcaoString =
-		 * ler.next(); for (Cliente edit : Dados.getClientes()) { if
-		 * (edit.nome.equals(opcaoString)) { Dados.getClientes().remove(edit); break; }
-		 * }
-		 */
+	public static boolean excluirCliente(String nomeCliente) {
+		for (Cliente edit : Dados.getClientes()) {
+			if (edit.getNome().equals(nomeCliente)) {
+				Dados.getClientes().remove(edit);
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public void adicionarCarrinho(Ebook ebook, Carrinho carrinho) {
@@ -60,6 +61,31 @@ public class ControleCliente {
 			}
 		}
 		return false;
+	}
+
+	public String[] showNames() {
+		String[] names = new String[Dados.getClientes().size()];
+		for (Cliente edit : Dados.getClientes()) {
+			names[Dados.getClientes().indexOf(edit)] = edit.getNome();
+		}
+		return names;
+	}
+
+	public static String[] returnCliente(String nome) {
+		String[] infos = new String[5];
+		for (Cliente edit : Dados.getClientes()) {
+			if (edit.getNome().equals(nome)) {
+				Telefone num = edit.getNumCel();
+				infos[0] = edit.getNome();
+				infos[1] = edit.getEmail();
+				infos[2] = num.toString();
+				infos[3] = edit.getDataNascimento();
+				infos[4] = edit.getCpf();
+				break;
+			}
+		}
+
+		return infos;
 	}
 
 }

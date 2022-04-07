@@ -116,4 +116,12 @@ public class ControleEbook {
 		 * }
 		 */
 	}
+
+	public String[] showEbookTitulos() {
+		String[] titulos = new String[Dados.getEbooks().size()];
+		for (Ebook edit : Dados.getEbooks()) {
+			titulos[Dados.getEbooks().indexOf(edit)] = edit.getTitulo();
+		}
+		return titulos;
+	}
 }
