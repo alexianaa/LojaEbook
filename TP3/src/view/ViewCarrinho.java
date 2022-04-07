@@ -108,7 +108,6 @@ public class ViewCarrinho extends JFrame implements ActionListener, ListSelectio
 
 		} else if (src == botaoVoltar) {
 			this.dispose();
-			new ViewMenuPrincipal(dados, nomeCliente);
 		}
 	}
 

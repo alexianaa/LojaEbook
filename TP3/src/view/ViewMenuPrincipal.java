@@ -110,12 +110,10 @@ public class ViewMenuPrincipal extends JFrame implements ActionListener {
 		} else if (src == botaoBuscaEditora) {
 			new ViewEditora();
 		} else if (src == botaoVisualizaInformacoes) {
-			this.dispose();
 			new ViewInfos(dados, cliente);
 		} else if (src == botaoSair) {
 			this.dispose();
 		} else if (src == botaoCarrinho) {
-			this.dispose();
 			new ViewCarrinho(cliente, dados);
 		}
 

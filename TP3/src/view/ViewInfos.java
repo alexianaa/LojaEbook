@@ -87,7 +87,6 @@ public class ViewInfos implements ActionListener {
 
 		} else if (src == voltar) {
 			janela.dispose();
-			new ViewMenuPrincipal(dados, cliente);
 		}
 
 	}
