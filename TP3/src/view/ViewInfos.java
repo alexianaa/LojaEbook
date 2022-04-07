@@ -22,6 +22,13 @@ public class ViewInfos implements ActionListener {
 	public ControleDados dados;
 	String cliente;
 
+	/**
+	 * Cria tela de visualizacao de informacoes dependendo do campo selecionado
+	 * 
+	 * @param dados - dados armazenados
+	 * @param c     - nome do cliente
+	 * @return vazio
+	 */
 	public ViewInfos(ControleDados d, String c) {
 		cliente = c;
 		dados = d;
@@ -60,6 +67,12 @@ public class ViewInfos implements ActionListener {
 	}
 
 	@Override
+	/**
+	 * Recebe os eventos do botao
+	 * 
+	 * @param evento
+	 * @return vazio
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 

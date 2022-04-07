@@ -1,5 +1,9 @@
 package view;
 
+/**
+ * @version 1.8
+ */
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +24,7 @@ public class ViewCadastro implements ActionListener {
 
 	private JFrame janela;
 	private JLabel titulo;
+	@SuppressWarnings("unused")
 	private static ControleDados dados;
 	private static ControleCliente cliente = new ControleCliente();
 	private JButton concluir = new JButton("Concluir");
@@ -36,6 +41,13 @@ public class ViewCadastro implements ActionListener {
 	String cpfValue;
 	String numeroValue;
 
+	/**
+	 * Criacao da tela de cadastro de editora, cliente e ebook
+	 * 
+	 * @param dados - dados armazenados
+	 * @param opcao - qual cadastro vai ser selecionado
+	 * @return vazio - nao ha retorno
+	 */
 	public ViewCadastro(ControleDados d, int op) {
 		dados = d;
 
@@ -118,6 +130,12 @@ public class ViewCadastro implements ActionListener {
 	}
 
 	@Override
+	/**
+	 * Recebe os eventos dos botoes
+	 * 
+	 * @param evento
+	 * @return vazio - nao ha retorno
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 

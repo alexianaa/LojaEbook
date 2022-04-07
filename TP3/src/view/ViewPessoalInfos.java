@@ -32,9 +32,9 @@ public class ViewPessoalInfos implements ActionListener {
 		cliente = c;
 
 		janela.setLayout(null);
-		janela.setSize(600, 550);
+		janela.setSize(550, 550);
 
-		titulo.setBounds(180, 20, 220, 30);
+		titulo.setBounds(150, 20, 220, 30);
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
 
 		JLabel nomeText = new JLabel("Nome: ");
@@ -54,8 +54,8 @@ public class ViewPessoalInfos implements ActionListener {
 		nomeField = new JTextField(infos[0], 200);
 		emailField = new JTextField(infos[1], 200);
 		numeroField = new JTextField(infos[2], 200);
-		cpfField = new JTextField(infos[3], 200);
-		txtDateField = new JTextField(infos[4], 200);
+		txtDateField = new JTextField(infos[3], 200);
+		cpfField = new JTextField(infos[4], 200);
 
 		nomeField.setBounds(260, 100, 160, 30);
 		emailField.setBounds(260, 160, 160, 30);
@@ -86,6 +86,12 @@ public class ViewPessoalInfos implements ActionListener {
 	}
 
 	@Override
+	/**
+	 * Recebe os eventos do botao
+	 * 
+	 * @param evento
+	 * @return vazio
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 

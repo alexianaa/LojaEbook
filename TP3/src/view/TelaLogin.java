@@ -1,7 +1,8 @@
 package view;
 
 /**
- @author Alexia
+ * @author Alexia
+ * @version 1.8
 */
 
 import java.awt.Font;
@@ -19,9 +20,7 @@ import controller.ControleDados;
 
 public class TelaLogin implements ActionListener {
 
-	/**
-	 * criacao de telas, botoes e titulos
-	 */
+	// criacao de telas, botos e titulos
 	private JFrame login = new JFrame("Tela de login");
 	private JLabel text = new JLabel("LOGIN");
 	private JLabel directionText = new JLabel("Digite o seu nome: ");
@@ -32,6 +31,12 @@ public class TelaLogin implements ActionListener {
 	public static ControleDados dados = new ControleDados();
 	private String nome;
 
+	/**
+	 * Cria e estiliza a tela de login
+	 * 
+	 * @param vazio nao ha parametros
+	 * @return vazio nao ha retorno
+	 */
 	public TelaLogin() {
 		login.setLayout(null);
 		login.setSize(400, 250);
@@ -65,13 +70,13 @@ public class TelaLogin implements ActionListener {
 	}
 
 	@Override
-	/**
-	 * metodo para receber a acao do usuario
-	 * 
-	 * @param evento
-	 * @return vazio
-	 */
 	public void actionPerformed(ActionEvent e) {
+		/**
+		 * metodo para receber a acao do usuario
+		 * 
+		 * @param vazio nao ha parametros
+		 * @return vazio nao ha retorno
+		 */
 		Object src = e.getSource();
 
 		if (src == concluir) {

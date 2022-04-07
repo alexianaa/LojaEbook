@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 
 import controller.ControleDados;
 
+@SuppressWarnings("serial")
 public class ViewMenuPrincipal extends JFrame implements ActionListener {
 
 	JButton botaoBuscaLivro;
@@ -21,6 +22,13 @@ public class ViewMenuPrincipal extends JFrame implements ActionListener {
 	public ControleDados dados;
 	public String cliente;
 
+	/**
+	 * Cria janela do menu principal
+	 * 
+	 * @param dados - dados armazenados
+	 * @param c     - nomde do cliente
+	 * @return vazio
+	 */
 	public ViewMenuPrincipal(ControleDados dados, String c) {
 		cliente = c;
 
@@ -90,6 +98,12 @@ public class ViewMenuPrincipal extends JFrame implements ActionListener {
 	}
 
 	@Override
+	/**
+	 * Recebe os eventos do botao
+	 * 
+	 * @param evento
+	 * @return vazio
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 
