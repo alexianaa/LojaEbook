@@ -5,6 +5,9 @@ import java.awt.Font;
 import java.awt.event.*;
 import javax.swing.*;
 
+import controller.ControleCliente;
+import controller.ControleDados;
+
 public class ViewMenuPrincipal extends JFrame implements ActionListener {
 
 	JButton botaoBuscaLivro;// define como um botao
@@ -12,8 +15,10 @@ public class ViewMenuPrincipal extends JFrame implements ActionListener {
 	JButton botaoGerenciaInformacoes;// =
 	JButton botaoSair;// =
 	JButton botaoCarrinho;// define como um botao
+	private static ControleDados dados = new ControleDados();
+	private static ControleCliente cliente = new ControleCliente();
 
-	ViewMenuPrincipal() {
+	ViewMenuPrincipal(ControleCliente cliente, ControleDados dados) {
 		// texto
 		JLabel texto1 = new JLabel();// cria texto
 		texto1.setText("Menu");// define o texto
@@ -95,7 +100,7 @@ public class ViewMenuPrincipal extends JFrame implements ActionListener {
 			this.dispose();
 		} else if (src == botaoCarrinho) {
 			this.dispose();
-			new ViewCarrinho();
+			new ViewCarrinho(cliente, dados);
 		}
 
 	}

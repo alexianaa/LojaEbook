@@ -3,7 +3,12 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.*;
+import java.awt.*;
 import javax.swing.*;
+
+import controller.ControleCliente;
+import controller.ControleDados;
+import controller.ControleEbook;
 
 public class ViewMenuLivro extends JFrame implements ActionListener {
 
@@ -14,6 +19,8 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 	JButton botaoCarrinho;// define como botao
 	JLabel texto1;// define como texto
 	JTextField campoTexto;// define como campo de texto
+	private static ControleDados dados = new ControleDados();
+	private static ControleCliente cliente = new ControleCliente();
 
 	ViewMenuLivro() {
 		// Campo de texto
@@ -81,7 +88,34 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 		this.setVisible(true); // deixa o JFrame visivel
 	}
 
-	ViewMenuLivro(String texto) {
+	ViewMenuLivro(String texto, String[] s) {
+		// JLabel
+		JLabel item0 = new JLabel("categoria: " + s[0]);
+		JLabel item1 = new JLabel("Autor: " + s[1]);
+		JLabel item2 = new JLabel("Idioma disponivel: " + s[2]);
+		JLabel item3 = new JLabel("numero de paginas: " + s[3]);
+		JLabel item4 = new JLabel("Preco: " + "R$" + s[4]);
+		JLabel item5 = new JLabel("Ano de publicacao: " + s[5]);
+		JLabel item6 = new JLabel("tamanho do arquivo: " + s[6]);
+		item0.setFont(new Font("Comic Sans", Font.BOLD, 25));
+		item1.setFont(new Font("Comic Sans", Font.BOLD, 25));
+		item2.setFont(new Font("Comic Sans", Font.BOLD, 25));
+		item3.setFont(new Font("Comic Sans", Font.BOLD, 25));
+		item4.setFont(new Font("Comic Sans", Font.BOLD, 25));
+		item5.setFont(new Font("Comic Sans", Font.BOLD, 25));
+		item6.setFont(new Font("Comic Sans", Font.BOLD, 25));
+		// JPanel
+		JPanel itens = new JPanel();// cria um JPanel
+		itens.setLayout(new GridLayout(10, 1));// define o tipo de layout pra grid
+		itens.setBackground(Color.gray);// define a cor de fundo
+		itens.setBounds(150, 73, 980, 350);// define a posicao do frame e o tamanho
+		itens.add(item0);// adiciona texto ao painel
+		itens.add(item1);// adiciona texto ao painel
+		itens.add(item2);// adiciona texto ao painel
+		itens.add(item3);// adiciona texto ao painel
+		itens.add(item4);// adiciona texto ao painel
+		itens.add(item5);// adiciona texto ao painel
+		itens.add(item6);// adiciona texto ao painel
 		// texto
 		texto1 = new JLabel();// cria texto
 		texto1.setText("Ebook" + " " + texto);// define o texto
@@ -130,6 +164,7 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 		this.setTitle("Ebook" + " " + texto); // da um titulo ao JFrame
 		this.getContentPane().setBackground(Color.gray); // define a cor de fundo do JFrame
 		this.add(texto1);// adiciona texto
+		this.add(itens);
 		this.add(botaoBusca); // adiciona botoes
 		this.add(botaoAdicionaLivro); // =
 		this.add(botaoVoltar2); // =
@@ -141,19 +176,25 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 		Object src = e.getSource();
 
 		if (src == botaoBusca) {
-			this.dispose();
-			new ViewMenuLivro(campoTexto.getText());
+			if (ControleEbook.existeEbook(campoTexto.getText())) {
+				this.dispose();
+				String[] s = ControleEbook.infoEbook(campoTexto.getText());
+				new ViewMenuLivro(campoTexto.getText(), s);
+			} else {
+				JOptionPane.showMessageDialog(null, "Este ebook nao existe\n", "Erro",
+						JOptionPane.INFORMATION_MESSAGE);
+			}
 		} else if (src == botaoAdicionaLivro) {
 
 		} else if (src == botaoVoltar) {
 			this.dispose();
-			new ViewMenuPrincipal();
+			new ViewMenuPrincipal(cliente, dados);
 		} else if (src == botaoVoltar2) {
 			this.dispose();
 			new ViewMenuLivro();
 		} else if (src == botaoCarrinho) {
 			this.dispose();
-			new ViewCarrinho();
+			new ViewCarrinho(cliente, dados);
 		}
 	}
 }

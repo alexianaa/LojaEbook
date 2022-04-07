@@ -4,14 +4,32 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
-public class ViewCarrinho extends JFrame implements ActionListener {
+import controller.ControleCliente;
+import controller.ControleDados;
+import controller.ControleVenda;
+
+public class ViewCarrinho extends JFrame implements ActionListener, ListSelectionListener {
     JButton botaoExcluir; // define como botao
     JButton botaoVoltar; // =
     JButton botaoConcluir;// define como botao
     JLabel texto1;// define como texto
+    private static ControleDados dados = new ControleDados();
+    private static ControleCliente cliente = new ControleCliente();
 
-    ViewCarrinho() {
+    ViewCarrinho(ControleCliente cliente, ControleDados dados) {
+        // Jlist
+        String[] listaNomes = ControleVenda.infoCarrinho(cliente);
+        JList<String> listaCarrinho = new JList<String>(listaNomes);
+        listaCarrinho.setBounds(150, 73, 980, 350);
+        listaCarrinho.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        listaCarrinho.setVisibleRowCount(5);
+        listaCarrinho.setForeground(Color.white);
+        listaCarrinho.setBackground(Color.gray);
+        this.add(listaCarrinho);
+        listaCarrinho.addListSelectionListener(this);
         // texto
         texto1 = new JLabel();// cria texto
         texto1.setText("Carrinho");// define o texto
@@ -68,7 +86,13 @@ public class ViewCarrinho extends JFrame implements ActionListener {
 
         } else if (src == botaoVoltar) {
             this.dispose();
-            new ViewMenuPrincipal();
+            new ViewMenuPrincipal(cliente, dados);
         }
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent arg0) {
+        // TODO Auto-generated method stub
+
     }
 }

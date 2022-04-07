@@ -3,7 +3,12 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.*;
+import java.awt.*;
 import javax.swing.*;
+
+import controller.ControleCliente;
+import controller.ControleDados;
+import controller.ControleEditora;
 
 public class ViewEditora extends JFrame implements ActionListener {
     JButton botaoBusca; // define como botao
@@ -13,6 +18,8 @@ public class ViewEditora extends JFrame implements ActionListener {
     JButton botaoExcluir;// define como botao
     JLabel texto1;// define como texto
     JTextField campoTexto;// define como campo de texto
+    private static ControleDados dados = new ControleDados();
+    private static ControleCliente cliente = new ControleCliente();
 
     ViewEditora() {
         // Campo de texto
@@ -71,7 +78,27 @@ public class ViewEditora extends JFrame implements ActionListener {
         this.setVisible(true); // deixa o JFrame visivel
     }
 
-    ViewEditora(String texto) {
+    ViewEditora(String texto, String[] s) {
+        JLabel item0 = new JLabel("categoria: " + s[0]);
+        JLabel item1 = new JLabel("Autor: " + s[1]);
+        JLabel item2 = new JLabel("Idioma disponivel: " + s[2]);
+        JLabel item3 = new JLabel("numero de paginas: " + s[3]);
+        JLabel item4 = new JLabel("Preco: " + "R$" + s[4]);
+        item0.setFont(new Font("Comic Sans", Font.BOLD, 40));
+        item1.setFont(new Font("Comic Sans", Font.BOLD, 40));
+        item2.setFont(new Font("Comic Sans", Font.BOLD, 40));
+        item3.setFont(new Font("Comic Sans", Font.BOLD, 40));
+        item4.setFont(new Font("Comic Sans", Font.BOLD, 40));
+        // JPanel
+        JPanel itens = new JPanel();// cria um JPanel
+        itens.setLayout(new GridLayout(10, 1));// define o tipo de layout pra grid
+        itens.setBackground(Color.gray);// define a cor de fundo
+        itens.setBounds(150, 73, 980, 350);// define a posicao do frame e o tamanho
+        itens.add(item0);// adiciona texto ao painel
+        itens.add(item1);// adiciona texto ao painel
+        itens.add(item2);// adiciona texto ao painel
+        itens.add(item3);// adiciona texto ao painel
+        itens.add(item4);// adiciona texto ao painel
         // texto
         texto1 = new JLabel();// cria texto
         texto1.setText("Editora" + " " + texto);// define o texto
@@ -103,6 +130,7 @@ public class ViewEditora extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // define o botão X como fechar
         this.setResizable(false); // não deixa o tamanho ser moficavel
         this.setTitle("Editora" + " " + texto); // da um titulo ao JFrame
+        this.add(itens);
         this.getContentPane().setBackground(Color.gray); // define a cor de fundo do JFrame
         this.add(texto1);// adiciona texto
         this.add(botaoVoltar2); // adiciona botoes
@@ -114,13 +142,21 @@ public class ViewEditora extends JFrame implements ActionListener {
         Object src = e.getSource();
 
         if (src == botaoBusca) {
-            this.dispose();
-            new ViewEditora(campoTexto.getText());
-        } else if (src == botaoAdicionaEditora) {
+            if (ControleEditora.existeEditora(campoTexto.getText())) {
+                this.dispose();
+                String[] s = ControleEditora.infoEditora(campoTexto.getText());
+                new ViewEditora(campoTexto.getText(), s);
+            } else {
+                JOptionPane.showMessageDialog(null, "Esta editora nao existe\n", "Erro",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+        } else if (src == botaoAdicionaEditora)
+
+        {
 
         } else if (src == botaoVoltar) {
             this.dispose();
-            new ViewMenuPrincipal();
+            new ViewMenuPrincipal(cliente, dados);
         } else if (src == botaoVoltar2) {
             this.dispose();
             new ViewEditora();

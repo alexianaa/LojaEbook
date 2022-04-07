@@ -6,6 +6,10 @@ import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
 
+import controller.ControleCliente;
+import controller.ControleDados;
+import controller.ControleVenda;
+
 public class ViewVenda extends JFrame implements ActionListener {
 
     JButton botaoVoltar; // define como botao
@@ -17,8 +21,19 @@ public class ViewVenda extends JFrame implements ActionListener {
     JRadioButton vezes2;// =
     JRadioButton vezes3;// define como botao de selecao
     JPanel itens; // define como um painel
+    private static ControleDados dados = new ControleDados();
+    private static ControleCliente cliente = new ControleCliente();
 
-    ViewVenda(String precoTotal) {/* String[] ebooks */
+    ViewVenda(String precoTotal) {
+        // Jlist
+        String[] listaNomes = ControleVenda.infoCarrinho(cliente);
+        JList<String> listaCarrinho = new JList<String>(listaNomes);
+        listaCarrinho.setBounds(150, 73, 980, 350);
+        listaCarrinho.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        listaCarrinho.setVisibleRowCount(5);
+        listaCarrinho.setForeground(Color.white);
+        listaCarrinho.setBackground(Color.gray);
+        this.add(listaCarrinho);
         // texto
         texto1 = new JLabel();// cria texto
         texto1.setText("Carrinho");// define o texto
@@ -26,16 +41,6 @@ public class ViewVenda extends JFrame implements ActionListener {
         texto1.setForeground(Color.cyan);// cor do texto
         texto1.setFont(new Font("Comic Sans", Font.BOLD, 50));// fonte do texto
         texto1.setHorizontalAlignment(JLabel.CENTER);// deixa o texto no centro da "caixa"
-        JLabel item0 = new JLabel("i");// cria e define o texto
-        JLabel item1 = new JLabel("oi");// =
-        JLabel item2 = new JLabel("2");// =
-        JLabel item3 = new JLabel("hehe");// =
-        JLabel item4 = new JLabel("uau");// =
-        JLabel item5 = new JLabel("1010");// =
-        JLabel item6 = new JLabel("weeee");// =
-        JLabel item7 = new JLabel("dqw");// =
-        JLabel item8 = new JLabel("wqfewef");// =
-        JLabel item9 = new JLabel("wqefqqf");// cria e define o texto
 
         // botoes
         botaoVoltar = new JButton(); // cria botao
@@ -92,22 +97,6 @@ public class ViewVenda extends JFrame implements ActionListener {
         vezes1.setFocusable(false); // =
         vezes2.setFocusable(false); // =
         vezes3.setFocusable(false); // tira a caixa de foco do botao
-        // JPanels
-        itens = new JPanel();// cria um JPanel
-        itens.setSize(300, 500);// define o tamanho
-        itens.setLayout(new GridLayout(10, 1));// define o tipo de layout pra grid
-        itens.setBackground(Color.red);// define a cor de fundo
-        itens.setBounds(150, 73, 300, 500);// define a posicao do frame e o tamanho
-        itens.add(item0);// adiciona texto ao painel
-        itens.add(item1);// =
-        itens.add(item2);// =
-        itens.add(item3);// =
-        itens.add(item4);// =
-        itens.add(item5);// =
-        itens.add(item6);// =
-        itens.add(item7);// =
-        itens.add(item8);// =
-        itens.add(item9);// adiciona texto ao painel
         // Jframe
         this.setLayout(null); // define o tipo de layout pra nenhum
         this.setSize(1280, 720); // define o tamanho do JFrame
@@ -123,7 +112,6 @@ public class ViewVenda extends JFrame implements ActionListener {
         this.add(vezes3);// =
         this.add(credito);// =
         this.add(debito);// adiciona botoes de selecao
-        this.add(itens);// adiciona o painel
         this.setVisible(true); // deixa o JFrame visivel
     }
 
@@ -155,7 +143,7 @@ public class ViewVenda extends JFrame implements ActionListener {
             new ViewVenda();
         } else if (src == botaoVoltar) {
             this.dispose();
-            new ViewCarrinho();
+            new ViewCarrinho(cliente, dados);
         }
     }
 }

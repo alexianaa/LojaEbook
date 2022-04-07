@@ -30,6 +30,7 @@ public class TelaLogin implements ActionListener {
 	private static JButton cadastro = new JButton("Cadastre-se");
 	private static JButton usuarios = new JButton("Listar usuarios");
 	private static ControleDados dados = new ControleDados();
+	private static ControleCliente cliente = new ControleCliente();
 	private String nome;
 
 	public TelaLogin() {
@@ -81,11 +82,8 @@ public class TelaLogin implements ActionListener {
 			 */
 			nome = directionValue.getText();
 			if (ControleCliente.existeUsuario(nome)) {
-<<<<<<< HEAD
 				login.dispose();
-=======
->>>>>>> ce988a06f5f3afb4c3337fa3756098ddb278cc64
-				new ViewMenuPrincipal();
+				new ViewMenuPrincipal(cliente, dados);
 			} else {
 				JOptionPane.showMessageDialog(null, "Este usuario nao existe\n", "Erro",
 						JOptionPane.INFORMATION_MESSAGE);

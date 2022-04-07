@@ -9,11 +9,11 @@ import model.Venda;
 
 public class ControleCliente {
 
-	public Cliente cliente = new Cliente();
+	public Cliente cliente;
 	public int qtdClientes = Dados.getClientes().size();
 
-	public ControleCliente(Dados d) {
-
+	public ControleCliente() {
+		cliente = new Cliente();
 	}
 
 	public void cadastrarCliente(String n, String e, String date, int d, String num, String c, Carrinho car) {

@@ -1,5 +1,8 @@
 package controller;
 
+import model.Dados;
+import model.Editora;
+
 // import model .*;
 
 public class ControleEditora {
@@ -100,4 +103,29 @@ public class ControleEditora {
 		 */
 	}
 
+	public static String[] infoEditora(String titulo) {
+		String[] editora = new String[5];
+
+		for (Editora edit : Dados.getEditoras()) {
+			if (edit.getNome().equals(titulo)) {
+				Integer id = edit.getId();
+
+				editora[0] = edit.getEmail();
+				editora[1] = edit.getNumCel().toString();
+				editora[2] = edit.getCnpj();
+				editora[3] = edit.getDataAfiliacao();
+				editora[4] = id.toString();
+			}
+		}
+		return editora;
+	}
+
+	public static boolean existeEditora(String c) {
+		for (Editora edit : Dados.getEditoras()) {
+			if (edit.getNome().equals(c)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
