@@ -111,6 +111,9 @@ public class ViewCadastro implements ActionListener {
 			janela.setVisible(true);
 			concluir.addActionListener(this);
 			break;
+		case 3: // cadastrar ebook
+
+			break;
 		}
 	}
 

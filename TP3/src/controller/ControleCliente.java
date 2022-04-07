@@ -9,7 +9,7 @@ import model.Venda;
 
 public class ControleCliente {
 
-	public Cliente cliente;
+	public static Cliente cliente;
 	public int qtdClientes = Dados.getClientes().size();
 
 	public ControleCliente() {
@@ -69,6 +69,23 @@ public class ControleCliente {
 			names[Dados.getClientes().indexOf(edit)] = edit.getNome();
 		}
 		return names;
+	}
+
+	public static String[] returnCliente(String nome) {
+		String[] infos = new String[5];
+		for (Cliente edit : Dados.getClientes()) {
+			if (edit.getNome().equals(nome)) {
+				Telefone num = edit.getNumCel();
+				infos[0] = edit.getNome();
+				infos[1] = edit.getEmail();
+				infos[2] = num.toString();
+				infos[3] = edit.getDataNascimento();
+				infos[4] = edit.getCpf();
+				break;
+			}
+		}
+
+		return infos;
 	}
 
 }

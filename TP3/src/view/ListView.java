@@ -18,36 +18,47 @@ public class ListView implements ActionListener, ListSelectionListener {
 
 	private JList<String> listaNomesCadastrados;
 	private ControleCliente cliente = new ControleCliente();
+	public ControleDados dados;
 	private String[] listaNomes = new String[50];
-	private static JFrame list = new JFrame("Listagem");
+	private static JFrame list;
 	private JButton refresh;
 
-	public ListView(ControleDados dados, int op) {
+	public ListView(ControleDados d, int op) {
+		dados = d;
 
-		list.setLayout(null);
-		list.setSize(500, 500);
-		JLabel titulo = new JLabel("Clientes cadastrados");
-		titulo.setBounds(120, 10, 250, 30);
-		list.add(titulo);
+		switch (op) {
+		case 1: // listar clientes
+			list = new JFrame("Listagem");
+			list.setLayout(null);
+			list.setSize(500, 500);
+			JLabel titulo = new JLabel("Clientes cadastrados");
+			titulo.setBounds(120, 10, 250, 30);
+			list.add(titulo);
 
-		refresh = new JButton("Refresh");
-		refresh.setBounds(130, 180, 100, 30);
-		list.add(refresh);
+			refresh = new JButton("Refresh");
+			refresh.setBounds(130, 180, 100, 30);
+			list.add(refresh);
 
-		listaNomes = cliente.showNames();
-		listaNomesCadastrados = new JList<String>(listaNomes);
-		listaNomesCadastrados.setBounds(60, 50, 250, 120);
-		listaNomesCadastrados.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		listaNomesCadastrados.setVisibleRowCount(5);
-		list.add(listaNomesCadastrados);
+			listaNomes = cliente.showNames();
+			listaNomesCadastrados = new JList<String>(listaNomes);
+			listaNomesCadastrados.setBounds(60, 50, 250, 120);
+			listaNomesCadastrados.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+			listaNomesCadastrados.setVisibleRowCount(5);
+			list.add(listaNomesCadastrados);
 
-		listaNomesCadastrados.addListSelectionListener(this);
-		refresh.addActionListener(this);
+			listaNomesCadastrados.addListSelectionListener(this);
+			refresh.addActionListener(this);
+			list.setSize(400, 250);
+			list.setVisible(true);
+			break;
+		case 2: // listar editoras
 
-		list.setSize(400, 250);
-		list.setVisible(true);
+			break;
+		case 3: // listar ebooks
 
-		listaNomesCadastrados.updateUI();
+			break;
+		}
+
 	}
 
 	@Override
