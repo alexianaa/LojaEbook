@@ -30,6 +30,7 @@ public class ListView implements ActionListener, ListSelectionListener {
 	public ControleDados dados;
 	private String[] listaNomes = new String[50];
 	private static JFrame list;
+
 	private JButton refreshCliente;
 	private JButton refreshEditora;
 	private JButton refreshEbook;
@@ -45,6 +46,7 @@ public class ListView implements ActionListener, ListSelectionListener {
 		dados = d;
 
 		switch (op) {
+
 		case 1: // listar clientes
 			list = new JFrame("Listagem de clientes");
 			list.setLayout(null);

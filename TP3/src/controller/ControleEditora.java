@@ -1,11 +1,11 @@
 package controller;
 
-import model.Dados;
-import model.Editora;
+import model .*;
 
 public class ControleEditora {
 
 	public static Editora editora;
+
 	public int qtdEditoras = Dados.getEditoras().size();
 
 	public ControleEditora() {
