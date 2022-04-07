@@ -2,9 +2,9 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.*;
-import java.awt.*;
-import javax.swing.*;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import controller.ControleCliente;
 import controller.ControleDados;
@@ -146,4 +146,5 @@ public class ViewVenda extends JFrame implements ActionListener {
             new ViewCarrinho(cliente, dados);
         }
     }
+
 }

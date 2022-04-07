@@ -1,7 +1,8 @@
 package view;
 
 /**
- @author Alexia
+ * @author Alexia
+ * @version 1.8
 */
 
 import java.awt.Font;
@@ -19,9 +20,7 @@ import controller.ControleDados;
 
 public class TelaLogin implements ActionListener {
 
-	/**
-	 * criacao de telas, botoes e titulos
-	 */
+	// criacao de telas, botos e titulos
 	private JFrame login = new JFrame("Tela de login");
 	private JLabel text = new JLabel("LOGIN");
 	private JLabel directionText = new JLabel("Digite o seu nome: ");
@@ -31,8 +30,12 @@ public class TelaLogin implements ActionListener {
 	private static JButton usuarios = new JButton("Listar usuarios");
 	private static ControleDados dados = new ControleDados();
 	private static ControleCliente cliente = new ControleCliente();
+
 	private String nome;
 
+	/**
+	 * Cria e estiliza a tela de login
+	 */
 	public TelaLogin() {
 		login.setLayout(null);
 		login.setSize(400, 250);
@@ -67,17 +70,16 @@ public class TelaLogin implements ActionListener {
 
 	@Override
 	/**
-	 * metodo para receber a acao do usuario
+	 * Recebe os eventos dos botoes
 	 * 
-	 * @param vazio
-	 * @return vazio
+	 * @param e - acao realizada/botao selecionado
 	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 
 		if (src == concluir) {
 			/**
-			 * se o nome estiver registrado no banco de dados o menu e aberto se nao, ele
+			 * se o nome estiver registrado no banco de dados o menu sera aberto, se nao ele
 			 * exibe uma mensagem de erro
 			 */
 			nome = directionValue.getText();
@@ -93,7 +95,7 @@ public class TelaLogin implements ActionListener {
 			new ViewCadastro(dados, 2);
 		}
 		if (src == usuarios) {
-			new ListView(1);
+			new ListView(dados, 1);
 		}
 
 	}

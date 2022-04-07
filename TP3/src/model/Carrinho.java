@@ -5,19 +5,23 @@ public class Carrinho {
 	private double valorTotal;
 	private int quantidadeEbooks;
 	private Ebook[] ebooks = new Ebook[50];
-	private Venda venda;
 
-	public Carrinho(double p, int quant, Ebook ebook, Venda v) {
+	/**
+	 * Cria um carrinho
+	 * 
+	 * @param p     - soma do valor de todos os ebooks do carrinho
+	 * @param quant - quantidade de ebooks no carrinho
+	 * @param ebook - array de ebooks
+	 */
+	public Carrinho(double p, int quant, Ebook ebook) {
 		this.valorTotal = p;
 		this.quantidadeEbooks = quant;
-		this.ebooks[0] = ebook;
-		this.venda = v;
+		this.ebooks[quantidadeEbooks] = ebook;
 	}
 
 	@Override
 	public String toString() {
-		return "Total: " + this.valorTotal +
-				"\nQuantidade de ebooks: " + this.quantidadeEbooks;
+		return "Total: " + this.valorTotal + "\nQuantidade de ebooks: " + this.quantidadeEbooks;
 	}
 
 	public double getvalorTotal() {
@@ -42,13 +46,6 @@ public class Carrinho {
 
 	public void setEbooks(Ebook[] ebooks) {
 		this.ebooks = ebooks;
-	}
 
-	public Venda getVenda() {
-		return venda;
-	}
-
-	public void setVenda(Venda venda) {
-		this.venda = venda;
 	}
 }

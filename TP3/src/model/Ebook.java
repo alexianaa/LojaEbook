@@ -14,6 +14,21 @@ public class Ebook {
 	private int anoPublicacao;
 	private Editora infoEditora;
 
+	/**
+	 * Cria um ebook
+	 * 
+	 * @param id   - id do ebook
+	 * @param t    - titulo
+	 * @param a    - autor
+	 * @param c    - categoria
+	 * @param s    - sinopse
+	 * @param i    - idioma
+	 * @param p    - preco do ebook
+	 * @param tam  - tamanho do arquivo do ebook
+	 * @param pag  - quantidade de paginas
+	 * @param ano  - ano de publicacao
+	 * @param info - Editora do ebook
+	 */
 	public Ebook(int id, String t, String a, String c, String s, String i, double p, double tam, int pag, int ano,
 			Editora info) {
 		idEbook = id;
@@ -31,16 +46,10 @@ public class Ebook {
 
 	@Override
 	public String toString() {
-		return "Ebook: " + this.titulo +
-				"\nAutor: " + this.autor +
-				"\nCategoria: " + this.categoria +
-				"\nSinopse: " + this.sinopse +
-				"\nIdioma: " + this.idioma +
-				"\nPreco: " + this.valorLivro +
-				"\nTamanho do arquivo: " + this.tamanhoArquivo +
-				"\nQuantidade de paginas: " + this.numPaginas +
-				"\nAno de publicacao: " + this.anoPublicacao +
-				"\nEditora: " + this.infoEditora.nome;
+		return "Ebook: " + this.titulo + "\nAutor: " + this.autor + "\nCategoria: " + this.categoria + "\nSinopse: "
+				+ this.sinopse + "\nIdioma: " + this.idioma + "\nPreco: " + this.valorLivro + "\nTamanho do arquivo: "
+				+ this.tamanhoArquivo + "\nQuantidade de paginas: " + this.numPaginas + "\nAno de publicacao: "
+				+ this.anoPublicacao + "\nEditora: " + this.infoEditora.nome;
 	}
 
 	public int getIdEbook() {

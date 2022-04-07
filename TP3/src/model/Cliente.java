@@ -6,10 +6,24 @@ public class Cliente extends Entidade {
 	private String cpf;
 	private Carrinho carrinho;
 
+	/**
+	 * Recebe os atributos da classe abstrata entidade
+	 */
 	public Cliente() {
 		super();
 	}
 
+	/**
+	 * Cria um cliente
+	 * 
+	 * @param n   - nome
+	 * @param e   - email
+	 * @param i   - id
+	 * @param num - numero de telefone
+	 * @param d   - data de nascimento
+	 * @param c   - cpf
+	 * @param car - carrinho
+	 */
 	public Cliente(String n, String e, int i, Telefone num, String d, String c, Carrinho car) {
 		this.nome = n;
 		this.email = e;
@@ -22,12 +36,8 @@ public class Cliente extends Entidade {
 
 	@Override
 	public String toString() {
-		return "Nome: " + this.nome +
-				"\nEmail: " + this.email +
-				"\nTelefone: " + this.numCel +
-				"\nData de nascimento: " + this.dataNascimento +
-				"\nCPF: " + this.cpf +
-				"\nCarrinho: " + this.carrinho;
+		return "Nome: " + this.nome + "\nEmail: " + this.email + "\nTelefone: " + this.numCel + "\nData de nascimento: "
+				+ this.dataNascimento + "\nCPF: " + this.cpf + "\nCarrinho: " + this.carrinho;
 	}
 
 	public Carrinho getCarrinho() {

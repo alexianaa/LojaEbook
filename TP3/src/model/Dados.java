@@ -10,6 +10,9 @@ public class Dados {
 	private static final ArrayList<Ebook> ebooks = new ArrayList<>();
 	private static final ArrayList<Cliente> clientes = new ArrayList<>();
 
+	/**
+	 * Funcao para preencher os dados
+	 */
 	public void preencher() {
 		String pattern = "dd/MM/yyyy";
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
@@ -39,14 +42,12 @@ public class Dados {
 			}
 		}
 
-		// cria 10 clientes
-		for (int a = 0; a < 10; a++) {
+		// cria 5 clientes
+		for (int a = 0; a < 5; a++) {
 			Telefone num3 = new Telefone(61 + a, "num" + a);
 			String date3 = simpleDateFormat.format(new Date());
-			Venda venda = new Venda("", 0);
-			Carrinho carrinho = new Carrinho(0.0, 0, null, venda);
-			Cliente cliente = new Cliente("nome" + a, "email" + a, a, num3, date3, "10578932564" + a,
-					carrinho);
+			Carrinho carrinho = new Carrinho(0.0, 0, null);
+			Cliente cliente = new Cliente("nome" + a, "email" + a, a, num3, date3, "10578932564" + a, carrinho);
 			Dados.getClientes().add(cliente);
 		}
 
