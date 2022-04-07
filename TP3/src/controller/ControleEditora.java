@@ -9,9 +9,12 @@ public class ControleEditora {
 	public int qtdEditoras = Dados.getEditoras().size();
 
 	public ControleEditora() {
-		editora = new Editora();
+
 	}
 
+	/**
+	 * Cadastra uma editora no sistema
+	 */
 	public static void cadastrar() {
 		/*
 		 * Scanner ler = new Scanner(System.in); String nome, email, cnpj, numero,
@@ -41,7 +44,10 @@ public class ControleEditora {
 		 */
 	}
 
-	public static void buscarEditora() {
+	/**
+	 * Busca uma editora
+	 */
+	public static void buscarEditora(String nome) {
 		/*
 		 * Scanner ler = new Scanner(System.in);
 		 * System.out.println("Voce deseja buscar pelo nome ou pelo id?");
@@ -74,6 +80,11 @@ public class ControleEditora {
 		 */
 	}
 
+	/**
+	 * Retorna uma string com o nome das editoras cadastradas
+	 * 
+	 * @return
+	 */
 	public String[] showNames() {
 		String[] names = new String[Dados.getEditoras().size()];
 		for (Editora edit : Dados.getEditoras()) {

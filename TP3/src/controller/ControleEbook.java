@@ -9,6 +9,9 @@ public class ControleEbook {
 
 	}
 
+	/**
+	 * Cadastra um ebook no sistema
+	 */
 	public static void cadastrar() {
 		/*
 		 * Scanner ler = new Scanner(System.in); Editora infoEditora = null; String
@@ -52,6 +55,9 @@ public class ControleEbook {
 		 */
 	}
 
+	/**
+	 * Exclui um ebook do sistema
+	 */
 	public static void excluirEbook() {
 		/*
 		 * Scanner ler = new Scanner(System.in);
@@ -62,6 +68,11 @@ public class ControleEbook {
 		 */
 	}
 
+	/**
+	 * Retorna informacoes do ebook selecionado
+	 * 
+	 * @param nome - string com o nome do ebook
+	 */
 	public static void buscarEbook(String nome) {
 		/*
 		 * Scanner ler = new Scanner(System.in); String opcaoString; int opcao;
@@ -79,6 +90,11 @@ public class ControleEbook {
 		 */
 	}
 
+	/**
+	 * Retorna uma string com os titulos dos ebooks cadastrados no sistema
+	 * 
+	 * @return
+	 */
 	public String[] showTitulos() {
 		String[] titulos = new String[Dados.getEbooks().size()];
 		for (Ebook edit : Dados.getEbooks()) {

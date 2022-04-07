@@ -27,9 +27,6 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 
 	/**
 	 * Cria janela de busca por ebook
-	 * 
-	 * @param vazio
-	 * @return vazio
 	 */
 	ViewMenuLivro() {
 
@@ -108,7 +105,6 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 	 * Cria janela com informacoes da busca por ebook
 	 * 
 	 * @param tituloEbook - nome do ebook
-	 * @return vazio
 	 */
 	ViewMenuLivro(String tituloEbook) {
 
@@ -175,10 +171,9 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 
 	@Override
 	/**
-	 * Recebe os eventos do botao
+	 * Recebe os eventos dos botoes
 	 * 
-	 * @param evento
-	 * @return vazio
+	 * @param e - acao realizada/botao selecionado
 	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();

@@ -26,8 +26,6 @@ public class ViewEditora extends JFrame implements ActionListener {
 	/**
 	 * Cria a tela de busca de informacoes de editora
 	 * 
-	 * @param vazio
-	 * @return vazio
 	 */
 	public ViewEditora() {
 
@@ -97,7 +95,6 @@ public class ViewEditora extends JFrame implements ActionListener {
 	 * Cria a tela de exibicao de informacoes de editora
 	 * 
 	 * @param nomeEditora - nome da editora buscada
-	 * @return vazio
 	 */
 	ViewEditora(String nomeEditora) {
 
@@ -140,10 +137,9 @@ public class ViewEditora extends JFrame implements ActionListener {
 
 	@Override
 	/**
-	 * Recebe os eventos do botao
+	 * Recebe os eventos dos botoes
 	 * 
-	 * @param evento
-	 * @return vazio
+	 * @param e - acao realizada/botao selecionado
 	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();

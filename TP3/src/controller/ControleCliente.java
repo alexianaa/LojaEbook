@@ -3,25 +3,35 @@ package controller;
 import model.Carrinho;
 import model.Cliente;
 import model.Dados;
-import model.Ebook;
 import model.Telefone;
-import model.Venda;
 
 public class ControleCliente {
 
 	public static Cliente cliente;
 	public int qtdClientes = Dados.getClientes().size();
 
+	/**
+	 * Cria um cliente
+	 */
 	public ControleCliente() {
 		cliente = new Cliente();
 	}
 
+	/**
+	 * Cadastra um cliente ao sistema
+	 * 
+	 * @param n    - nome
+	 * @param e    - email
+	 * @param date - data de aniversario
+	 * @param d    - ddd do telefone
+	 * @param num  - numero do telefone
+	 * @param c    - cria um carrinho para o cliente
+	 */
 	public void cadastrarCliente(String n, String e, String date, String d, String num, String c) {
 
 		int ddd = Integer.parseInt(d);
 		Telefone numero = new Telefone(ddd, num);
-		Venda venda = new Venda("", 0);
-		Carrinho carrinho = new Carrinho(0.0, 0, null, venda);
+		Carrinho carrinho = new Carrinho(0.0, 0, null);
 
 		// gerar id
 		int idNovo = 0;
@@ -36,6 +46,12 @@ public class ControleCliente {
 		Dados.getClientes().add(cliente);
 	}
 
+	/**
+	 * Exclui um cliente do sistema
+	 * 
+	 * @param nomeCliente - string com o nome do cliente a ser excluido
+	 * @return
+	 */
 	public static boolean excluirCliente(String nomeCliente) {
 		for (Cliente edit : Dados.getClientes()) {
 			if (edit.getNome().equals(nomeCliente)) {
@@ -46,14 +62,12 @@ public class ControleCliente {
 		return false;
 	}
 
-	public void adicionarCarrinho(Ebook ebook, Carrinho carrinho) {
-		/*
-		 * carrinho.setPreco(ebook.getPreco() + carrinho.getPreco());
-		 * carrinho.adicionarEbook(ebook);
-		 * carrinho.setQuantidadeEbooks(carrinho.getQuantidadeEbooks() + 1);
-		 */
-	}
-
+	/**
+	 * Retorna se existe um usuario com o nome recebido
+	 * 
+	 * @param c - nome do possivel cliente
+	 * @return
+	 */
 	public static boolean existeUsuario(String c) {
 		for (Cliente edit : Dados.getClientes()) {
 			if (edit.getNome().equals(c)) {
@@ -63,6 +77,11 @@ public class ControleCliente {
 		return false;
 	}
 
+	/**
+	 * Retorna um array com o nome dos clientes cadastrados no sistema
+	 * 
+	 * @return
+	 */
 	public String[] showNames() {
 		String[] names = new String[Dados.getClientes().size()];
 		for (Cliente edit : Dados.getClientes()) {
@@ -71,6 +90,12 @@ public class ControleCliente {
 		return names;
 	}
 
+	/**
+	 * Retorna uma string com as informacoes do cliente
+	 * 
+	 * @param nome - nome do cliente usando o sistema
+	 * @return
+	 */
 	public static String[] returnCliente(String nome) {
 		String[] infos = new String[5];
 		for (Cliente edit : Dados.getClientes()) {

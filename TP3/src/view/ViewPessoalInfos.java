@@ -27,6 +27,12 @@ public class ViewPessoalInfos implements ActionListener {
 	JTextField numeroField;
 	JTextField txtDateField;
 
+	/**
+	 * Mostra as informacaos do usuario
+	 * 
+	 * @param d - dados armazenados
+	 * @param c - nome do cliente
+	 */
 	public ViewPessoalInfos(ControleDados d, String c) {
 		dados = d;
 		cliente = c;
@@ -87,10 +93,9 @@ public class ViewPessoalInfos implements ActionListener {
 
 	@Override
 	/**
-	 * Recebe os eventos do botao
+	 * Recebe os eventos dos botoes
 	 * 
-	 * @param evento
-	 * @return vazio
+	 * @param e - acao realizada/botao selecionado
 	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();

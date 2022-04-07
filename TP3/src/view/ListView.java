@@ -38,9 +38,8 @@ public class ListView implements ActionListener, ListSelectionListener {
 	/**
 	 * Cria as telas de listagem
 	 * 
-	 * @param dados controller de dados e a opcao selecionada: editora, ebook ou
-	 *              cliente
-	 * @return vazio
+	 * @param d  - dados armazenados
+	 * @param op - numero da opcao selecionada: listar cliente, editora ou ebook
 	 */
 	public ListView(ControleDados d, int op) {
 		dados = d;
@@ -130,7 +129,9 @@ public class ListView implements ActionListener, ListSelectionListener {
 
 	@Override
 	/**
-	 * Funcao para ler os eventos dos botoes
+	 * Recebe os eventos dos botoes
+	 * 
+	 * @param e - acao realizada/botao selecionado
 	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();

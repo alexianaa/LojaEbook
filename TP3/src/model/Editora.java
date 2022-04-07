@@ -5,10 +5,23 @@ public class Editora extends Entidade {
 	private String cnpj;
 	private String dataAfiliacao;
 
+	/**
+	 * Recebe os atributos da classe abstrata Entidade
+	 */
 	public Editora() {
 		super();
 	}
 
+	/**
+	 * Cria uma editora
+	 * 
+	 * @param n   - nome
+	 * @param e   - email
+	 * @param i   - id
+	 * @param num - numero de telefone
+	 * @param c   - cnpj
+	 * @param d   - data de afiliacao ao site
+	 */
 	public Editora(String n, String e, int i, Telefone num, String c, String d) {
 		this.nome = n;
 		this.email = e;

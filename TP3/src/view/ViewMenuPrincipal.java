@@ -27,7 +27,6 @@ public class ViewMenuPrincipal extends JFrame implements ActionListener {
 	 * 
 	 * @param dados - dados armazenados
 	 * @param c     - nomde do cliente
-	 * @return vazio
 	 */
 	public ViewMenuPrincipal(ControleDados dados, String c) {
 		cliente = c;
@@ -99,10 +98,9 @@ public class ViewMenuPrincipal extends JFrame implements ActionListener {
 
 	@Override
 	/**
-	 * Recebe os eventos do botao
+	 * Recebe os eventos dos botoes
 	 * 
-	 * @param evento
-	 * @return vazio
+	 * @param e - acao realizada/botao selecionado
 	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();

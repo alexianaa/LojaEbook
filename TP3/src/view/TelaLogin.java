@@ -33,9 +33,6 @@ public class TelaLogin implements ActionListener {
 
 	/**
 	 * Cria e estiliza a tela de login
-	 * 
-	 * @param vazio nao ha parametros
-	 * @return vazio nao ha retorno
 	 */
 	public TelaLogin() {
 		login.setLayout(null);
@@ -70,13 +67,12 @@ public class TelaLogin implements ActionListener {
 	}
 
 	@Override
+	/**
+	 * Recebe os eventos dos botoes
+	 * 
+	 * @param e - acao realizada/botao selecionado
+	 */
 	public void actionPerformed(ActionEvent e) {
-		/**
-		 * metodo para receber a acao do usuario
-		 * 
-		 * @param vazio nao ha parametros
-		 * @return vazio nao ha retorno
-		 */
 		Object src = e.getSource();
 
 		if (src == concluir) {

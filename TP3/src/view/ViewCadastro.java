@@ -44,9 +44,8 @@ public class ViewCadastro implements ActionListener {
 	/**
 	 * Criacao da tela de cadastro de editora, cliente e ebook
 	 * 
-	 * @param dados - dados armazenados
-	 * @param opcao - qual cadastro vai ser selecionado
-	 * @return vazio - nao ha retorno
+	 * @param d  - dados armazenados
+	 * @param op - qual cadastro vai ser selecionado
 	 */
 	public ViewCadastro(ControleDados d, int op) {
 		dados = d;
@@ -133,8 +132,7 @@ public class ViewCadastro implements ActionListener {
 	/**
 	 * Recebe os eventos dos botoes
 	 * 
-	 * @param evento
-	 * @return vazio - nao ha retorno
+	 * @param e - acao realizada/botao selecionado
 	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
