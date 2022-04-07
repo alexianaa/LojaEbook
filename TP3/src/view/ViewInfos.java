@@ -22,6 +22,12 @@ public class ViewInfos implements ActionListener {
 	public ControleDados dados;
 	String cliente;
 
+	/**
+	 * Cria tela de visualizacao de informacoes dependendo do campo selecionado
+	 * 
+	 * @param dados - dados armazenados
+	 * @param c     - nome do cliente
+	 */
 	public ViewInfos(ControleDados d, String c) {
 		cliente = c;
 		dados = d;
@@ -56,10 +62,16 @@ public class ViewInfos implements ActionListener {
 		janela.add(listarEbook);
 		janela.add(pessoalInfo);
 		janela.add(voltar);
+		janela.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		janela.setVisible(true);
 	}
 
 	@Override
+	/**
+	 * Recebe os eventos dos botoes
+	 * 
+	 * @param e - acao realizada/botao selecionado
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 
@@ -71,10 +83,11 @@ public class ViewInfos implements ActionListener {
 
 		} else if (src == pessoalInfo) {
 			janela.dispose();
-			new ViewPessoalInfos(cliente);
+			new ViewPessoalInfos(dados, cliente);
 
 		} else if (src == voltar) {
 			janela.dispose();
+			new ViewMenuPrincipal(dados, cliente);
 		}
 
 	}

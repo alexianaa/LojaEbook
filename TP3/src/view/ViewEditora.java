@@ -12,33 +12,38 @@ import javax.swing.JTextField;
 
 import controller.ControleDados;
 
+@SuppressWarnings("serial")
 public class ViewEditora extends JFrame implements ActionListener {
 	JButton botaoBusca;
 	JButton botaoAdicionaEditora;
 	JButton botaoVoltar;
 	JButton botaoExcluir;
-	JLabel texto1;
-	JTextField campoTexto;
+	JLabel nomeEditora1;
+	JTextField campoNomeEditora;
 	public ControleDados dados;
 	public String cliente;
 
-	ViewEditora() {
+	/**
+	 * Cria a tela de busca de informacoes de editora
+	 * 
+	 */
+	public ViewEditora() {
 
-		campoTexto = new JTextField();
-		campoTexto.setBounds(440, 100, 400, 50);
-		campoTexto.setFont(new Font("Comic Sans", Font.BOLD, 40));
-		campoTexto.setForeground(new Color(0x74FF68));
-		campoTexto.setBackground(Color.darkGray);
-		campoTexto.setCaretColor(Color.white);
-		campoTexto.setText("Nome Editora");
-		campoTexto.setHorizontalAlignment(JTextField.CENTER);
+		campoNomeEditora = new JTextField();
+		campoNomeEditora.setBounds(440, 100, 400, 50);
+		campoNomeEditora.setFont(new Font("Comic Sans", Font.BOLD, 40));
+		campoNomeEditora.setForeground(new Color(0x74FF68));
+		campoNomeEditora.setBackground(Color.darkGray);
+		campoNomeEditora.setCaretColor(Color.white);
+		campoNomeEditora.setText("Nome Editora");
+		campoNomeEditora.setHorizontalAlignment(JTextField.CENTER);
 
-		texto1 = new JLabel();
-		texto1.setText("Buscar Editora");
-		texto1.setBounds(440, 20, 400, 50);
-		texto1.setForeground(Color.cyan);
-		texto1.setFont(new Font("Comic Sans", Font.BOLD, 50));
-		texto1.setHorizontalAlignment(JLabel.CENTER);
+		nomeEditora1 = new JLabel();
+		nomeEditora1.setText("Buscar Editora");
+		nomeEditora1.setBounds(440, 20, 400, 50);
+		nomeEditora1.setForeground(Color.cyan);
+		nomeEditora1.setFont(new Font("Comic Sans", Font.BOLD, 50));
+		nomeEditora1.setHorizontalAlignment(JLabel.CENTER);
 
 		botaoBusca = new JButton();
 		botaoAdicionaEditora = new JButton();
@@ -78,23 +83,27 @@ public class ViewEditora extends JFrame implements ActionListener {
 		this.setResizable(false);
 		this.setTitle("Buscar Editoras");
 		this.getContentPane().setBackground(Color.gray);
-		this.add(texto1);
-		this.add(campoTexto);
+		this.add(nomeEditora1);
+		this.add(campoNomeEditora);
 		this.add(botaoBusca);
 		this.add(botaoAdicionaEditora);
 		this.add(botaoVoltar);
 		this.setVisible(true);
 	}
 
-	ViewEditora(String texto) {
-		// texto
-		texto1 = new JLabel();
-		texto1.setText("Editora" + " " + texto);
-		texto1.setBounds(0, 20, 1280, 50);
-		texto1.setForeground(Color.cyan);
-		texto1.setFont(new Font("Comic Sans", Font.BOLD, 50));
-		texto1.setHorizontalAlignment(JLabel.CENTER);
-		// botoes
+	/**
+	 * Cria a tela de exibicao de informacoes de editora
+	 * 
+	 * @param nomeEditora - nome da editora buscada
+	 */
+	ViewEditora(String nomeEditora) {
+
+		nomeEditora1 = new JLabel();
+		nomeEditora1.setText("Editora" + " " + nomeEditora);
+		nomeEditora1.setBounds(0, 20, 1280, 50);
+		nomeEditora1.setForeground(Color.cyan);
+		nomeEditora1.setFont(new Font("Comic Sans", Font.BOLD, 50));
+		nomeEditora1.setHorizontalAlignment(JLabel.CENTER);
 
 		botaoVoltar = new JButton();
 		botaoExcluir = new JButton();
@@ -118,21 +127,26 @@ public class ViewEditora extends JFrame implements ActionListener {
 		this.setSize(1280, 720);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
-		this.setTitle("Editora" + " " + texto);
+		this.setTitle("Editora" + " " + nomeEditora);
 		this.getContentPane().setBackground(Color.gray);
-		this.add(texto1);
+		this.add(nomeEditora1);
 		this.add(botaoVoltar);
 		this.add(botaoExcluir);
 		this.setVisible(true);
 	}
 
 	@Override
+	/**
+	 * Recebe os eventos dos botoes
+	 * 
+	 * @param e - acao realizada/botao selecionado
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 
 		if (src == botaoBusca) {
 			this.dispose();
-			new ViewEditora(campoTexto.getText());
+			new ViewEditora(campoNomeEditora.getText());
 		} else if (src == botaoAdicionaEditora) {
 
 		} else if (src == botaoVoltar) {

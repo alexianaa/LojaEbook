@@ -4,6 +4,12 @@ public class Telefone {
 	private int ddd;
 	private String celular;
 
+	/**
+	 * Cria um telefone
+	 * 
+	 * @param i - ddd
+	 * @param j - numero do celular
+	 */
 	public Telefone(int i, String j) {
 		this.ddd = i;
 		this.celular = j;

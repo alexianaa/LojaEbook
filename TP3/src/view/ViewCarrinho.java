@@ -11,61 +11,73 @@ import javax.swing.JLabel;
 
 import controller.ControleDados;
 
+@SuppressWarnings("serial")
 public class ViewCarrinho extends JFrame implements ActionListener {
-	JButton botaoExcluir; // define como botao
-	JButton botaoVoltar; // =
-	JButton botaoConcluir;// define como botao
-	JLabel texto1;// define como texto
+	JButton botaoExcluir;
+	JButton botaoVoltar;
+	JButton botaoConcluir;
+	JLabel texto1;
 	public ControleDados dados;
 	public String nomeCliente;
 
-	ViewCarrinho() {
-		// texto
-		texto1 = new JLabel();// cria texto
-		texto1.setText("Carrinho");// define o texto
-		texto1.setBounds(440, 20, 400, 50);// posicao do texto e tamanho da sua "caixa"
-		texto1.setForeground(Color.cyan);// cor do texto
-		texto1.setFont(new Font("Comic Sans", Font.BOLD, 50));// fonte do texto
-		texto1.setHorizontalAlignment(JLabel.CENTER);// deixa o texto no centro da "caixa"
-		// botoes
-		botaoExcluir = new JButton(); // cria botao
-		botaoVoltar = new JButton(); // =
-		botaoConcluir = new JButton(); // cria botao
-		botaoExcluir.setBounds(100, 580, 200, 40); // coloca o botao em certa posicao no frame e define suas medidas
-		botaoVoltar.setBounds(540, 580, 200, 40); // =
-		botaoConcluir.setBounds(980, 580, 200, 40); // coloca o botao em certa posicao no frame e define suas medidas
-		botaoExcluir.setText("Excluir da lista"); // define o texto do botao
-		botaoVoltar.setText("Voltar"); // =
-		botaoConcluir.setText("Concluir"); // define o texto do botao
-		botaoExcluir.setFocusable(false); // tira a caixa de foco do botao
-		botaoVoltar.setFocusable(false); // =
-		botaoConcluir.setFocusable(false); // tira a caixa de foco do botao
-		botaoExcluir.setFont(new Font("Comic Sans", Font.BOLD, 20)); // define a fonte do texto no botao
-		botaoVoltar.setFont(new Font("Comic Sans", Font.BOLD, 20)); // =
-		botaoConcluir.setFont(new Font("Comic Sans", Font.BOLD, 20)); // define a fonte do texto no botao
-		botaoExcluir.setForeground(Color.cyan); // define cor do texto
-		botaoVoltar.setForeground(Color.cyan); // =
-		botaoConcluir.setForeground(Color.cyan); // define cor do texto
-		botaoExcluir.setBackground(Color.darkGray); // define cor do botao
-		botaoVoltar.setBackground(Color.darkGray); // =
-		botaoConcluir.setBackground(Color.darkGray); // define cor do botao
-		botaoVoltar.addActionListener(this);// adiciona um leitor de ação para o botão
-		botaoConcluir.addActionListener(this);// adiciona um leitor de ação para o botão
-		// Jframe
-		this.setLayout(null); // define o tipo de layout pra nenhum
-		this.setSize(1280, 720); // define o tamanho do JFrame
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // define o botão X como fechar
-		this.setResizable(false); // não deixa o tamanho ser moficavel
-		this.setTitle("Carrinho"); // da um titulo ao JFrame
-		this.getContentPane().setBackground(Color.gray); // define a cor de fundo do JFrame
-		this.add(texto1);// adiciona texto
-		this.add(botaoExcluir); // adiciona botoes
-		this.add(botaoVoltar); // =
-		this.add(botaoConcluir); // adiciona botoes
-		this.setVisible(true); // deixa o JFrame visivel
+	/**
+	 * Cria a view do carrinho do cliente
+	 */
+	public ViewCarrinho() {
+
+		texto1 = new JLabel();
+		texto1.setText("Carrinho");
+		texto1.setBounds(440, 20, 400, 50);
+		texto1.setForeground(Color.cyan);
+		texto1.setFont(new Font("Comic Sans", Font.BOLD, 50));
+		texto1.setHorizontalAlignment(JLabel.CENTER);
+
+		botaoExcluir = new JButton("Excluir da lista");
+		botaoVoltar = new JButton("Voltar");
+		botaoConcluir = new JButton("Concluir");
+
+		botaoExcluir.setBounds(100, 580, 200, 40);
+		botaoVoltar.setBounds(540, 580, 200, 40);
+		botaoConcluir.setBounds(980, 580, 200, 40);
+
+		botaoExcluir.setFocusable(false);
+		botaoVoltar.setFocusable(false);
+		botaoConcluir.setFocusable(false);
+
+		botaoExcluir.setFont(new Font("Comic Sans", Font.BOLD, 20));
+		botaoVoltar.setFont(new Font("Comic Sans", Font.BOLD, 20));
+		botaoConcluir.setFont(new Font("Comic Sans", Font.BOLD, 20));
+
+		botaoExcluir.setForeground(Color.cyan);
+		botaoVoltar.setForeground(Color.cyan);
+		botaoConcluir.setForeground(Color.cyan);
+
+		botaoExcluir.setBackground(Color.darkGray);
+		botaoVoltar.setBackground(Color.darkGray);
+		botaoConcluir.setBackground(Color.darkGray);
+
+		botaoVoltar.addActionListener(this);
+		botaoConcluir.addActionListener(this);
+
+		this.setLayout(null);
+		this.setSize(1280, 720);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(false);
+		this.setTitle("Carrinho");
+		this.getContentPane().setBackground(Color.gray);
+		this.add(texto1);
+		this.add(botaoExcluir);
+		this.add(botaoVoltar);
+		this.add(botaoConcluir);
+		this.setVisible(true);
 	}
 
 	@Override
+	/**
+	 * Recebe os eventos dos botoes
+	 * 
+	 * @param e - acao realizada/botao selecionado
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 

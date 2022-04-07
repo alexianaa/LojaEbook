@@ -11,12 +11,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import controller.ControleCliente;
+import controller.ControleDados;
 
 public class ViewPessoalInfos implements ActionListener {
 
 	private JFrame janela = new JFrame("Loja de Ebook");
 	private JLabel titulo = new JLabel("Informacoes pessoais");
 	private JButton excluir = new JButton("Excluir");
+	private JButton voltar = new JButton("Voltar");
+	public ControleDados dados;
 	private static String cliente;
 	JTextField nomeField;
 	JTextField emailField;
@@ -24,13 +27,20 @@ public class ViewPessoalInfos implements ActionListener {
 	JTextField numeroField;
 	JTextField txtDateField;
 
-	public ViewPessoalInfos(String c) {
+	/**
+	 * Mostra as informacaos do usuario
+	 * 
+	 * @param d - dados armazenados
+	 * @param c - nome do cliente
+	 */
+	public ViewPessoalInfos(ControleDados d, String c) {
+		dados = d;
 		cliente = c;
 
 		janela.setLayout(null);
-		janela.setSize(600, 500);
+		janela.setSize(550, 550);
 
-		titulo.setBounds(180, 20, 220, 30);
+		titulo.setBounds(150, 20, 220, 30);
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
 
 		JLabel nomeText = new JLabel("Nome: ");
@@ -50,17 +60,19 @@ public class ViewPessoalInfos implements ActionListener {
 		nomeField = new JTextField(infos[0], 200);
 		emailField = new JTextField(infos[1], 200);
 		numeroField = new JTextField(infos[2], 200);
-		cpfField = new JTextField(infos[3], 200);
-		txtDateField = new JTextField(infos[4], 200);
+		txtDateField = new JTextField(infos[3], 200);
+		cpfField = new JTextField(infos[4], 200);
 
 		nomeField.setBounds(260, 100, 160, 30);
 		emailField.setBounds(260, 160, 160, 30);
 		numeroField.setBounds(260, 220, 160, 30);
 		cpfField.setBounds(260, 280, 160, 30);
 		txtDateField.setBounds(260, 340, 160, 30);
-		excluir.setBounds(190, 420, 200, 30);
+		excluir.setBounds(100, 420, 150, 30);
+		voltar.setBounds(270, 420, 150, 30);
 
 		janela.add(excluir);
+		janela.add(voltar);
 		janela.add(nomeText);
 		janela.add(emailText);
 		janela.add(numeroText);
@@ -72,14 +84,19 @@ public class ViewPessoalInfos implements ActionListener {
 		janela.add(cpfField);
 		janela.add(txtDateField);
 		janela.add(titulo);
+		janela.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		janela.setVisible(true);
 
-		// adicionar metodo de salvar informacoes
-		// adicionar metodo de excluir conta
 		excluir.addActionListener(this);
+		voltar.addActionListener(this);
 	}
 
 	@Override
+	/**
+	 * Recebe os eventos dos botoes
+	 * 
+	 * @param e - acao realizada/botao selecionado
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 
@@ -93,6 +110,9 @@ public class ViewPessoalInfos implements ActionListener {
 						JOptionPane.INFORMATION_MESSAGE);
 				janela.dispose();
 			}
+		} else if (src == voltar) {
+			janela.dispose();
+			new ViewInfos(dados, cliente);
 		}
 
 	}

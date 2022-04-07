@@ -11,6 +11,9 @@ public class ControleDados {
 
 	private Dados d = new Dados();
 
+	/**
+	 * Cria os primeiros dados do sistema
+	 */
 	public ControleDados() {
 		d.preencher();
 	}
