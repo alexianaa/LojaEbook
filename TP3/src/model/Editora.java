@@ -5,6 +5,10 @@ public class Editora extends Entidade {
 	private String cnpj;
 	private String dataAfiliacao;
 
+	public Editora() {
+		super();
+	}
+
 	public Editora(String n, String e, int i, Telefone num, String c, String d) {
 		this.nome = n;
 		this.email = e;
@@ -16,9 +20,8 @@ public class Editora extends Entidade {
 
 	@Override
 	public String toString() {
-		return "Editora: " + this.nome + "\nEmail: " + this.email +
-				"\nId: " + this.id + "\nTelefone: " + this.numCel +
-				"\nCNPJ: " + this.cnpj + "\nData de afiliacao: " + this.dataAfiliacao;
+		return "Editora: " + this.nome + "\nEmail: " + this.email + "\nId: " + this.id + "\nTelefone: " + this.numCel
+				+ "\nCNPJ: " + this.cnpj + "\nData de afiliacao: " + this.dataAfiliacao;
 	}
 
 	public String getCnpj() {

@@ -21,7 +21,7 @@ public class ViewMenuPrincipal extends JFrame implements ActionListener {
 	public ControleDados dados;
 	public String cliente;
 
-	ViewMenuPrincipal(ControleDados dados, String c) {
+	public ViewMenuPrincipal(ControleDados dados, String c) {
 		cliente = c;
 
 		JLabel texto1 = new JLabel();
@@ -31,23 +31,17 @@ public class ViewMenuPrincipal extends JFrame implements ActionListener {
 		texto1.setFont(new Font("Comic Sans", Font.BOLD, 50));
 		texto1.setHorizontalAlignment(JLabel.CENTER);
 
-		botaoBuscaLivro = new JButton();
-		botaoBuscaEditora = new JButton();
-		botaoVisualizaInformacoes = new JButton();
-		botaoSair = new JButton();
-		botaoCarrinho = new JButton();
+		botaoBuscaLivro = new JButton("Buscar Livros");
+		botaoBuscaEditora = new JButton("Buscar Editoras");
+		botaoVisualizaInformacoes = new JButton("Gerenciar informacoes");
+		botaoSair = new JButton("Sair");
+		botaoCarrinho = new JButton("Carrinho");
 
 		botaoBuscaLivro.setBounds(440, 100, 400, 40);
 		botaoBuscaEditora.setBounds(440, 185, 400, 40);
 		botaoVisualizaInformacoes.setBounds(440, 270, 400, 40);
 		botaoSair.setBounds(540, 580, 200, 40);
 		botaoCarrinho.setBounds(980, 580, 200, 40);
-
-		botaoBuscaLivro.setText("Buscar Livros");
-		botaoBuscaEditora.setText("Buscar Editoras");
-		botaoVisualizaInformacoes.setText("Gerenciar informacoes");
-		botaoSair.setText("Sair");
-		botaoCarrinho.setText("Carrinho");
 
 		botaoBuscaLivro.setFocusable(false);
 		botaoBuscaEditora.setFocusable(false);
@@ -108,6 +102,7 @@ public class ViewMenuPrincipal extends JFrame implements ActionListener {
 			new ViewInfos(dados, cliente);
 		} else if (src == botaoSair) {
 			this.dispose();
+			new TelaLogin();
 		} else if (src == botaoCarrinho) {
 			new ViewCarrinho();
 		}

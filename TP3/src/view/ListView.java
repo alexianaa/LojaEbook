@@ -5,57 +5,109 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import controller.ControleCliente;
 import controller.ControleDados;
+import controller.ControleEbook;
+import controller.ControleEditora;
 
 public class ListView implements ActionListener, ListSelectionListener {
 
 	private JList<String> listaNomesCadastrados;
 	private ControleCliente cliente = new ControleCliente();
+	private ControleEditora editora = new ControleEditora();
+	private ControleEbook ebook = new ControleEbook();
 	public ControleDados dados;
 	private String[] listaNomes = new String[50];
 	private static JFrame list;
-	private JButton refresh;
+	private JButton refreshCliente;
+	private JButton refreshEditora;
+	private JButton refreshEbook;
+	private JScrollPane scrollPane;
 
 	public ListView(ControleDados d, int op) {
 		dados = d;
 
 		switch (op) {
 		case 1: // listar clientes
-			list = new JFrame("Listagem");
+			list = new JFrame("Listagem de clientes");
 			list.setLayout(null);
 			list.setSize(500, 500);
-			JLabel titulo = new JLabel("Clientes cadastrados");
-			titulo.setBounds(120, 10, 250, 30);
-			list.add(titulo);
 
-			refresh = new JButton("Refresh");
-			refresh.setBounds(130, 180, 100, 30);
-			list.add(refresh);
+			refreshCliente = new JButton("Refresh");
+			refreshCliente.setBounds(130, 160, 100, 30);
+			list.add(refreshCliente);
 
 			listaNomes = cliente.showNames();
 			listaNomesCadastrados = new JList<String>(listaNomes);
-			listaNomesCadastrados.setBounds(60, 50, 250, 120);
+			scrollPane = new JScrollPane();
+			scrollPane.setViewportView(listaNomesCadastrados);
+			scrollPane.setBounds(60, 30, 250, 120);
+			list.add(scrollPane);
+			// listaNomesCadastrados.setBounds(60, 30, 250, 120);
 			listaNomesCadastrados.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 			listaNomesCadastrados.setVisibleRowCount(5);
-			list.add(listaNomesCadastrados);
-
 			listaNomesCadastrados.addListSelectionListener(this);
-			refresh.addActionListener(this);
+
+			refreshCliente.addActionListener(this);
 			list.setSize(400, 250);
 			list.setVisible(true);
 			break;
 		case 2: // listar editoras
+			list = new JFrame("Listagem de editoras");
+			list.setLayout(null);
+			list.setSize(500, 500);
 
+			refreshEditora = new JButton("Refresh");
+			refreshEditora.setBounds(130, 160, 100, 30);
+			list.add(refreshEditora);
+
+			listaNomes = editora.showNames();
+			listaNomesCadastrados = new JList<String>(listaNomes);
+			scrollPane = new JScrollPane();
+			scrollPane.setViewportView(listaNomesCadastrados);
+			scrollPane.setBounds(60, 30, 250, 120);
+			list.add(scrollPane);
+			// listaNomesCadastrados.setBounds(60, 30, 250, 120);
+			listaNomesCadastrados.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+			listaNomesCadastrados.setVisibleRowCount(5);
+			listaNomesCadastrados.addListSelectionListener(this);
+
+			// list.add(listaNomesCadastrados);
+			refreshEditora.addActionListener(this);
+			list.setSize(400, 250);
+			list.setVisible(true);
 			break;
 		case 3: // listar ebooks
+			list = new JFrame("Listagem de ebooks");
+			list.setLayout(null);
+			list.setSize(500, 500);
 
+			refreshEbook = new JButton("Refresh");
+			refreshEbook.setBounds(130, 160, 100, 30);
+			list.add(refreshEbook);
+
+			scrollPane = new JScrollPane();
+			listaNomes = ebook.showTitulos();
+			listaNomesCadastrados = new JList<String>(listaNomes);
+			scrollPane = new JScrollPane();
+			scrollPane.setViewportView(listaNomesCadastrados);
+			scrollPane.setBounds(60, 30, 250, 120);
+			list.add(scrollPane);
+			// listaNomesCadastrados.setBounds(60, 30, 250, 120);
+			listaNomesCadastrados.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+			listaNomesCadastrados.setVisibleRowCount(5);
+			listaNomesCadastrados.addListSelectionListener(this);
+
+			// list.add(listaNomesCadastrados);
+			refreshEbook.addActionListener(this);
+			list.setSize(400, 250);
+			list.setVisible(true);
 			break;
 		}
 
@@ -71,8 +123,14 @@ public class ListView implements ActionListener, ListSelectionListener {
 		Object src = e.getSource();
 
 		// atualiza lista de nomes dos clientes
-		if (src == refresh) {
+		if (src == refreshCliente) {
 			listaNomesCadastrados.setListData(new ControleCliente().showNames());
+			listaNomesCadastrados.updateUI();
+		} else if (src == refreshEditora) {
+			listaNomesCadastrados.setListData(new ControleEditora().showNames());
+			listaNomesCadastrados.updateUI();
+		} else if (src == refreshEbook) {
+			listaNomesCadastrados.setListData(new ControleEbook().showTitulos());
 			listaNomesCadastrados.updateUI();
 		}
 

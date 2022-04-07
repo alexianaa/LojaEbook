@@ -71,10 +71,11 @@ public class ViewInfos implements ActionListener {
 
 		} else if (src == pessoalInfo) {
 			janela.dispose();
-			new ViewPessoalInfos(cliente);
+			new ViewPessoalInfos(dados, cliente);
 
 		} else if (src == voltar) {
 			janela.dispose();
+			new ViewMenuPrincipal(dados, cliente);
 		}
 
 	}

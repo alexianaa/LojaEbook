@@ -31,16 +31,10 @@ public class Ebook {
 
 	@Override
 	public String toString() {
-		return "Ebook: " + this.titulo +
-				"\nAutor: " + this.autor +
-				"\nCategoria: " + this.categoria +
-				"\nSinopse: " + this.sinopse +
-				"\nIdioma: " + this.idioma +
-				"\nPreco: " + this.valorLivro +
-				"\nTamanho do arquivo: " + this.tamanhoArquivo +
-				"\nQuantidade de paginas: " + this.numPaginas +
-				"\nAno de publicacao: " + this.anoPublicacao +
-				"\nEditora: " + this.infoEditora.nome;
+		return "Ebook: " + this.titulo + "\nAutor: " + this.autor + "\nCategoria: " + this.categoria + "\nSinopse: "
+				+ this.sinopse + "\nIdioma: " + this.idioma + "\nPreco: " + this.valorLivro + "\nTamanho do arquivo: "
+				+ this.tamanhoArquivo + "\nQuantidade de paginas: " + this.numPaginas + "\nAno de publicacao: "
+				+ this.anoPublicacao + "\nEditora: " + this.infoEditora.nome;
 	}
 
 	public int getIdEbook() {

@@ -40,7 +40,7 @@ public class Dados {
 		}
 
 		// cria 5 clientes
-		for (int a = 0; a < 3; a++) {
+		for (int a = 0; a < 5; a++) {
 			Telefone num3 = new Telefone(61 + a, "num" + a);
 			String date3 = simpleDateFormat.format(new Date());
 			Venda venda = new Venda("", 0);
