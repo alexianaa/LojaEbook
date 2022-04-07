@@ -19,6 +19,7 @@ public class ViewPessoalInfos implements ActionListener {
 	private JLabel titulo = new JLabel("Informacoes pessoais");
 	private JButton excluir = new JButton("Excluir");
 	private JButton voltar = new JButton("Voltar");
+	private String[] infos;
 	public ControleDados dados;
 	private static String cliente;
 	JTextField nomeField;
@@ -56,7 +57,7 @@ public class ViewPessoalInfos implements ActionListener {
 		txtDateText.setBounds(100, 340, 120, 30);
 
 		// adicionar informacoes do cliente nesses espacos
-		String[] infos = ControleCliente.returnCliente(cliente);
+		infos = ControleCliente.returnCliente(cliente);
 		nomeField = new JTextField(infos[0], 200);
 		emailField = new JTextField(infos[1], 200);
 		numeroField = new JTextField(infos[2], 200);

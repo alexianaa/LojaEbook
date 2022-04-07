@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,7 +26,7 @@ public class ViewMenuPrincipal extends JFrame implements ActionListener {
 	 * Cria janela do menu principal
 	 * 
 	 * @param dados - dados armazenados
-	 * @param c     - nomde do cliente
+	 * @param c     - nome do cliente
 	 */
 	public ViewMenuPrincipal(ControleDados dados, String c) {
 		cliente = c;
@@ -92,7 +93,6 @@ public class ViewMenuPrincipal extends JFrame implements ActionListener {
 		this.add(botaoVisualizaInformacoes);
 		this.add(botaoSair);
 		this.add(botaoCarrinho);
-		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setVisible(true);
 	}
 
@@ -114,7 +114,6 @@ public class ViewMenuPrincipal extends JFrame implements ActionListener {
 			new ViewInfos(dados, cliente);
 		} else if (src == botaoSair) {
 			this.dispose();
-			new TelaLogin();
 		} else if (src == botaoCarrinho) {
 			this.dispose();
 			new ViewCarrinho(cliente, dados);

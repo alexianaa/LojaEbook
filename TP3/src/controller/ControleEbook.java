@@ -13,14 +13,14 @@ public class ControleEbook {
 	 * Cadastra um ebook no sistema
 	 */
 	public static void cadastrar() {
-		
+
 	}
 
 	/**
 	 * Exclui um ebook do sistema
 	 */
 	public static void excluirEbook() {
-		
+
 	}
 
 	/**
@@ -29,13 +29,14 @@ public class ControleEbook {
 	 * @param nome - string com o nome do ebook
 	 */
 	public static void buscarEbook(String nome) {
-		
+
 	}
 
-  /**
-  * Retorna as informacoes do ebook
-  * @param titulo titulo do livro a ser buscado
-  */
+	/**
+	 * Retorna as informacoes do ebook
+	 * 
+	 * @param titulo titulo do livro a ser buscado
+	 */
 	public static String[] infoEbook(String titulo) {
 		String[] ebook = new String[7];
 
@@ -57,10 +58,11 @@ public class ControleEbook {
 		return ebook;
 	}
 
-  /**
-  * Retorna se o ebook existe
-  * @param c titulo do ebook
-  */
+	/**
+	 * Retorna se o ebook existe
+	 * 
+	 * @param c titulo do ebook
+	 */
 	public static boolean existeEbook(String c) {
 		for (Ebook edit : Dados.getEbooks()) {
 			if (edit.getTitulo().equals(c)) {
@@ -68,6 +70,7 @@ public class ControleEbook {
 			}
 		}
 		return false;
+	}
 
 	/**
 	 * Retorna uma string com os titulos dos ebooks cadastrados no sistema

@@ -8,8 +8,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import controller.ControleDados;
+import controller.ControleVenda;
 
 @SuppressWarnings("serial")
 public class ViewCarrinho extends JFrame implements ActionListener {
@@ -18,26 +23,26 @@ public class ViewCarrinho extends JFrame implements ActionListener {
 	JButton botaoConcluir;
 	JLabel texto1;
 	public ControleDados dados;
-  public ControleCliente cliente;
 	public String nomeCliente;
+	String cliente;
 
 	/**
 	 * Cria a view do carrinho do cliente
 	 */
-	public ViewCarrinho(ControleCliente c, ControleDados d) {
-    cliente = c;
-    dados = d;
-   
-    String[] listaNomes = ControleVenda.infoCarrinho(cliente);
-    JList<String> listaCarrinho = new JList<String>(listaNomes);
-    listaCarrinho.setBounds(150, 73, 980, 350);
-    listaCarrinho.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-    listaCarrinho.setVisibleRowCount(5);
-    listaCarrinho.setForeground(Color.white);
-    listaCarrinho.setBackground(Color.gray);
-    this.add(listaCarrinho);
-    listaCarrinho.addListSelectionListener(this);
-    
+	public ViewCarrinho(String c, ControleDados d) {
+		cliente = c;
+		dados = d;
+
+		String[] listaNomes = ControleVenda.infoCarrinho(cliente);
+		JList<String> listaCarrinho = new JList<String>(listaNomes);
+		listaCarrinho.setBounds(150, 73, 980, 350);
+		listaCarrinho.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+		listaCarrinho.setVisibleRowCount(5);
+		listaCarrinho.setForeground(Color.white);
+		listaCarrinho.setBackground(Color.gray);
+		this.add(listaCarrinho);
+		listaCarrinho.addListSelectionListener((ListSelectionListener) this);
+
 		texto1 = new JLabel();
 		texto1.setText("Carrinho");
 		texto1.setBounds(440, 20, 400, 50);
@@ -104,15 +109,14 @@ public class ViewCarrinho extends JFrame implements ActionListener {
 			new ViewMenuPrincipal(dados, nomeCliente);
 		}
 	}
-  
-   @Override
-  /**
+
+	/**
 	 * Recebe os eventos das listas
 	 * 
 	 * @param e - elemento da lista selecionado
 	 */
-    public void valueChanged(ListSelectionEvent arg0) {
-        // TODO Auto-generated method stub
-    }
-  
+	public void valueChanged(ListSelectionEvent arg0) {
+		// TODO Auto-generated method stub
+	}
+
 }

@@ -8,9 +8,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import controller.ControleDados;
+import controller.ControleEbook;
 
 @SuppressWarnings("serial")
 public class ViewMenuLivro extends JFrame implements ActionListener {
@@ -24,7 +26,6 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 	JTextField campoTituloEbook;
 	public ControleDados dados;
 	public String nomeCliente;
-
 
 	/**
 	 * Cria janela de busca por ebook
@@ -107,16 +108,25 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 	 * 
 	 * @param tituloEbook - nome do ebook
 	 */
-	ViewMenuLivro(String tituloEbook, String[] s) {
-  
-    JLabel item0 = new JLabel("categoria: " + s[0]);
+	ViewMenuLivro(String tituloEbook) {
+
+		String[] s = ControleEbook.infoEbook(tituloEbook);
+		JLabel item0 = new JLabel("Categoria: " + s[0]);
 		JLabel item1 = new JLabel("Autor: " + s[1]);
 		JLabel item2 = new JLabel("Idioma disponivel: " + s[2]);
 		JLabel item3 = new JLabel("numero de paginas: " + s[3]);
 		JLabel item4 = new JLabel("Preco: " + "R$" + s[4]);
 		JLabel item5 = new JLabel("Ano de publicacao: " + s[5]);
 		JLabel item6 = new JLabel("tamanho do arquivo: " + s[6]);
-  
+
+		item0.setBounds(150, 100, 500, 30);
+		item1.setBounds(150, 140, 500, 30);
+		item2.setBounds(150, 180, 500, 30);
+		item3.setBounds(150, 220, 500, 30);
+		item4.setBounds(150, 260, 500, 30);
+		item5.setBounds(150, 300, 500, 30);
+		item6.setBounds(150, 340, 500, 30);
+
 		item0.setFont(new Font("Comic Sans", Font.BOLD, 25));
 		item1.setFont(new Font("Comic Sans", Font.BOLD, 25));
 		item2.setFont(new Font("Comic Sans", Font.BOLD, 25));
@@ -125,39 +135,31 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 		item5.setFont(new Font("Comic Sans", Font.BOLD, 25));
 		item6.setFont(new Font("Comic Sans", Font.BOLD, 25));
 
-		JPanel itens = new JPanel();
-		itens.setLayout(new GridLayout(10, 1));
-		itens.setBackground(Color.gray);
-		itens.setBounds(150, 73, 980, 350);
-		itens.add(item0);
-		itens.add(item1);
-		itens.add(item2);
-		itens.add(item3);
-		itens.add(item4);
-		itens.add(item5);
-		itens.add(item6); 
-  
+		JFrame itens = new JFrame();
+		this.add(item0);
+		this.add(item1);
+		this.add(item2);
+		this.add(item3);
+		this.add(item4);
+		this.add(item5);
+		this.add(item6);
+
 		tituloEbook1 = new JLabel();
-		tituloEbook1.setText("Ebook" + " " + tituloEbook);
-		tituloEbook1.setBounds(0, 20, 1280, 50);
+		tituloEbook1.setText("Ebook: " + tituloEbook);
+		tituloEbook1.setBounds(290, 20, 320, 30);
 		tituloEbook1.setForeground(Color.cyan);
-		tituloEbook1.setFont(new Font("Comic Sans", Font.BOLD, 50));
+		tituloEbook1.setFont(new Font("Comic Sans", Font.BOLD, 38));
 		tituloEbook1.setHorizontalAlignment(JLabel.CENTER);
 
-		botaoBusca = new JButton();
-		botaoAdicionaLivro = new JButton();
-		botaoVoltar2 = new JButton();
-		botaoCarrinho = new JButton();
+		botaoBusca = new JButton("Excluir livro do sistema");
+		botaoAdicionaLivro = new JButton("Adicionar livro ao carrinho");
+		botaoVoltar2 = new JButton("Voltar");
+		botaoCarrinho = new JButton("Carrinho");
 
-		botaoBusca.setBounds(780, 450, 400, 40);
-		botaoAdicionaLivro.setBounds(100, 450, 400, 40);
-		botaoVoltar2.setBounds(540, 580, 200, 40);
-		botaoCarrinho.setBounds(980, 580, 200, 40);
-
-		botaoBusca.setText("excluir livro do sistema");
-		botaoAdicionaLivro.setText("Adicionar livro ao carrinho");
-		botaoVoltar2.setText("Voltar");
-		botaoCarrinho.setText("Carrinho");
+		botaoBusca.setBounds(120, 500, 400, 40);
+		botaoAdicionaLivro.setBounds(120, 560, 400, 40);
+		botaoVoltar2.setBounds(550, 500, 200, 40);
+		botaoCarrinho.setBounds(550, 560, 200, 40);
 
 		botaoBusca.setFocusable(false);
 		botaoAdicionaLivro.setFocusable(false);
@@ -185,7 +187,7 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 		botaoCarrinho.addActionListener(this);
 
 		this.setLayout(null);
-		this.setSize(1280, 720);
+		this.setSize(900, 700);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setTitle("Ebook" + " " + tituloEbook);
@@ -210,13 +212,11 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 
 		if (src == botaoBusca) {
 
-			if (ControleEbook.existeEbook(campoTexto.getText())) {
+			if (ControleEbook.existeEbook(campoTituloEbook.getText())) {
 				this.dispose();
-				String[] s = ControleEbook.infoEbook(campoTexto.getText());
-				new ViewMenuLivro(campoTexto.getText(), s);
+				new ViewMenuLivro(campoTituloEbook.getText());
 			} else {
-				JOptionPane.showMessageDialog(null, "Este ebook nao existe\n", "Erro",
-						JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Este ebook nao existe\n", "Erro", JOptionPane.INFORMATION_MESSAGE);
 			}
 		} else if (src == botaoAdicionaLivro) {
 
@@ -228,7 +228,7 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 			new ViewMenuLivro();
 		} else if (src == botaoCarrinho) {
 			this.dispose();
-			new ViewCarrinho(cliente, dados);
+			new ViewCarrinho(nomeCliente, dados);
 		}
 	}
 }
