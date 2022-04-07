@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import controller.ControleCarrinho;
 import controller.ControleDados;
 import controller.ControleEbook;
 
@@ -22,7 +23,6 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 	JButton botaoAdicionaLivro;
 	JButton botaoVoltar;
 	JButton botaoVoltar2;
-	JButton botaoCarrinho;
 	JLabel tituloEbook1;
 	JTextField campoTitulo;
 	String termo;
@@ -32,7 +32,8 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 	/**
 	 * Cria janela de busca por ebook
 	 */
-	ViewMenuLivro() {
+	ViewMenuLivro(String nome) {
+		nomeCliente = nome;
 
 		campoTitulo = new JTextField();
 		campoTitulo.setBounds(440, 100, 400, 50);
@@ -51,39 +52,32 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 		tituloEbook1.setHorizontalAlignment(JLabel.CENTER);
 
 		botaoBusca = new JButton("Buscar");
-		botaoAdicionaLivro = new JButton("Adicionar livro");
+		botaoAdicionaLivro = new JButton("Cadastrar livro");
 		botaoVoltar = new JButton("Voltar");
-		botaoCarrinho = new JButton("Carrinho");
 
 		botaoBusca.setBounds(490, 155, 300, 40);
-		botaoAdicionaLivro.setBounds(100, 580, 200, 40);
+		botaoAdicionaLivro.setBounds(540, 500, 200, 40);
 		botaoVoltar.setBounds(540, 580, 200, 40);
-		botaoCarrinho.setBounds(980, 580, 200, 40);
 
 		botaoBusca.setFocusable(false);
 		botaoAdicionaLivro.setFocusable(false);
 		botaoVoltar.setFocusable(false);
-		botaoCarrinho.setFocusable(false);
 
 		botaoBusca.setFont(new Font("Comic Sans", Font.BOLD, 20));
 		botaoAdicionaLivro.setFont(new Font("Comic Sans", Font.BOLD, 20));
 		botaoVoltar.setFont(new Font("Comic Sans", Font.BOLD, 20));
-		botaoCarrinho.setFont(new Font("Comic Sans", Font.BOLD, 20));
 
 		botaoBusca.setForeground(Color.cyan);
 		botaoAdicionaLivro.setForeground(Color.cyan);
 		botaoVoltar.setForeground(Color.cyan);
-		botaoCarrinho.setForeground(Color.cyan);
 
 		botaoBusca.setBackground(Color.darkGray);
 		botaoAdicionaLivro.setBackground(Color.darkGray);
 		botaoVoltar.setBackground(Color.darkGray);
-		botaoCarrinho.setBackground(Color.darkGray);
 
 		botaoBusca.addActionListener(this);
 		botaoAdicionaLivro.addActionListener(this);
 		botaoVoltar.addActionListener(this);
-		botaoCarrinho.addActionListener(this);
 
 		this.setLayout(null);
 		this.setSize(1280, 720);
@@ -96,7 +90,6 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 		this.add(botaoBusca);
 		this.add(botaoAdicionaLivro);
 		this.add(botaoVoltar);
-		this.add(botaoCarrinho);
 		this.setVisible(true);
 	}
 
@@ -106,8 +99,9 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 	 * @param t  titulo do livro ou nome da editora
 	 * @param op opcao da busca(ebook ou editora)
 	 */
-	ViewMenuLivro(String t, int op) {
+	ViewMenuLivro(String t, int op, String nome) {
 		termo = t;
+		nomeCliente = nome;
 
 		switch (op) {
 		case 1: // busca Ebook
@@ -155,37 +149,30 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 			botaoExcluir = new JButton("Excluir livro do sistema");
 			botaoAdicionaLivro = new JButton("Adicionar livro ao carrinho");
 			botaoVoltar2 = new JButton("Voltar");
-			botaoCarrinho = new JButton("Carrinho");
 
 			botaoExcluir.setBounds(120, 500, 400, 40);
 			botaoAdicionaLivro.setBounds(120, 560, 400, 40);
 			botaoVoltar2.setBounds(550, 500, 200, 40);
-			botaoCarrinho.setBounds(550, 560, 200, 40);
 
 			botaoExcluir.setFocusable(false);
 			botaoAdicionaLivro.setFocusable(false);
 			botaoVoltar2.setFocusable(false);
-			botaoCarrinho.setFocusable(false);
 
 			botaoExcluir.setFont(new Font("Comic Sans", Font.BOLD, 20));
 			botaoAdicionaLivro.setFont(new Font("Comic Sans", Font.BOLD, 20));
 			botaoVoltar2.setFont(new Font("Comic Sans", Font.BOLD, 20));
-			botaoCarrinho.setFont(new Font("Comic Sans", Font.BOLD, 20));
 
 			botaoExcluir.setForeground(Color.cyan);
 			botaoAdicionaLivro.setForeground(Color.cyan);
 			botaoVoltar2.setForeground(Color.cyan);
-			botaoCarrinho.setForeground(Color.cyan);
 
 			botaoExcluir.setBackground(Color.darkGray);
 			botaoAdicionaLivro.setBackground(Color.darkGray);
 			botaoVoltar2.setBackground(Color.darkGray);
-			botaoCarrinho.setBackground(Color.darkGray);
 
 			botaoExcluir.addActionListener(this);
 			botaoAdicionaLivro.addActionListener(this);
 			botaoVoltar2.addActionListener(this);
-			botaoCarrinho.addActionListener(this);
 
 			this.setLayout(null);
 			this.setSize(900, 700);
@@ -196,7 +183,6 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 			this.add(botaoExcluir);
 			this.add(botaoAdicionaLivro);
 			this.add(botaoVoltar2);
-			this.add(botaoCarrinho);
 			this.setVisible(true);
 			break;
 		case 2: // busca Editora
@@ -218,24 +204,28 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 			// se o ebook existir as informacoes serao buscadas e mostradas em outra tela
 			if (ControleEbook.existeEbook(campoTitulo.getText())) {
 				this.dispose();
-				new ViewMenuLivro(campoTitulo.getText(), 1);
+				new ViewMenuLivro(campoTitulo.getText(), 1, nomeCliente);
 			} else {
 				JOptionPane.showMessageDialog(null, "Este ebook nao existe\n", "Erro", JOptionPane.INFORMATION_MESSAGE);
 			}
 
 		} else if (src == botaoAdicionaLivro) {
 			// adicionar livro ao carrinho
+			if (ControleCarrinho.adicionarEbook(termo, nomeCliente)) {
+				JOptionPane.showMessageDialog(null, "Ebook adicionado ao carrinho\n", "Sucesso",
+						JOptionPane.INFORMATION_MESSAGE);
+				this.dispose();
+			} else {
+				JOptionPane.showMessageDialog(null, "Nao foi possivel adicionar o ebook ao carrinho\n", "Erro",
+						JOptionPane.INFORMATION_MESSAGE);
+			}
 
 		} else if (src == botaoVoltar) {
 			this.dispose();
 
 		} else if (src == botaoVoltar2) {
 			this.dispose();
-			new ViewMenuLivro();
-
-		} else if (src == botaoCarrinho) {
-			this.dispose();
-			new ViewCarrinho(nomeCliente, dados);
+			new ViewMenuLivro(nomeCliente);
 
 		} else if (src == botaoExcluir) {
 			if (ControleEbook.excluirEbook(termo)) {
@@ -245,7 +235,7 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 						JOptionPane.INFORMATION_MESSAGE);
 			}
 			this.dispose();
-			new ViewMenuLivro();
+			new ViewMenuLivro(nomeCliente);
 
 		}
 	}

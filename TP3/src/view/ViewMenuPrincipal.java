@@ -106,7 +106,7 @@ public class ViewMenuPrincipal extends JFrame implements ActionListener {
 		Object src = e.getSource();
 
 		if (src == botaoBuscaLivro) {
-			new ViewMenuLivro();
+			new ViewMenuLivro(cliente);
 		} else if (src == botaoBuscaEditora) {
 			new ViewEditora();
 		} else if (src == botaoVisualizaInformacoes) {

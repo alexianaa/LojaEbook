@@ -16,7 +16,7 @@ public class ControleEditora {
 	/**
 	 * Cadastra uma editora no sistema
 	 */
-	public static void cadastrar() {
+	public void cadastrar() {
 
 	}
 
