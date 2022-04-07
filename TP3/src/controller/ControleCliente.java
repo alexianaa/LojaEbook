@@ -9,16 +9,17 @@ import model.Venda;
 
 public class ControleCliente {
 
-	public Cliente cliente = new Cliente();
+	public Cliente cliente;
 	public int qtdClientes = Dados.getClientes().size();
 
-	public ControleCliente(Dados d) {
-
+	public ControleCliente() {
+		cliente = new Cliente();
 	}
 
-	public void cadastrarCliente(String n, String e, String date, int d, String num, String c, Carrinho car) {
+	public void cadastrarCliente(String n, String e, String date, String d, String num, String c) {
 
-		Telefone numero = new Telefone(d, num);
+		int ddd = Integer.parseInt(d);
+		Telefone numero = new Telefone(ddd, num);
 		Venda venda = new Venda("", 0);
 		Carrinho carrinho = new Carrinho(0.0, 0, null, venda);
 
@@ -60,6 +61,14 @@ public class ControleCliente {
 			}
 		}
 		return false;
+	}
+
+	public String[] showNames() {
+		String[] names = new String[Dados.getClientes().size()];
+		for (Cliente edit : Dados.getClientes()) {
+			names[Dados.getClientes().indexOf(edit)] = edit.getNome();
+		}
+		return names;
 	}
 
 }
