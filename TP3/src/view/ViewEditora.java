@@ -168,7 +168,7 @@ public class ViewEditora extends JFrame implements ActionListener {
 						JOptionPane.INFORMATION_MESSAGE);
 			}
 		} else if (src == botaoAdicionaEditora) {
-			new ViewCadastro(dados, 3);
+			new ViewCadastro(dados, 1);
 		} else if (src == botaoVoltar) {
 			this.dispose();
 			new ViewMenuPrincipal(dados, cliente);

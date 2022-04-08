@@ -237,6 +237,8 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 			}
 			this.dispose();
 
+		} else if (src == cadastraLivro) {
+			new ViewCadastro(dados, 3);
 		}
 	}
 }

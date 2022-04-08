@@ -19,6 +19,7 @@ import javax.swing.text.MaskFormatter;
 
 import controller.ControleCliente;
 import controller.ControleDados;
+import controller.ControleEbook;
 import controller.ControleEditora;
 
 public class ViewCadastro implements ActionListener {
@@ -29,8 +30,20 @@ public class ViewCadastro implements ActionListener {
 	private static ControleDados dados;
 	private static ControleCliente cliente = new ControleCliente();
 	private static ControleEditora editora = new ControleEditora();
+	private static ControleEbook ebook = new ControleEbook();
 	private JButton concluirCliente = new JButton("Concluir");
 	private JButton concluirEditora = new JButton("Concluir");
+	private JButton concluirEbook = new JButton("Concluir");
+	private JTextField tituloField = new JTextField(200);
+	private JTextField autorField = new JTextField(200);
+	private JTextField categoriaField = new JTextField(200);
+	private JTextField sinposeField = new JTextField(200);
+	private JTextField idiomaField = new JTextField(200);
+	private JTextField valorEbookField = new JTextField(200);
+	private JTextField tamArqField = new JTextField(200);
+	private JTextField pagField = new JTextField(200);
+	private JTextField anoPubField = new JTextField(200);
+	private JTextField editoraNomeField = new JTextField(200);
 	private JTextField nomeField;
 	private JTextField emailField;
 	private JFormattedTextField cpfField;
@@ -43,6 +56,16 @@ public class ViewCadastro implements ActionListener {
 	private String dddValue;
 	private String cpfValue;
 	private String numeroValue;
+	private String tituloValue;
+	private String autorValue;
+	private String categoriaValue;
+	private String sinopseValue;
+	private String idiomaValue;
+	private String valorEbookValue;
+	private String tamArqValue;
+	private String pagValue;
+	private String anoPubTxt;
+	private String editoraNomeValue;
 
 	/**
 	 * Criacao da tela de cadastro de editora, cliente e ebook
@@ -159,17 +182,6 @@ public class ViewCadastro implements ActionListener {
 			pagTxt = new JLabel("Quantidade de paginas: ");
 			anoPubTxt = new JLabel("Ano de publicacao: ");
 			editoraNome = new JLabel("Editora: "); // verificar se a editora existe
-			// cria o campo que vai receber as informacoes
-			JTextField tituloField = new JTextField(200);
-			JTextField autorField = new JTextField(200);
-			JTextField categoriaField = new JTextField(200);
-			JTextField sinposeField = new JTextField(200);
-			JTextField idiomaField = new JTextField(200);
-			JTextField valorEbookField = new JTextField(200);
-			JTextField tamArqField = new JTextField(200);
-			JTextField pagField = new JTextField(200);
-			JTextField anoPubField = new JTextField(200);
-			JTextField editoraNomeField = new JTextField(200);
 			// define os tamanhos de cada label
 			tituloTxt.setBounds(80, 100, 80, 30);
 			autorTxt.setBounds(80, 140, 80, 30);
@@ -177,7 +189,7 @@ public class ViewCadastro implements ActionListener {
 			sinopseTxt.setBounds(80, 220, 80, 30);
 			idiomaTxt.setBounds(80, 260, 120, 30);
 			valorEbookTxt.setBounds(80, 300, 120, 30);
-			tamArqTxt.setBounds(80, 340, 120, 30);
+			tamArqTxt.setBounds(80, 340, 150, 30);
 			pagTxt.setBounds(80, 380, 380, 30);
 			anoPubTxt.setBounds(80, 420, 120, 30);
 			editoraNome.setBounds(80, 460, 120, 30);
@@ -192,9 +204,9 @@ public class ViewCadastro implements ActionListener {
 			pagField.setBounds(260, 380, 160, 30);
 			anoPubField.setBounds(260, 420, 160, 30);
 			editoraNomeField.setBounds(260, 460, 160, 30);
-			concluirEditora.setBounds(190, 520, 160, 30);
+			concluirEbook.setBounds(190, 520, 160, 30);
 			// adiciona os componentes a janela
-			janela.add(concluirEditora);
+			janela.add(concluirEbook);
 			janela.add(titulo);
 			janela.add(tituloTxt);
 			janela.add(autorTxt);
@@ -220,7 +232,7 @@ public class ViewCadastro implements ActionListener {
 			janela.setSize(560, 600);
 			janela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			janela.setVisible(true);
-			concluirEditora.addActionListener(this);
+			concluirEbook.addActionListener(this);
 			break;
 		}
 	}
@@ -250,6 +262,27 @@ public class ViewCadastro implements ActionListener {
 			cliente.cadastrarCliente(nomeValue, emailValue, dataValue, dddValue, numeroValue, cpfValue);
 		} else if (src == concluirEditora) {
 			editora.cadastrar();
+		} else if (src == concluirEbook) {
+			JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso\n", "Sucesso",
+					JOptionPane.INFORMATION_MESSAGE);
+			janela.dispose();
+			tituloValue = tituloField.getText();
+			autorValue = autorField.getText();
+			categoriaValue = categoriaField.getText();
+			sinopseValue = sinposeField.getText();
+			idiomaValue = idiomaField.getText();
+			valorEbookValue = valorEbookField.getText();
+			tamArqValue = tamArqField.getText();
+			pagValue = pagField.getText();
+			anoPubTxt = anoPubField.getText();
+			editoraNomeValue = editoraNomeField.getText();
+			double valor = Double.parseDouble(valorEbookValue);
+			double tamArq = Double.parseDouble(tamArqValue);
+			int pag = Integer.parseInt(pagValue);
+			int ano = Integer.parseInt(editoraNomeValue);
+			ebook.cadastrar(tituloValue, autorValue, categoriaValue, sinopseValue, idiomaValue, valor, tamArq, pag, ano,
+					editoraNomeValue);
+			janela.dispose();
 		}
 	}
 }

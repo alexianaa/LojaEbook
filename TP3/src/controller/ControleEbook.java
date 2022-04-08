@@ -24,8 +24,8 @@ public class ControleEbook {
 	 * @param ano         ano de publicavao
 	 * @param nomeEditora nome da Editora
 	 */
-	public static void cadastrar(String t, String a, String c, String s, String i, double p, double tam, int pag,
-			int ano, String nomeEditora) {
+	public void cadastrar(String t, String a, String c, String s, String i, double p, double tam, int pag, int ano,
+			String nomeEditora) {
 
 		// gerar id
 		int idNovo = 0;
