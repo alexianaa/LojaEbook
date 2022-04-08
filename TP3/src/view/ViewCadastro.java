@@ -64,7 +64,7 @@ public class ViewCadastro implements ActionListener {
 	private String valorEbookValue;
 	private String tamArqValue;
 	private String pagValue;
-	private String anoPubTxt;
+	private String anoPubValue;
 	private String editoraNomeValue;
 
 	/**
@@ -263,8 +263,6 @@ public class ViewCadastro implements ActionListener {
 		} else if (src == concluirEditora) {
 			editora.cadastrar();
 		} else if (src == concluirEbook) {
-			JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso\n", "Sucesso",
-					JOptionPane.INFORMATION_MESSAGE);
 			janela.dispose();
 			tituloValue = tituloField.getText();
 			autorValue = autorField.getText();
@@ -274,14 +272,20 @@ public class ViewCadastro implements ActionListener {
 			valorEbookValue = valorEbookField.getText();
 			tamArqValue = tamArqField.getText();
 			pagValue = pagField.getText();
-			anoPubTxt = anoPubField.getText();
+			anoPubValue = anoPubField.getText();
 			editoraNomeValue = editoraNomeField.getText();
 			double valor = Double.parseDouble(valorEbookValue);
 			double tamArq = Double.parseDouble(tamArqValue);
 			int pag = Integer.parseInt(pagValue);
-			int ano = Integer.parseInt(editoraNomeValue);
-			ebook.cadastrar(tituloValue, autorValue, categoriaValue, sinopseValue, idiomaValue, valor, tamArq, pag, ano,
-					editoraNomeValue);
+			int ano = Integer.parseInt(anoPubValue);
+			if (ebook.cadastrar(tituloValue, autorValue, categoriaValue, sinopseValue, idiomaValue, valor, tamArq, pag,
+					ano, editoraNomeValue)) {
+				JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso\n", "Sucesso",
+						JOptionPane.INFORMATION_MESSAGE);
+			} else {
+				JOptionPane.showMessageDialog(null, "Nao foi possivel realizar o cadastro\n", "Erro",
+						JOptionPane.INFORMATION_MESSAGE);
+			}
 			janela.dispose();
 		}
 	}

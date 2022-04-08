@@ -24,7 +24,7 @@ public class ControleEbook {
 	 * @param ano         ano de publicavao
 	 * @param nomeEditora nome da Editora
 	 */
-	public void cadastrar(String t, String a, String c, String s, String i, double p, double tam, int pag, int ano,
+	public boolean cadastrar(String t, String a, String c, String s, String i, double p, double tam, int pag, int ano,
 			String nomeEditora) {
 
 		// gerar id
@@ -38,13 +38,15 @@ public class ControleEbook {
 
 		// acessa o banco de dados, encontra a editora e acrescenta um ebook
 		for (Editora edit : Dados.getEditoras()) {
-			if (edit.getNome() == nomeEditora) {
+			if (edit.getNome().equals(nomeEditora)) {
 				Editora editora = edit;
 				Ebook ebook = new Ebook(idNovo, t, a, s, c, i, p, tam, pag, ano, editora);
 				Dados.getEbooks().add(ebook);
+				return true;
 			}
 		}
 
+		return false;
 	}
 
 	/**

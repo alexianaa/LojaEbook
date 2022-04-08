@@ -97,8 +97,9 @@ public class ViewMenuLivro extends JFrame implements ActionListener {
 	/**
 	 * Cria janela com informacoes da busca por ebook
 	 * 
-	 * @param t  titulo do livro ou nome da editora
-	 * @param op opcao da busca(ebook ou editora)
+	 * @param t    titulo do livro ou nome da editora
+	 * @param op   opcao da busca(ebook ou editora)
+	 * @param nome nome do cliente
 	 */
 	ViewMenuLivro(String t, int op, String nome) {
 		termo = t;
