@@ -50,7 +50,7 @@ public class ControleCliente {
 	 * Exclui um cliente do sistema
 	 * 
 	 * @param nomeCliente - string com o nome do cliente a ser excluido
-	 * @return
+	 * @return boolean
 	 */
 	public static boolean excluirCliente(String nomeCliente) {
 		for (Cliente edit : Dados.getClientes()) {
@@ -66,7 +66,7 @@ public class ControleCliente {
 	 * Retorna se existe um usuario com o nome recebido
 	 * 
 	 * @param c - nome do possivel cliente
-	 * @return
+	 * @return boolean
 	 */
 	public static boolean existeUsuario(String c) {
 		for (Cliente edit : Dados.getClientes()) {
@@ -80,7 +80,7 @@ public class ControleCliente {
 	/**
 	 * Retorna um array com o nome dos clientes cadastrados no sistema
 	 * 
-	 * @return
+	 * @return String[]
 	 */
 	public String[] showNames() {
 		String[] names = new String[Dados.getClientes().size()];
@@ -94,7 +94,7 @@ public class ControleCliente {
 	 * Retorna uma string com as informacoes do cliente
 	 * 
 	 * @param nome - nome do cliente usando o sistema
-	 * @return
+	 * @return String[]
 	 */
 	public static String[] returnCliente(String nome) {
 		String[] infos = new String[5];

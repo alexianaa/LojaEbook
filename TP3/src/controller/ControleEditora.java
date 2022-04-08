@@ -1,11 +1,11 @@
 package controller;
 
-import model .*;
+import model.Dados;
+import model.Editora;
 
 public class ControleEditora {
 
 	public static Editora editora;
-
 	public int qtdEditoras = Dados.getEditoras().size();
 
 	public ControleEditora() {
@@ -16,19 +16,18 @@ public class ControleEditora {
 	 * Cadastra uma editora no sistema
 	 */
 	public static void cadastrar() {
-		
-	}
 
-	
+	}
 
 	public static void excluirEditora() {
-		
+
 	}
 
-  /**
+	/**
 	 * Retorna as informacoes da editora selecionada
-   * @param nome nome da editora a ser buscado
-   * @return 
+	 * 
+	 * @param nome nome da editora a ser buscado
+	 * @return String[]
 	 */
 	public static String[] infoEditora(String nome) {
 		String[] editora = new String[5];
@@ -47,9 +46,11 @@ public class ControleEditora {
 		return editora;
 	}
 
-  /**
+	/**
 	 * Retorna se a Editora existe
-   * @param n nome da editora
+	 * 
+	 * @param n nome da editora
+	 * @return boolean
 	 */
 	public static boolean existeEditora(String n) {
 		for (Editora edit : Dados.getEditoras()) {
@@ -63,7 +64,7 @@ public class ControleEditora {
 	/**
 	 * Retorna uma string com o nome das editoras cadastradas
 	 * 
-	 * @return
+	 * @return String[]
 	 */
 	public String[] showNames() {
 		String[] names = new String[Dados.getEditoras().size()];

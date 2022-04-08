@@ -36,6 +36,7 @@ public class ControleEbook {
 	 * Retorna as informacoes do ebook
 	 * 
 	 * @param titulo titulo do livro a ser buscado
+	 * @return String[]
 	 */
 	public static String[] infoEbook(String titulo) {
 		String[] ebook = new String[7];
@@ -75,7 +76,7 @@ public class ControleEbook {
 	/**
 	 * Retorna uma string com os titulos dos ebooks cadastrados no sistema
 	 * 
-	 * @return
+	 * @return String[]
 	 */
 	public String[] showTitulos() {
 		String[] titulos = new String[Dados.getEbooks().size()];
