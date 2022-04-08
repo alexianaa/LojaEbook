@@ -15,12 +15,24 @@ public class ControleEditora {
 	/**
 	 * Cadastra uma editora no sistema
 	 */
-	public static void cadastrar() {
+	public void cadastrar() {
 
 	}
 
-	public static void excluirEditora() {
-
+	/**
+	 * Exclui um ebook do sistema
+	 * 
+	 * @param nomeEditora nome da editora a ser deletada
+	 * @return
+	 */
+	public static boolean excluirEditora(String nomeEditora) {
+		for (Editora edit : Dados.getEditoras()) {
+			if (edit.getNome().equals(nomeEditora)) {
+				Dados.getEditoras().remove(edit);
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**

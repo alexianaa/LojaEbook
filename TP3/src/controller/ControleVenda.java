@@ -18,8 +18,8 @@ public class ControleVenda {
 			if (edit.getNome().equals(cliente)) {
 				Ebook[] preCarrinho = edit.getCarrinho().getEbooks();
 				if (preCarrinho != null) {
-					for (int i = 0; preCarrinho[i] != null; i++) {
-						carrinho[i] = preCarrinho[i].toString();
+					for (int i = 0; i < preCarrinho.length; i++) {
+						carrinho[i] = preCarrinho[i].toString() + " \n";
 					}
 				}
 			}

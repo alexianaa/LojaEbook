@@ -2,6 +2,7 @@ package controller;
 
 import model.Carrinho;
 import model.Cliente;
+import model.Dados;
 import model.Ebook;
 
 public class ControleCarrinho {
@@ -9,13 +10,58 @@ public class ControleCarrinho {
 	/**
 	 * Adiciona um ebook ao carrinho
 	 * 
-	 * @param ebook - ebook a ser adicionado
+	 * @param tituloEbook ebook a ser adicionado
+	 * @param cliente     nome do cliente adicionando o ebook
 	 */
-	public void adicionarEbook(Ebook ebook) {
-		/*
-		 * for (int i = 0; i < 50; i++) { if (ebooks[i] == null) { ebooks[i] = ebook;
-		 * break; } }
-		 */
+	public static boolean adicionarEbook(String tituloEbook, String cliente) {
+		// selecionar o carrinho do cliente
+		for (Cliente usuario : Dados.getClientes()) {
+			if (usuario.getNome().equals(cliente)) {
+				// achar o ebook nos dados
+				for (Ebook livro : Dados.getEbooks()) {
+					if (livro.getTitulo().equals(tituloEbook)) {
+						// editar a quantidade de ebooks
+						int quantCarrinho = usuario.getCarrinho().getQuantidadeEbooks();
+						usuario.getCarrinho().setQuantidadeEbooks(quantCarrinho + 1);
+						// mudar o valor total do carrinho
+						double valorAntigo = usuario.getCarrinho().getvalorTotal();
+						double valorLivro = livro.getValorLivro();
+						usuario.getCarrinho().setvalorTotal(valorAntigo + valorLivro);
+						// acrescenta um ebook pegando a lista antiga e entregando uma lista nova
+						Ebook[] listaAntiga = usuario.getCarrinho().getEbooks();
+						if (listaAntiga != null) {
+							Ebook[] listaNova = new Ebook[listaAntiga.length + 1];
+							for (int i = 0; i <= listaAntiga.length; i++) {
+								if (i == listaAntiga.length) {
+									listaNova[i] = livro;
+								} else {
+									listaNova[i] = listaAntiga[i];
+								}
+							}
+							usuario.getCarrinho().setEbooks(listaNova);
+							return true;
+						} else {
+							Ebook[] listaNova = new Ebook[1];
+							listaNova[0] = livro;
+							usuario.getCarrinho().setEbooks(listaNova);
+							return true;
+						}
+					}
+				}
+			}
+		}
+
+		return false;
+
+	}
+
+	public static double getValor(String cliente) {
+		for (Cliente edit : Dados.getClientes()) {
+			if (edit.getNome().equals(cliente)) {
+				return edit.getCarrinho().getvalorTotal();
+			}
+		}
+		return 0.0;
 	}
 
 	/**
@@ -45,18 +91,6 @@ public class ControleCarrinho {
 		/*
 		 * for (int i = 0; i < 50; i++) { if (carrinho.ebooks[i] == ebook) {
 		 * carrinho.ebooks[i] = null; } }
-		 */
-	}
-
-	/**
-	 * Retorna uma string com informacoes dos ebooks no carrinho
-	 * 
-	 * @param cliente - informa qual de qual cliente o carrinho sera selecionado
-	 */
-	public static void mostrarEbooks(Cliente cliente) {
-		/*
-		 * for (Ebook edit : cliente.getCarrinho().getEbooks()) { if (edit != null) {
-		 * System.out.println(edit + "\n"); } }
 		 */
 	}
 

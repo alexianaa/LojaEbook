@@ -9,14 +9,11 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.ListSelectionModel;
 
 import controller.ControleDados;
-import controller.ControleVenda;
 
 @SuppressWarnings("serial")
 public class ViewVenda extends JFrame implements ActionListener {
@@ -30,44 +27,40 @@ public class ViewVenda extends JFrame implements ActionListener {
 	JRadioButton vezes2;
 	JRadioButton vezes3;
 	JPanel itens;
-	private static ControleDados dados = new ControleDados();
+	private ControleDados dados;
 	private String cliente;
 
-	ViewVenda(String precoTotal) {
-		// cria lista com as informacoes do carrinho
-		String[] listaNomes = ControleVenda.infoCarrinho(cliente);
-		JList<String> listaCarrinho = new JList<String>(listaNomes);
-		listaCarrinho.setBounds(150, 73, 980, 350);
-		listaCarrinho.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		listaCarrinho.setVisibleRowCount(5);
-		listaCarrinho.setForeground(Color.white);
-		listaCarrinho.setBackground(Color.gray);
-		this.add(listaCarrinho);
+	ViewVenda(ControleDados d, double precoTotal) {
+		dados = d;
+
+		String valor = String.valueOf(precoTotal);
+		JLabel valorTotal = new JLabel("R$ " + valor);
+		JLabel valorTotalTxt = new JLabel("Valor total:");
 
 		// titulo da janela
 		texto1 = new JLabel();
 		texto1.setText("Carrinho");
-		texto1.setBounds(440, 20, 400, 50);
+		texto1.setBounds(140, 20, 100, 30);
 		texto1.setForeground(Color.cyan);
-		texto1.setFont(new Font("Comic Sans", Font.BOLD, 50));
+		texto1.setFont(new Font("Comic Sans", Font.BOLD, 22));
 		texto1.setHorizontalAlignment(JLabel.CENTER);
 
 		botaoVoltar = new JButton("Cancelar");
 		botaoConcluir = new JButton("Concluir compra");
 
-		botaoVoltar.setBounds(540, 580, 200, 40);
-		botaoConcluir.setBounds(980, 580, 200, 40);
+		botaoConcluir.setBounds(120, 160, 150, 30);
+		botaoVoltar.setBounds(120, 200, 150, 30);
 
 		botaoVoltar.setFocusable(false);
 		botaoConcluir.setFocusable(false);
 
-		botaoVoltar.setFont(new Font("Comic Sans", Font.BOLD, 20));
-		botaoConcluir.setFont(new Font("Comic Sans", Font.BOLD, 20));
+		botaoVoltar.setFont(new Font("Comic Sans", Font.BOLD, 14));
+		botaoConcluir.setFont(new Font("Comic Sans", Font.BOLD, 14));
 
-		botaoVoltar.setForeground(Color.cyan);
-		botaoConcluir.setForeground(Color.black);
+		botaoVoltar.setForeground(Color.black);
+		botaoConcluir.setForeground(Color.cyan);
 		botaoVoltar.setBackground(Color.darkGray);
-		botaoConcluir.setBackground(Color.GREEN);
+		botaoConcluir.setBackground(Color.darkGray);
 
 		botaoVoltar.addActionListener(this);
 		botaoConcluir.addActionListener(this);
@@ -79,6 +72,8 @@ public class ViewVenda extends JFrame implements ActionListener {
 		vezes2 = new JRadioButton("2x");
 		vezes3 = new JRadioButton("3x");
 
+		valorTotalTxt.setFont(new Font("Comic Sans", Font.BOLD, 22));
+		valorTotal.setFont(new Font("Comic Sans", Font.BOLD, 22));
 		credito.setFont(new Font("Comic Sans", Font.BOLD, 15));
 		debito.setFont(new Font("Comic Sans", Font.BOLD, 15));
 		vezes1.setFont(new Font("Comic Sans", Font.BOLD, 15));
@@ -105,24 +100,29 @@ public class ViewVenda extends JFrame implements ActionListener {
 		vezes.add(vezes2);
 		vezes.add(vezes3);
 
-		credito.setBounds(880, 480, 100, 40);
-		debito.setBounds(980, 480, 100, 40);
-		vezes1.setBounds(780, 440, 100, 40);
-		vezes2.setBounds(880, 440, 100, 40);
-		vezes3.setBounds(980, 440, 100, 40);
+		valorTotalTxt.setBounds(40, 70, 150, 30);
+		valorTotal.setBounds(50, 100, 190, 30);
+		credito.setBounds(160, 60, 90, 40);
+		debito.setBounds(260, 60, 100, 40);
+		vezes1.setBounds(160, 100, 50, 40);
+		vezes2.setBounds(210, 100, 50, 40);
+		vezes3.setBounds(260, 100, 50, 40);
 
 		credito.setFocusable(false);
 		debito.setFocusable(false);
 		vezes1.setFocusable(false);
 		vezes2.setFocusable(false);
 		vezes3.setFocusable(false);
+		// botaoConcluir.setEnabled(false);
 
 		this.setLayout(null);
-		this.setSize(1280, 720);
+		this.setSize(400, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.getContentPane().setBackground(Color.gray);
 		this.setResizable(false);
 		this.setTitle("Carrinho");
-		this.getContentPane().setBackground(Color.gray);
+		this.add(valorTotal);
+		this.add(valorTotalTxt);
 		this.add(texto1);
 		this.add(botaoVoltar);
 		this.add(botaoConcluir);

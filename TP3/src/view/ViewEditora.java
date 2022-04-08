@@ -25,8 +25,9 @@ public class ViewEditora extends JFrame implements ActionListener {
 	JButton botaoExcluir;
 	JLabel texto1;
 	JTextField campoTexto;
-	private ControleDados dados = new ControleDados();
+	private ControleDados dados;
 	private String cliente;
+	private String editora;
 
 	ViewEditora() {
 		// Campo de texto
@@ -51,7 +52,7 @@ public class ViewEditora extends JFrame implements ActionListener {
 		botaoVoltar = new JButton("Voltar");
 
 		botaoBusca.setBounds(490, 155, 300, 40);
-		botaoAdicionaEditora.setBounds(100, 580, 200, 40);
+		botaoAdicionaEditora.setBounds(540, 500, 200, 40);
 		botaoVoltar.setBounds(540, 580, 200, 40);
 
 		botaoBusca.setFocusable(false);
@@ -89,21 +90,23 @@ public class ViewEditora extends JFrame implements ActionListener {
 	}
 
 	ViewEditora(String texto, String[] s) {
-		JLabel item0 = new JLabel("categoria: " + s[0]);
-		JLabel item1 = new JLabel("Autor: " + s[1]);
-		JLabel item2 = new JLabel("Idioma disponivel: " + s[2]);
-		JLabel item3 = new JLabel("numero de paginas: " + s[3]);
-		JLabel item4 = new JLabel("Preco: " + "R$" + s[4]);
-		item0.setFont(new Font("Comic Sans", Font.BOLD, 40));
-		item1.setFont(new Font("Comic Sans", Font.BOLD, 40));
-		item2.setFont(new Font("Comic Sans", Font.BOLD, 40));
-		item3.setFont(new Font("Comic Sans", Font.BOLD, 40));
-		item4.setFont(new Font("Comic Sans", Font.BOLD, 40));
+		editora = texto;
+
+		JLabel item0 = new JLabel("E-mail: " + s[0]);
+		JLabel item1 = new JLabel("Numero: " + s[1]);
+		JLabel item2 = new JLabel("CNPJ: " + s[2]);
+		JLabel item3 = new JLabel("Data de afiliacao: " + s[3]);
+		JLabel item4 = new JLabel("ID: " + s[4]);
+		item0.setFont(new Font("Comic Sans", Font.BOLD, 38));
+		item1.setFont(new Font("Comic Sans", Font.BOLD, 38));
+		item2.setFont(new Font("Comic Sans", Font.BOLD, 38));
+		item3.setFont(new Font("Comic Sans", Font.BOLD, 38));
+		item4.setFont(new Font("Comic Sans", Font.BOLD, 38));
 
 		JPanel itens = new JPanel();
 		itens.setLayout(new GridLayout(10, 1));
 		itens.setBackground(Color.gray);
-		itens.setBounds(150, 73, 980, 350);
+		itens.setBounds(250, 73, 980, 350);
 		itens.add(item0);
 		itens.add(item1);
 		itens.add(item2);
@@ -164,10 +167,8 @@ public class ViewEditora extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Esta editora nao existe\n", "Erro",
 						JOptionPane.INFORMATION_MESSAGE);
 			}
-		} else if (src == botaoAdicionaEditora)
-
-		{
-
+		} else if (src == botaoAdicionaEditora) {
+			new ViewCadastro(dados, 1);
 		} else if (src == botaoVoltar) {
 			this.dispose();
 			new ViewMenuPrincipal(dados, cliente);
@@ -175,7 +176,14 @@ public class ViewEditora extends JFrame implements ActionListener {
 			this.dispose();
 			new ViewEditora();
 		} else if (src == botaoExcluir) {
-
+			if (ControleEditora.excluirEditora(editora)) {
+				JOptionPane.showMessageDialog(null, "Editora deletada com sucesso\n", "Sucesso",
+						JOptionPane.INFORMATION_MESSAGE);
+			} else {
+				JOptionPane.showMessageDialog(null, "Nao foi possivel deletar esta editora\n", "Erro",
+						JOptionPane.INFORMATION_MESSAGE);
+			}
+			this.dispose();
 		}
 	}
 }

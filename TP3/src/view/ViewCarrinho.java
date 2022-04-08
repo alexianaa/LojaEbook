@@ -13,11 +13,12 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import controller.ControleCarrinho;
 import controller.ControleDados;
 import controller.ControleVenda;
 
 @SuppressWarnings("serial")
-public class ViewCarrinho extends JFrame implements ActionListener {
+public class ViewCarrinho extends JFrame implements ActionListener, ListSelectionListener {
 	JButton botaoExcluir;
 	JButton botaoVoltar;
 	JButton botaoConcluir;
@@ -33,15 +34,16 @@ public class ViewCarrinho extends JFrame implements ActionListener {
 		cliente = c;
 		dados = d;
 
-		String[] listaNomes = ControleVenda.infoCarrinho(cliente);
-		JList<String> listaCarrinho = new JList<String>(listaNomes);
+		String[] lista = ControleVenda.infoCarrinho(cliente);
+		JList<String> listaCarrinho = new JList<String>(lista);
+		listaCarrinho.setFont(new Font("Comic Sans", Font.BOLD, 14));
 		listaCarrinho.setBounds(150, 73, 980, 350);
 		listaCarrinho.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		listaCarrinho.setVisibleRowCount(5);
 		listaCarrinho.setForeground(Color.white);
 		listaCarrinho.setBackground(Color.gray);
 		this.add(listaCarrinho);
-		listaCarrinho.addListSelectionListener((ListSelectionListener) this);
+		listaCarrinho.addListSelectionListener(this);
 
 		texto1 = new JLabel();
 		texto1.setText("Carrinho");
@@ -101,12 +103,11 @@ public class ViewCarrinho extends JFrame implements ActionListener {
 
 		if (src == botaoConcluir) {
 			this.dispose();
-			new ViewVenda("preco total");
+			new ViewVenda(dados, ControleCarrinho.getValor(cliente));
 		} else if (src == botaoExcluir) {
 
 		} else if (src == botaoVoltar) {
 			this.dispose();
-			new ViewMenuPrincipal(dados, nomeCliente);
 		}
 	}
 
@@ -115,6 +116,7 @@ public class ViewCarrinho extends JFrame implements ActionListener {
 	 * 
 	 * @param e - elemento da lista selecionado
 	 */
+	@Override
 	public void valueChanged(ListSelectionEvent arg0) {
 		// TODO Auto-generated method stub
 	}

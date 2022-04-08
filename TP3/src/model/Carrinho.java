@@ -13,10 +13,10 @@ public class Carrinho {
 	 * @param quant - quantidade de ebooks no carrinho
 	 * @param ebook - array de ebooks
 	 */
-	public Carrinho(double p, int quant, Ebook ebook) {
+	public Carrinho(double p, int quant, Ebook[] ebook) {
 		this.valorTotal = p;
 		this.quantidadeEbooks = quant;
-		this.ebooks[quantidadeEbooks] = ebook;
+		this.ebooks = ebook;
 	}
 
 	@Override
@@ -46,6 +46,6 @@ public class Carrinho {
 
 	public void setEbooks(Ebook[] ebooks) {
 		this.ebooks = ebooks;
-
 	}
+
 }
