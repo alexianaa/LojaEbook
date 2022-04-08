@@ -2,21 +2,47 @@ package controller;
 
 import model.Dados;
 import model.Editora;
+import model.Telefone;
 
 public class ControleEditora {
 
 	public static Editora editora;
 	public int qtdEditoras = Dados.getEditoras().size();
 
+	/**
+	 * Cria um controle editora
+	 */
 	public ControleEditora() {
 
 	}
 
 	/**
-	 * Cadastra uma editora no sistema
+	 * Cria uma editora e cadastra no sistema de dados
+	 * 
+	 * @param n   nome
+	 * @param e   email
+	 * @param ddd ddd do telefone
+	 * @param num numero de telefone
+	 * @param c   cnpj
+	 * @param d   data de afiliacao
+	 * @return boolean
 	 */
-	public void cadastrar() {
+	public boolean cadastrar(String n, String e, int ddd, String num, String c, String d) {
 
+		Telefone telefone = new Telefone(ddd, num);
+
+		// gerar id
+		int idNovo = 0;
+		for (Editora edit : Dados.getEditoras()) {
+			if (edit.getId() == idNovo) {
+				idNovo += 1;
+				continue;
+			}
+		}
+
+		Editora editora = new Editora(n, e, idNovo, telefone, c, d);
+		Dados.getEditoras().add(editora);
+		return true;
 	}
 
 	/**

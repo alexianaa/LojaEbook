@@ -171,10 +171,8 @@ public class ViewEditora extends JFrame implements ActionListener {
 			new ViewCadastro(dados, 1);
 		} else if (src == botaoVoltar) {
 			this.dispose();
-			new ViewMenuPrincipal(dados, cliente);
 		} else if (src == botaoVoltar2) {
 			this.dispose();
-			new ViewEditora();
 		} else if (src == botaoExcluir) {
 			if (ControleEditora.excluirEditora(editora)) {
 				JOptionPane.showMessageDialog(null, "Editora deletada com sucesso\n", "Sucesso",

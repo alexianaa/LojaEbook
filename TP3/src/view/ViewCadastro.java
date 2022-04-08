@@ -50,6 +50,11 @@ public class ViewCadastro implements ActionListener {
 	private JFormattedTextField dddField;
 	private JFormattedTextField numeroField;
 	private JFormattedTextField txtDateField;
+	private JTextField cnpjField;
+	private JTextField dataField;
+	private JTextField dddField2;
+	private JTextField numeroField2;
+	private String cnpjValue;
 	private String nomeValue;
 	private String emailValue;
 	private String dataValue;
@@ -84,19 +89,74 @@ public class ViewCadastro implements ActionListener {
 
 		switch (op) {
 		case 1: // cadastro de editora
+			janela = new JFrame("Loja de Ebook");
+			titulo = new JLabel("Cadastro");
+			titulo.setFont(new Font("Arial", Font.BOLD, 30));
+			titulo.setBounds(200, 30, 150, 30);
+			// cria os titulos de cada espaco
+			nomeText = new JLabel("Nome: ");
+			emailText = new JLabel("E-mail: ");
+			numeroText = new JLabel("Numero: ");
+			cnpjText = new JLabel("CNPJ: ");
+			dataText = new JLabel("Data de afiliacao: ");
+			// cria o campo que vai receber as informacoes
+			nomeField = new JTextField(200);
+			emailField = new JTextField(200);
 			MaskFormatter mascaraCNPJ = null;
 			MaskFormatter mascaraDateEdt = null;
+			MaskFormatter mascaraNumero = null;
+			MaskFormatter mascaraDDD = null;
 			try {
 				mascaraCNPJ = new MaskFormatter("##.###.###/####-##");
 				mascaraDateEdt = new MaskFormatter("##/##/####");
+				mascaraDDD = new MaskFormatter("##");
+				mascaraNumero = new MaskFormatter("#####-####");
 				mascaraCNPJ.setPlaceholderCharacter('_');
+				mascaraDDD.setPlaceholderCharacter('_');
+				mascaraNumero.setPlaceholderCharacter('_');
 				mascaraDateEdt.setPlaceholderCharacter('_');
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			JTextField cnpjField = new JFormattedTextField(mascaraCNPJ);
-			JTextField dateField = new JFormattedTextField(mascaraDateEdt);
+			cnpjField = new JFormattedTextField(mascaraCNPJ);
+			dataField = new JFormattedTextField(mascaraDateEdt);
+			dddField2 = new JFormattedTextField(mascaraDDD);
+			numeroField2 = new JFormattedTextField(mascaraNumero);
+			// define os tamanhos de cada label
+			nomeText.setBounds(100, 100, 80, 30);
+			emailText.setBounds(100, 160, 80, 30);
+			numeroText.setBounds(100, 220, 80, 30);
+			cnpjText.setBounds(100, 280, 80, 30);
+			dataText.setBounds(100, 340, 120, 30);
+			// define os tamanhos de cada field
+			nomeField.setBounds(260, 100, 160, 30);
+			emailField.setBounds(260, 160, 160, 30);
+			dddField2.setBounds(260, 220, 40, 30);
+			numeroField2.setBounds(320, 220, 100, 30);
+			cnpjField.setBounds(260, 280, 160, 30);
+			dataField.setBounds(260, 340, 160, 30);
+			concluirEditora.setBounds(170, 420, 200, 30);
+			// adiciona os componentes a janela
+			janela.add(concluirEditora);
+			janela.add(nomeText);
+			janela.add(emailText);
+			janela.add(numeroText);
+			janela.add(cnpjText);
+			janela.add(dataText);
+			janela.add(nomeField);
+			janela.add(emailField);
+			janela.add(dddField2);
+			janela.add(numeroField2);
+			janela.add(cnpjField);
+			janela.add(dataField);
+			janela.add(titulo);
+			janela.setLayout(null);
+			janela.setSize(560, 510);
+			janela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			janela.setVisible(true);
+			concluirEditora.addActionListener(this);
+			break;
 		case 2: // cadastro de cliente
 			janela = new JFrame("Loja de Ebook");
 			titulo = new JLabel("Cadastro");
@@ -112,25 +172,25 @@ public class ViewCadastro implements ActionListener {
 			nomeField = new JTextField(200);
 			emailField = new JTextField(200);
 			MaskFormatter mascaraCPF = null;
-			MaskFormatter mascaraNumero = null;
-			MaskFormatter mascaraDDD = null;
+			MaskFormatter mascaraNumero2 = null;
+			MaskFormatter mascaraDDD2 = null;
 			MaskFormatter mascaraDate = null;
 			try {
 				mascaraCPF = new MaskFormatter("#########-##");
-				mascaraDDD = new MaskFormatter("##");
-				mascaraNumero = new MaskFormatter("#####-####");
+				mascaraDDD2 = new MaskFormatter("##");
+				mascaraNumero2 = new MaskFormatter("#####-####");
 				mascaraDate = new MaskFormatter("##/##/####");
 				mascaraCPF.setPlaceholderCharacter('_');
-				mascaraDDD.setPlaceholderCharacter('_');
-				mascaraNumero.setPlaceholderCharacter('_');
+				mascaraDDD2.setPlaceholderCharacter('_');
+				mascaraNumero2.setPlaceholderCharacter('_');
 				mascaraDate.setPlaceholderCharacter('_');
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			cpfField = new JFormattedTextField(mascaraCPF);
-			dddField = new JFormattedTextField(mascaraDDD);
-			numeroField = new JFormattedTextField(mascaraNumero);
+			dddField = new JFormattedTextField(mascaraDDD2);
+			numeroField = new JFormattedTextField(mascaraNumero2);
 			txtDateField = new JFormattedTextField(mascaraDate);
 			// define os tamanhos de cada label
 			nomeText.setBounds(100, 100, 80, 30);
@@ -261,7 +321,21 @@ public class ViewCadastro implements ActionListener {
 			// enviar para o metodo em controlecliente
 			cliente.cadastrarCliente(nomeValue, emailValue, dataValue, dddValue, numeroValue, cpfValue);
 		} else if (src == concluirEditora) {
-			editora.cadastrar();
+			janela.dispose();
+			nomeValue = nomeField.getText();
+			emailValue = emailField.getText();
+			dddValue = dddField2.getText();
+			int ddd = Integer.parseInt(dddValue);
+			numeroValue = numeroField2.getText();
+			cnpjValue = cnpjField.getText();
+			dataValue = dataField.getText();
+			if (editora.cadastrar(nomeValue, emailValue, ddd, numeroValue, cnpjValue, dataValue)) {
+				JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso\n", "Sucesso",
+						JOptionPane.INFORMATION_MESSAGE);
+			} else {
+				JOptionPane.showMessageDialog(null, "Nao foi possivel realizar o cadastro\n", "Erro",
+						JOptionPane.INFORMATION_MESSAGE);
+			}
 		} else if (src == concluirEbook) {
 			janela.dispose();
 			tituloValue = tituloField.getText();
